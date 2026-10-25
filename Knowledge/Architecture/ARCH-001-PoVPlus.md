@@ -30,5 +30,6 @@ Unity Mono loads components through BepInEx 5. [[DIAG-001-Logging]] owns lifecyc
 
 Source/: solution/code. Scripts/: build and knowledge tools. Configs/: reserved, currently empty.
 Documentation/: existing empty area. Knowledge/: linked engineering memory and sanitized metadata.
-Original game and saves are outside task scope. No GitHub remote was verified; .git is absent.
+Original game and saves are outside task scope. At bootstrap, no GitHub remote or .git metadata
+was present. The repository has since been initialized; [[INDEX]] records the verified current remote/branch.
 See [[DEC-001-Development-baseline]] for constraints and [[DEP-001-Environment]] for runtime scope.

@@ -53,3 +53,12 @@ AGENTS source fingerprint in the accepted snapshot after reviewing this known ch
 The earlier approval-pending status and original hash above describe the bootstrap state.
 Current AGENTS SHA-256: `58BCDF91D6C6B0297FBDC0EB035EC63B2EB2E44DE4D1E3E6C6497A77E9677B61`.
 No installation changes, deployment or game launch were performed.
+
+## Repository hygiene follow-up — 2026-10-24
+
+Verified local branch main and origin https://github.com/ave-satanas/PoV-Plus.git. Removed two
+Python bytecode cache files from the Git index while retaining local files, consolidated duplicate
+ignore rules, added Python cache exclusions, and removed the blanket PNG exclusion so documentation
+images can be tracked. Updated current repository references and preserved bootstrap observations.
+No source/test code, game files, deployment, commits or pushes changed. Knowledge validation and
+the existing Python unit suite are the checks for this cleanup; results are reported at completion.

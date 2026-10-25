@@ -15,7 +15,8 @@ python Scripts/knowledge.py validate --strict
 See [maintenance instructions](Knowledge/Development/DEV-002-Maintenance.md) before refreshing
 installation snapshots. Ordinary validation reads repository files only. Root `AGENTS.md`
 integration is [approved and applied](Knowledge/Decisions/DEC-002-Agent-integration.md).
-The inspected working directory currently lacks `.git` metadata; no GitHub remote is verified.
+This workspace is a Git repository on `main`, connected to
+[ave-satanas/PoV-Plus](https://github.com/ave-satanas/PoV-Plus).
 
 ## Plugin
 

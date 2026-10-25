@@ -30,6 +30,11 @@ supersedes: []
 5. Confirm actual authors/licenses from local licenses or authoritative source before redistribution.
 6. Verify GitHub identity/history; no .git exists in this working directory.
 
+Follow-up, 2026-10-24: item 6 records the earlier bootstrap observation. Local Git metadata now
+exists; `git branch --show-current` returns `main`, and `git remote -v` reports origin
+`https://github.com/ave-satanas/PoV-Plus.git`. Repository identity is verified locally; remote
+availability and full history were not audited. See [[INDEX]] for current repository state.
+
 ## Research procedure
 
 Choose one concern; verify involved hashes, exact signatures/config locators, distinguish optional

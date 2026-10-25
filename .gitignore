@@ -10,14 +10,13 @@
 *.dll
 *.pdb
 *.dat
-*.png
+
+# Documentation images are allowed; exclude runtime asset directories explicitly if needed.
 
 # Build outputs
 **/bin/
 **/obj/
 
-# Legacy generated runtime files
-/cache/
-
-# Third-party BepInEx preloader patchers
-/patchers/
+# Python generated caches
+**/__pycache__/
+*.py[cod]

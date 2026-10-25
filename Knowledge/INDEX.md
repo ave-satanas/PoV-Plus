@@ -38,7 +38,9 @@ Open Knowledge/ as an Obsidian vault, or navigate/search in an editor. No Obsidi
 The later 18:48:04 startup contains PoVPlus's own startup log. The earlier filtering hypothesis
 is supported by the observed configuration/result comparison; see its experimental limitations.
 Compatibility warnings remain triage items, not established gameplay defects.
-No .git metadata exists in this working directory as inspected; remote/history are unverified.
+The workspace is now a Git repository on `main`, with origin
+`https://github.com/ave-satanas/PoV-Plus.git` (verified with `git branch --show-current`
+and `git remote -v` on 2026-10-24). Earlier no-Git observations describe the bootstrap state.
 
 After meaningful work, update canonical evidence, tests/outcomes and links; add a concise session
 entry when useful and validate. Root AGENTS integration is approved and applied; future relevant sessions must follow this workflow.
