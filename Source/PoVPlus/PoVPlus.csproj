@@ -8,11 +8,17 @@
     <LangVersion>7.3</LangVersion>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <EnableNETAnalyzers>false</EnableNETAnalyzers>
+    <EnableTomeDiagnostic Condition="'$(EnableTomeDiagnostic)' == ''">false</EnableTomeDiagnostic>
+    <DefineConstants Condition="'$(EnableTomeDiagnostic)' == 'true'">$(DefineConstants);POVPLUS_TOME_DIAGNOSTIC</DefineConstants>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <ValheimDevPath Condition="'$(ValheimDevPath)' == ''">S:\Valheim-Modding\PoVPlus-Dev</ValheimDevPath>
   </PropertyGroup>
 
   <!-- All runtime dependencies stay in the game installation. -->
+  <ItemGroup>
+    <Compile Remove="Diagnostics\**\*.cs" />
+    <Compile Include="Diagnostics\**\*.cs" Condition="'$(EnableTomeDiagnostic)' == 'true'" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="BepInEx">
       <HintPath>$(ValheimDevPath)\BepInEx\core\BepInEx.dll</HintPath>

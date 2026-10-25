@@ -28,6 +28,12 @@ Source/PoVPlus.sln contains the SDK-style Source/PoVPlus/PoVPlus.csproj library,
 Plugin.cs declares povplus.core, PoVPlus 0.1.0, derived from BaseUnityPlugin. Awake only logs;
 there are no gameplay patches. [[DEV-001-Build]] owns build details.
 
+Offline review, 2026-10-25: this statement applies to the ordinary build. An explicit
+EnableTomeDiagnostic=true build now includes a bounded read-only observation module; the csproj
+excludes all Diagnostics sources by default. Default artifact exclusion and the opt-in compile
+were verified offline; no deployment/runtime behavior is inferred. [[DEV-005-Tome-diagnostics]]
+owns the guard, collector, tests and authorization limits; no Tome gameplay bridge exists.
+
 References come from S:\Valheim-Modding\PoVPlus-Dev. All five explicit references use Private=false.
 Unity Mono loads components through BepInEx 5. [[DIAG-001-Logging]] owns lifecycle/log behavior.
 

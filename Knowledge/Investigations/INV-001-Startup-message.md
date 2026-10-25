@@ -17,6 +17,11 @@ supersedes: []
 
 # Missing PoVPlus startup message
 
+Source applicability review, 2026-10-25: the offline INV-003 repair adds an opt-in diagnostic
+entry point, excluded from ordinary builds. The ordinary Awake startup LogInfo call is retained;
+build/exclusion tests passed. This does not rerun or change the historical runtime/filtering
+findings below. See [[DEV-005-Tome-diagnostics]] for the separate observation tooling.
+
 ## Earlier observation
 
 18:34:47 session: BepInEx reported loading povplus.core but its own startup Info line was absent.

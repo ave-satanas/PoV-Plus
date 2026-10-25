@@ -55,3 +55,11 @@ Initial inventory coverage was metadata only; authorship beyond metadata remains
 2026-10-25: [[INV-003-Magic-book-tome-compatibility]] verifies installed StubBridge behavior
 and existing log evidence of Azu API redirection in MagicPlugin and Magic Supremacy. A missing
 real AzuEPI plugin does not establish that their Azu-gated equipment hooks are inactive.
+
+
+## Offline Tome integration review
+
+See [[COMP-002-Tome-bridge-design]] for the installed two-gate/lifecycle contracts and
+[[DEV-005-Tome-diagnostics]] for the opt-in observational probe. These are static findings and
+proposed integration boundaries; visible-slot runtime ownership remains unverified. No bridge
+or third-party configuration change was implemented. Historical findings above remain applicable.

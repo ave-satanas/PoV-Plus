@@ -7,7 +7,7 @@ created: "2026-10-25"
 last_verified: "2026-10-25"
 versions: {"MagicPlugin": "2.2.2", "PathOfValheiman": "5.3.2", "SeneaL API": "1.2.0", "SeneaL UI": "1.2.7", "Magic_Supremacy": "3.1.5", "Valheim": "1.0.20"}
 evidence: ["Installed MagicPlugin.Functions.MagicSlot.IsTomeItem, MethodDef 0x06000109, IL_0000-000d", "Installed PassiveTree.Gear.State.UtilitySlotFor, MethodDef 0x060025ab", "BepInEx/config/blacks7ar.MagicPlugin.cfg:28-38", "BepInEx/LogOutput.log:126-129,164-167", "https://valheiman.com/api", "https://valheiman.com/patches/5.1.1/?lang=en"]
-related: ["[[MOD-blacks7ar-magicplugin]]", "[[MOD-treextr-pathofvalheiman]]", "[[MOD-dreanegade-magic-supremacy]]", "[[MOD-seneal-seneal-api]]", "[[MOD-seneal-seneal-ui]]", "[[DEP-001-Environment]]", "[[CFG-001-Configuration-map]]", "[[DIAG-001-Logging]]", "[[DEV-003-Workflow]]", "[[DEV-004-Intervention-framework]]", "[[ARCH-002-Project-philosophy]]", "[[INV-002-Compatibility-triage]]"]
+related: ["[[MOD-blacks7ar-magicplugin]]", "[[MOD-treextr-pathofvalheiman]]", "[[MOD-dreanegade-magic-supremacy]]", "[[MOD-seneal-seneal-api]]", "[[MOD-seneal-seneal-ui]]", "[[DEP-001-Environment]]", "[[CFG-001-Configuration-map]]", "[[DIAG-001-Logging]]", "[[DEV-003-Workflow]]", "[[DEV-004-Intervention-framework]]", "[[ARCH-002-Project-philosophy]]", "[[INV-002-Compatibility-triage]]", "[[DEV-005-Tome-diagnostics]]", "[[COMP-002-Tome-bridge-design]]"]
 confidence: "mixed"
 watch: ["dll:BepInEx/plugins/blacks7ar-MagicPlugin/MagicPlugin.dll", "dll:BepInEx/plugins/treextr-PathOfValheiman/PathOfValheiman/PathOfValheiman.dll", "dll:BepInEx/plugins/seneaL-SeneaL_API/SeneaL-API/SeneaL-API.dll", "dll:BepInEx/plugins/seneaL-SeneaL_UI/SeneaL-UI/SeneaL-UI.dll", "dll:BepInEx/plugins/Dreanegade-Magic_Supremacy/Magic_Supremacy.dll", "cfg:BepInEx/config/blacks7ar.MagicPlugin.cfg", "cfg:BepInEx/config/seneaL.valheim.ui.cfg", "cfg:BepInEx/config/treextr.pathofvalheiman.cfg"]
 claims: {"inv003.magicplugin.disk-tome-toggle.20261025": "Off"}
@@ -19,11 +19,11 @@ supersedes: []
 
 ## Finding and limits
 
-**Current experiment state:** cleanup is complete. The probe aborted at the exact identity
-guard before taking a snapshot; runtime slot acceptance remains unverified. After the user's
-normal exit, the original non-diagnostic DLL and production source were restored. Valheim is
-stopped. See the cleanup section at the end for hashes, validation and configuration drift.
-Earlier pending/preflight descriptions below are historical checkpoints.
+**Current state (offline follow-up):** the historical runtime probe aborted before a
+snapshot; visible slot ownership and acceptance remain unverified. The original DLL remains
+installed. A repaired, opt-in observational probe and offline tests are now prepared, but have
+not been deployed or run in Valheim. Ordinary builds exclude all diagnostic types. The earlier
+cleanup/source-restoration account below describes that historical checkpoint.
 
 ## Paused checkpoint and next-session work
 
@@ -856,3 +856,94 @@ Final cleanup validation: ordinary Release build passed; all 14 workflow fixture
 validation passed for 117 records with zero errors/warnings. Tracked diff and untracked INV-003
 whitespace checks passed; Source has no Git diff. The workflow record now links this verified
 real rollback. No accepted snapshots were changed and no runtime test was restarted.
+
+
+## Offline diagnostic repair and bridge preparation — 2026-10-25
+
+No runtime test, deployment, network request or save inspection occurred in this follow-up.
+Baseline main was 9f6261fbd6db69a0f2e438930a4b4a4075b75722. Read-only installed metadata
+and the existing failed-session log were used; no new runtime result is claimed.
+
+### Identity guard: established defect and remaining uncertainty
+
+The old guard compared exact names before checking initialization/inventory readiness and
+reported neither observed value nor which comparison failed. That ordering and missing
+observability are confirmed source defects. The historical abort does **not** establish an
+unauthorized character/world or user error. A transient name is possible, not demonstrated.
+
+Installed Player.GetPlayerName (0x0600023f) returns an empty string for invalid ZNetView,
+otherwise ZDO playerName with fallback "...". ZNet.GetWorldName (0x06001197) reads
+World.m_name or null; neither API normalizes case. Game.SpawnPlayer (0x0600169c) sets
+the local player before LoadPlayerData/OnSpawned in a synchronous sequence; this alone does
+not prove Update interleaves. Player.m_isLoading is private, so its audited read uses reflection.
+Historical log paths contain differently cased character/world filenames; paths are not API
+name observations and do not authorize aliases. The exact original mismatch remains unknown.
+
+The replacement policy in [[DEV-005-Tome-diagnostics]] waits for initialized player/world and
+open inventory before an exact mismatch decision. It records bounded escaped expected/observed
+names, API sources, availability, separate exact comparisons and case-only diagnostics. Matching
+remains ordinal: no trimming, aliases or case-insensitive authorization. It times out 180 seconds
+after the first local player, caps state transitions at 24 and attempts one snapshot only.
+A missing dependency, changed audited assembly or binding failure stops safely. No player means
+inert menu waiting. These behaviors have offline policy tests, not runtime confirmation.
+
+The opt-in probe pins seven inspected assemblies, reads actual active bound LinkCell descriptors,
+and evaluates only audited predicate routes after checking Harmony owners. Unknown or patched
+routes are skipped and remain unverified. It never equips, constructs inventory items, changes
+slots/stats/configuration or invokes Source/Put/Take delegates. All diagnostic classes and the
+poll callback are absent from ordinary Release artifacts. Compiled-IL checks supplement the
+manual reflection-target review; they cannot prove all runtime purity by themselves.
+
+### Focused collector and historical evidence
+
+Scripts/collect_tome_evidence.py reads only the primary log, its explicitly referenced profiler
+session and explicitly supplied local workflow receipts. It never walks Harmony caches or saves.
+Inaccessible optional sources produce skipped reasons; session mismatch/missing main evidence
+remains an error. Reads/excerpts are bounded and include timestamps, hashes and original line
+numbers. Reprocessing session 2026-10-25_01-01-03 found ARMED=1 and ABORT=1 with no completed
+snapshot, consistent with the historical account. Local report:
+.dev-state/reports/INV-003-offline-recollection.md. A locked optional profiler is fixture-tested;
+no attempt was made to bypass the old Harmony cache lock.
+
+### Installed contracts and bridge implications
+
+[[COMP-002-Tome-bridge-design]] is the canonical proposed design, not implemented behavior.
+Static inspection confirms two separate gates: Magic_SupremacyPlugin.IsTomeItem (0x06000501)
+accepts seven native prefab names; CustomSlotSystem.IsItemValidForSlot (0x0600044c) validates
+the internal shared registry. Save restoration reaches the latter through ValidateSingleSlot /
+FindInventoryItemByGuid / definition.IsValid. Changing the descriptor alone is insufficient.
+SeneaL's emulated descriptor forwards predicates, while the active rendered binding still needs
+runtime capture. No suitable public registration method was found on the inspected MS class.
+
+MS EquipSlotInternal owns equipped flags, previous removal, original status effects and saved
+GUID bindings; SetEquippedItem alone only changes a dictionary and is not a complete equip API.
+MS persists player custom-data bindings and publishes visual prefab/variant ZDO values. The
+bridge must preserve this lifecycle, SeneaL's Belt/Tome safeguards and saved-item validation.
+MagicPlugin max-Eitr follows its original equip status effect independently of its classifier;
+its regeneration postfix filters through the disabled native classifier. Acceptance alone cannot
+prove either effect or prevent double counting. Vanilla regeneration does not automatically sum
+arbitrary MS slots. No regeneration adapter has been implemented.
+
+The smallest candidate is one default-off, version-gated, data-driven adapter for the three
+verified BMP book prefabs, preferably using a future supported hook; absent that, narrowly
+extend both MS Boolean gates only for its Tome slot. Keep MagicPlugin's native slot Off, leave
+its global classifier unchanged, and reuse MS lifecycle. Measure regeneration before deciding
+whether a single-slot adjustment is needed. Save/load, disabling while equipped, effects,
+multiplayer and upstream updates remain explicit regression gates. Replacement is available
+under project policy, but current evidence does not justify replacing the authoritative system.
+
+### Verification and deferred work
+
+Offline checks passed: 15 C# policy cases, 21 installed metadata contracts, 24 Python tests and
+14 PowerShell workflow fixtures. Both ordinary and opt-in builds succeeded with zero warnings /
+errors; the enabled artifact audit checks 497 member calls. Ordinary diagnostic exclusion is
+verified separately. Source applicability records are explicitly reviewed for this optional
+instrumentation; only repository source fingerprints are refreshed, not installed/configuration
+baselines. Final strict knowledge validation and installation comparison are recorded in the
+local offline-repair report.
+
+Next session requires separate approval: review the repaired guard; repeat the manually driven
+disposable-character/world test; capture actual rendered ownership and positive/negative item
+acceptance; then review the bridge design before implementation. Independently review the two
+historical third-party configuration changes. Keep the Epic Loot shardstone error separate;
+causation is still unestablished. Do not begin these tasks as part of offline preparation.

@@ -123,6 +123,8 @@ See [[DIAG-001-Logging]] and [[INV-001-Startup-message]]. Reports may describe a
 ```powershell
 .\Scripts\tests\Test-DevWorkflow.ps1
 .\Scripts\tests\Test-TomeDiagnostic.ps1
+.\Scripts\tests\Test-TomeOffline.ps1
+.\Scripts\tests\Test-TomeContracts.ps1
 python -B -m unittest discover -s Scripts/tests -v
 python -B Scripts/knowledge.py validate --strict
 ```
@@ -146,3 +148,8 @@ untested-rollback statement describes the previous checkpoint. Temporary diagnos
 archived outside compilation; ordinary build and installed DLL both exclude instrumentation.
 The fresh normal rebuild differs in hash from the exact original DLL restored from backup;
 it was not redeployed. Third-party config content drift during the run is documented in INV-003.
+
+The later offline repair adds reproducible guard/harness tests, installed contract checks and a
+focused collector: [[DEV-005-Tome-diagnostics]]. Those commands do not launch or deploy. The old
+recursive one-off installation collector is retained as local history, not the runtime evidence
+collection path; inaccessible optional evidence is recorded without touching cache permissions.

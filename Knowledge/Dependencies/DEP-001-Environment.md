@@ -22,6 +22,13 @@ fingerprints for MagicPlugin, PoV, SeneaL API/UI and Magic Supremacy, verified e
 signatures and their differing Tome classifiers. This supplements the baseline without
 refreshing its accepted snapshot or implying that all runtime behavior has been revalidated.
 
+Offline follow-up, 2026-10-25: [[DEV-005-Tome-diagnostics]] and
+[[COMP-002-Tome-bridge-design]] document the repaired opt-in tooling and proposed MS-authoritative
+integration. Installed mod/game contracts were checked against the recorded fingerprints.
+Repository-source fingerprints are separately reviewed for the new conditional compilation and
+observation tooling after offline tests; installed assembly/configuration fingerprints and the
+original snapshot capture timestamp remain historical and are not refreshed to hide runtime drift.
+
 ## Accepted metadata baseline
 
 [environment-snapshot.json](environment-snapshot.json) stores 245 assembly fingerprints/reference

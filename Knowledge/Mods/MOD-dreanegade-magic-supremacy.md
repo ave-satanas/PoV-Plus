@@ -56,3 +56,11 @@ Initial inventory coverage was metadata only; authorship beyond metadata remains
 the separate custom-slot registry and successful bridged Tome registration in an existing
 startup log. Its whitelist is distinct from MagicPlugin's shared-name classifier; neither
 successful registration nor an item called Tome proves successful runtime equipping.
+
+
+## Offline Tome integration review
+
+See [[COMP-002-Tome-bridge-design]] for the installed two-gate/lifecycle contracts and
+[[DEV-005-Tome-diagnostics]] for the opt-in observational probe. These are static findings and
+proposed integration boundaries; visible-slot runtime ownership remains unverified. No bridge
+or third-party configuration change was implemented. Historical findings above remain applicable.

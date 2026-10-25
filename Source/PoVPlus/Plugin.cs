@@ -12,6 +12,14 @@ namespace PoVPlus
         private void Awake()
         {
             Logger.LogInfo(PluginName + " " + PluginVersion + " loaded.");
+#if POVPLUS_TOME_DIAGNOSTIC
+            _tomeDiagnostic = new Diagnostics.TomeDiagnostic(Logger);
+#endif
         }
+
+#if POVPLUS_TOME_DIAGNOSTIC
+        private Diagnostics.TomeDiagnostic _tomeDiagnostic;
+        private void Update() { _tomeDiagnostic.Poll(); }
+#endif
     }
 }

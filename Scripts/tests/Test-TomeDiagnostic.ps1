@@ -12,6 +12,9 @@ try {
     $diagnostic = $assembly.MainModule.GetType('PoVPlus.Diagnostics.TomeDiagnostic')
     if (-not $Enabled) {
         if ($diagnostic) { throw 'Default build contains temporary diagnostic code.' }
+        if (@($assembly.MainModule.Types | Where-Object Namespace -eq 'PoVPlus.Diagnostics').Count) {
+            throw 'Default build contains diagnostic support types.'
+        }
         if ($assembly.MainModule.GetType('PoVPlus.Plugin').Methods.Name -contains 'Update') {
             throw 'Default plugin contains a polling callback.'
         }
@@ -19,14 +22,14 @@ try {
         return
     }
     if (-not $diagnostic) { throw 'Diagnostic build is missing its probe.' }
-    $methods = @((Get-AllTypes @($diagnostic)) | ForEach-Object { $_.Methods })
+    $methods = @((Get-AllTypes @($assembly.MainModule.Types | Where-Object Namespace -eq 'PoVPlus.Diagnostics')) | ForEach-Object { $_.Methods })
     $checked = 0
     foreach ($method in $methods) {
         if (-not $method.HasBody) { continue }
         foreach ($instruction in $method.Body.Instructions) {
             $operand = $instruction.Operand
             if ($instruction.OpCode.Code -in @('Stfld', 'Stsfld') -and $operand -is [Mono.Cecil.FieldReference]) {
-                if ($operand.DeclaringType.FullName -notlike 'PoVPlus.Diagnostics.TomeDiagnostic*') {
+                if ($operand.DeclaringType.FullName -notlike 'PoVPlus.Diagnostics.*') {
                     throw "Foreign state write in $method : $instruction"
                 }
             }

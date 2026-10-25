@@ -32,11 +32,17 @@ Open Knowledge/ as an Obsidian vault, or navigate/search in an editor. No Obsidi
 | Startup and missing messages | [[DIAG-001-Logging]], [[INV-001-Startup-message]], [[EXP-001-Logging-override]] |
 | Warnings and patch triage | [[COMP-001-Warnings]], [[INV-002-Compatibility-triage]] |
 | Magic books, Tome acceptance and equipment ownership | [[INV-003-Magic-book-tome-compatibility]] |
+| Repaired offline diagnostics and proposed single-owner bridge | [[DEV-005-Tome-diagnostics]], [[COMP-002-Tome-bridge-design]] |
 | Evidence and external research | [[EVID-001-Local-observations]], [[REF-001-External-docs]] |
 | Record schema and maintenance | [[KB-001-System]], [[DEV-002-Maintenance]] |
 | Session history and agent instructions | [[SESSION-20261024-Knowledge-bootstrap]], [[SESSION-20261024-Workflow]], [[SESSION-20261024-Philosophy]], [[DEC-002-Agent-integration]] |
 
 ## Current state
+
+The offline INV-003 follow-up repaired the opt-in guard/collector and added fixture/contract
+tests; [[DEV-005-Tome-diagnostics]] owns reproducible commands. Ordinary builds exclude the
+instrumentation and the installed DLL was not changed. [[COMP-002-Tome-bridge-design]] is a
+proposal only. No new runtime slot, acceptance or effects measurements have been obtained.
 
 The 2026-10-25 book investigation, [[INV-003-Magic-book-tome-compatibility]], verifies
 that MagicPlugin's disabled Tome classifier blocks PoV's native cell. The follow-up traces
@@ -48,9 +54,10 @@ The earlier preflight stopped before player/world access. The later explicitly a
 experiment has now deployed a compile-gated diagnostic and launched the development client;
 the user confirmed manual PoVPlus_Test / POVPlus_Lab inventory interaction, but the probe had
 aborted at its exact identity guard before taking any snapshot. Runtime ownership/acceptance
-remain unverified. Cleanup after the user's normal exit is complete: the original DLL/source
-are restored, diagnostic instrumentation is absent, the game is stopped, and strict validation
-has no warnings. Two third-party cfg files changed during the run and were left untouched by
+remain unverified. At that historical cleanup checkpoint, the original DLL/source were restored, deployed
+diagnostic instrumentation was absent, the client was stopped, and strict validation had no
+warnings. The later offline repair reintroduces source tooling behind the opt-in build flag;
+the original deployed DLL remains unchanged. Two third-party cfg files changed during the run and were left untouched by
 cleanup; see INV-003 for hashes, evidence and the completed rollback receipt. No bridge is implemented.
 
 Official philosophy and intervention policy are recorded in [[ARCH-002-Project-philosophy]]

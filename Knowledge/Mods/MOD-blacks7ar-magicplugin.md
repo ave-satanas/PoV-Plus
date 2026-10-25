@@ -56,3 +56,11 @@ Initial inventory coverage was metadata only; authorship beyond metadata remains
 equipment effects and config-gated Tome predicate. The observed disk toggle is Off. The
 investigation distinguishes native PoV acceptance from SeneaL's redirected Azu/custom-slot
 paths and records the related accessory family. Runtime ownership/effects remain open.
+
+
+## Offline Tome integration review
+
+See [[COMP-002-Tome-bridge-design]] for the installed two-gate/lifecycle contracts and
+[[DEV-005-Tome-diagnostics]] for the opt-in observational probe. These are static findings and
+proposed integration boundaries; visible-slot runtime ownership remains unverified. No bridge
+or third-party configuration change was implemented. Historical findings above remain applicable.

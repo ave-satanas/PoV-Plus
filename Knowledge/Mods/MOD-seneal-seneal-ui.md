@@ -57,3 +57,11 @@ Initial inventory coverage was metadata only; authorship beyond metadata remains
 acceptance from the UI's Magic Supremacy custom Tome routing. The displayed cell owner must
 be verified at runtime; similar slot labels and the leftover PovEquipment config entry do
 not establish which equipment authority is active.
+
+
+## Offline Tome integration review
+
+See [[COMP-002-Tome-bridge-design]] for the installed two-gate/lifecycle contracts and
+[[DEV-005-Tome-diagnostics]] for the opt-in observational probe. These are static findings and
+proposed integration boundaries; visible-slot runtime ownership remains unverified. No bridge
+or third-party configuration change was implemented. Historical findings above remain applicable.
