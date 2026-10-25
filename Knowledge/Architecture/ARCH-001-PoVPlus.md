@@ -17,6 +17,11 @@ supersedes: []
 
 # Development architecture
 
+[[ARCH-002-Project-philosophy]] defines the project identity and priorities;
+[[DEV-004-Intervention-framework]] governs intervention choices. The facts below describe the
+current implementation, whose startup-only behavior is a development baseline rather than a
+limit on future compatibility, integration, customization, or original functionality.
+
 ## Verified boundaries
 
 Source/PoVPlus.sln contains the SDK-style Source/PoVPlus/PoVPlus.csproj library, net48, C# 7.3.

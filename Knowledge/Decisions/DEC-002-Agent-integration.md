@@ -1,6 +1,6 @@
 ---
 id: "DEC-002-Agent-integration"
-title: "Proposed AGENTS integration — awaiting approval"
+title: "Approved AGENTS knowledge integration"
 type: "decision"
 status: "active"
 created: "2026-10-24"
@@ -15,7 +15,7 @@ contradicts: []
 supersedes: []
 ---
 
-# Proposed AGENTS integration — awaiting approval
+# Approved AGENTS knowledge integration
 
 ## Approved append-only addition
 

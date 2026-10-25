@@ -37,6 +37,12 @@ availability and full history were not audited. See [[INDEX]] for current reposi
 
 ## Research procedure
 
+Apply [[DEV-004-Intervention-framework]] to each concern at substantive review: distinguish
+verified defects/conflicts, preferences, missing integrations/features, redundancy, and unresolved
+hypotheses. Existing questions above remain unresolved. A warning can establish a failed probe
+without establishing harmful gameplay behavior. Preserve intentional author adaptations while
+investigating; the framework permits justified replacement without predetermining this queue's outcome.
+
 Choose one concern; verify involved hashes, exact signatures/config locators, distinguish optional
 probes from required APIs, and propose the smallest reversible experiment. Runtime, deployment or
 installation/config edits require authorization. Link focused child investigations when justified.

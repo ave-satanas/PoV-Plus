@@ -1,5 +1,26 @@
 # PoVPlus
 
+PoVPlus is primarily a personal Valheim mod compatibility, integration, and customization
+framework. Its priorities are to resolve genuine compatibility problems, adapt features to the
+user's gameplay preferences, connect existing systems, improve unsuitable mechanics, and add
+original functionality when existing solutions are insufficient.
+
+**Preserve what works. Improve what falls short. Replace what fundamentally fails.**
+
+**Minimum unnecessary duplication, maximum intentional design.**
+
+Use configure, integrate, patch, extend, replace, or remove according to the intended outcome
+and engineering tradeoffs. These are options, not a mandatory sequence. Reuse sound dependencies
+without retaining unsuitable systems solely because they exist; replacement is explicitly
+permitted when justified. PoVPlus does not aim to recreate an entire modpack or compete
+unnecessarily with its dependencies.
+
+The [project philosophy](Knowledge/Architecture/ARCH-002-Project-philosophy.md) defines the
+official identity and priorities. The [intervention framework](Knowledge/Development/DEV-004-Intervention-framework.md)
+defines problem categories, decision criteria, evidence, and review. Preserve intentional author
+adaptations and distinguish a technical defect from a design preference. These principles do
+not authorize game installation changes.
+
 ## Engineering knowledge
 
 Start substantial development and investigation at [Knowledge/INDEX.md](Knowledge/INDEX.md).
@@ -23,6 +44,8 @@ This workspace is a Git repository on `main`, connected to
 Minimal BepInEx 5 plugin for the Valheim development installation. Version 0.1.0
 logs `PoVPlus 0.1.0 loaded.` during startup. It creates no configuration entries
 and applies no Harmony patches or gameplay changes.
+
+This is the current implementation baseline, not the full project scope described above.
 
 ## Layout
 

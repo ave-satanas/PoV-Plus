@@ -25,6 +25,13 @@ preserve originals and check redistribution licenses. Overlap does not establish
 Development installation is read-only unless authorized; original installation and saves are
 outside scope. Builds do not authorize deployment or game launch.
 
+Clarification: [[DEC-004-Project-governance]] retains these implementation and safety constraints.
+Progression/balance are the baseline for intentional design review, not a blanket prohibition on
+user-directed changes. The standalone-patch preference concerns ownership and delivery instead
+of ranking intervention types; a justified standalone replacement is permitted. Preserve required
+mod-author compatibility adaptations and configurations. Use [[DEV-004-Intervention-framework]]
+to distinguish technical defects/conflicts from preferences, integrations and missing features.
+
 ## Existing implementation choices
 
 - net48 matches PoV/PoVLink targets and installed 4.8 reference pack.

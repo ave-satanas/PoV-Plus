@@ -24,6 +24,7 @@ Open Knowledge/ as an Obsidian vault, or navigate/search in an editor. No Obsidi
 
 | Task | Canonical records |
 |---|---|
+| Project identity, priorities and engineering decisions | [[ARCH-002-Project-philosophy]], [[DEV-004-Intervention-framework]], [[DEC-004-Project-governance]] |
 | Architecture and constraints | [[ARCH-001-PoVPlus]], [[DEC-001-Development-baseline]] |
 | Build and reference APIs | [[DEV-001-Build]], [[DEP-001-Environment]] |
 | Controlled deployment, launch, diagnostics and rollback | [[DEV-003-Workflow]], [[DEC-003-Workflow-safety]], [[EXP-002-First-deployment]], [[EXP-003-First-runtime-smoke]] |
@@ -32,9 +33,14 @@ Open Knowledge/ as an Obsidian vault, or navigate/search in an editor. No Obsidi
 | Warnings and patch triage | [[COMP-001-Warnings]], [[INV-002-Compatibility-triage]] |
 | Evidence and external research | [[EVID-001-Local-observations]], [[REF-001-External-docs]] |
 | Record schema and maintenance | [[KB-001-System]], [[DEV-002-Maintenance]] |
-| Session history and agent instructions | [[SESSION-20261024-Knowledge-bootstrap]], [[SESSION-20261024-Workflow]], [[DEC-002-Agent-integration]] |
+| Session history and agent instructions | [[SESSION-20261024-Knowledge-bootstrap]], [[SESSION-20261024-Workflow]], [[SESSION-20261024-Philosophy]], [[DEC-002-Agent-integration]] |
 
 ## Current state
+
+Official philosophy and intervention policy are recorded in [[ARCH-002-Project-philosophy]]
+and [[DEV-004-Intervention-framework]]. Design preferences and justified replacement are valid
+project work; technical-conflict claims still require evidence. Operational authorization rules
+remain in effect.
 
 The first authorized on-disk deployment completed successfully; [[EXP-002-First-deployment]]
 records build/deployment/backup hashes and the unchanged-file comparison. The subsequent

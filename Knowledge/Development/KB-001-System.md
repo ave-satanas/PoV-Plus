@@ -55,6 +55,12 @@ link it from INDEX or another reachable record, then validate. Trivial operation
 
 ## Contradictions and change
 
+Investigations and behavior-change decisions follow [[DEV-004-Intervention-framework]]: identify
+the problem category and confidence, separate observed behavior from the user's desired design,
+and record the selected approach with material tradeoffs. Keep the existing metadata schema;
+use concise prose for classification and rationale. Historical findings need no invented new
+evidence or retroactive relabeling. Apply the classification at the next substantive review.
+
 Explain old/new evidence rather than silently upgrading hypotheses. Use historical/superseded
 when a whole record is obsolete; link replacements using supersedes. For unresolved disagreement
 use contradicts. Scope structured claim keys carefully. Free-text contradictions need manual review;

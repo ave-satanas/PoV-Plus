@@ -48,3 +48,10 @@ using BepInEx, Harmony, and C#.
 - Builds and read-only diagnostics may run during ordinary development.
 - Deployments, rollbacks, game launches, and game configuration changes require explicit user authorization; a general debugging request does not grant it.
 - Use Scripts/Dev.ps1 for the supported workflow instead of improvising file-copy or launch commands.
+
+## Project philosophy and intervention decisions
+- Treat PoVPlus as a personal compatibility, integration, and customization framework; consult Knowledge/Architecture/ARCH-002-Project-philosophy.md and Knowledge/Development/DEV-004-Intervention-framework.md.
+- Preserve what works. Improve what falls short. Replace what fundamentally fails.
+- Minimum unnecessary duplication, maximum intentional design.
+- Classify the problem and separate evidence from user preferences; configure, integrate, patch, extend, replace, and remove are options, not a mandatory sequence.
+- Preserve intentional mod-author compatibility adaptations. Preserving progression/balance is the baseline; user-directed design changes require explicit rationale and impact review.
