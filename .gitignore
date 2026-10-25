@@ -1,0 +1,23 @@
+# Generated runtime caches
+/cache/
+/BepInEx/cache/
+/BepInEx/interop/
+
+# Third-party binary patchers
+/patchers/
+
+# Local game/runtime files
+*.dll
+*.pdb
+*.dat
+*.png
+
+# Build outputs
+**/bin/
+**/obj/
+
+# Legacy generated runtime files
+/cache/
+
+# Third-party BepInEx preloader patchers
+/patchers/
