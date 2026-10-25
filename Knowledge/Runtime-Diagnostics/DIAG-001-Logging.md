@@ -24,6 +24,11 @@ demonstrates that equal log lengths across launches do not establish session ide
 
 ## Sources and authority
 
+For equipment-specific evidence, [[INV-003-Magic-book-tome-compatibility]] correlates the
+existing 2026-10-24 23:37:47 profiler session with MagicPlugin's SeneaL API redirection and
+Magic Supremacy's successful Tome registration. These messages establish bridge/registration
+activity, not successful equipment acceptance or application of a particular item's effects.
+
 | Source | Establishes | Does not establish |
 |---|---|---|
 | BepInEx/LogOutput.log | Messages reaching listeners; load reports/captured failures | Every attempted log or callback |

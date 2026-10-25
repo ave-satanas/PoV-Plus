@@ -50,4 +50,9 @@ Related: [[CFG-001-Configuration-map]], [[COMP-001-Warnings]], [[DEP-001-Environ
 
 ## Engineering notes
 
-Integration behavior and authorship beyond metadata remain unreviewed. Add verified evidence here; this section survives inventory rendering.
+Initial inventory coverage was metadata only; authorship beyond metadata remains unreviewed.
+
+2026-10-25: [[INV-003-Magic-book-tome-compatibility]] verifies seven explicit Tome prefabs,
+the separate custom-slot registry and successful bridged Tome registration in an existing
+startup log. Its whitelist is distinct from MagicPlugin's shared-name classifier; neither
+successful registration nor an item called Tome proves successful runtime equipping.

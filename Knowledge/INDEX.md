@@ -31,11 +31,27 @@ Open Knowledge/ as an Obsidian vault, or navigate/search in an editor. No Obsidi
 | Mod GUIDs, versions, dependencies, configs | [[MOD-000-Inventory]], [[CFG-001-Configuration-map]] |
 | Startup and missing messages | [[DIAG-001-Logging]], [[INV-001-Startup-message]], [[EXP-001-Logging-override]] |
 | Warnings and patch triage | [[COMP-001-Warnings]], [[INV-002-Compatibility-triage]] |
+| Magic books, Tome acceptance and equipment ownership | [[INV-003-Magic-book-tome-compatibility]] |
 | Evidence and external research | [[EVID-001-Local-observations]], [[REF-001-External-docs]] |
 | Record schema and maintenance | [[KB-001-System]], [[DEV-002-Maintenance]] |
 | Session history and agent instructions | [[SESSION-20261024-Knowledge-bootstrap]], [[SESSION-20261024-Workflow]], [[SESSION-20261024-Philosophy]], [[DEC-002-Agent-integration]] |
 
 ## Current state
+
+The 2026-10-25 book investigation, [[INV-003-Magic-book-tome-compatibility]], verifies
+that MagicPlugin's disabled Tome classifier blocks PoV's native cell. The follow-up traces
+the likely visible SeneaL/MS slot to `AzuEPI.emulated/$tome_DO`, with a separate prefab
+restriction; the installed UI presentation lists omit PoV's native Tome cell. Confirm the
+actual rendered descriptor with the documented read-only probe before changing settings.
+Enabling MagicPlugin requests a distinct slot; author intent and runtime effects remain open.
+The earlier preflight stopped before player/world access. The later explicitly authorized
+experiment has now deployed a compile-gated diagnostic and launched the development client;
+the user confirmed manual PoVPlus_Test / POVPlus_Lab inventory interaction, but the probe had
+aborted at its exact identity guard before taking any snapshot. Runtime ownership/acceptance
+remain unverified. Cleanup after the user's normal exit is complete: the original DLL/source
+are restored, diagnostic instrumentation is absent, the game is stopped, and strict validation
+has no warnings. Two third-party cfg files changed during the run and were left untouched by
+cleanup; see INV-003 for hashes, evidence and the completed rollback receipt. No bridge is implemented.
 
 Official philosophy and intervention policy are recorded in [[ARCH-002-Project-philosophy]]
 and [[DEV-004-Intervention-framework]]. Design preferences and justified replacement are valid
@@ -46,7 +62,8 @@ The first authorized on-disk deployment completed successfully; [[EXP-002-First-
 records build/deployment/backup hashes and the unchanged-file comparison. The subsequent
 authorized startup/clean-close test passed: [[EXP-003-First-runtime-smoke]]. PoVPlus loaded once,
 its own startup message appeared once, and no new warning/error signatures were observed.
-The game is stopped; gameplay, save isolation and real-installation rollback remain untested.
+The game is stopped. Real-installation rollback is now verified in INV-003; gameplay
+compatibility and save isolation remain unverified.
 
 The later 18:48:04 startup contains PoVPlus's own startup log. The earlier filtering hypothesis
 is supported by the observed configuration/result comparison; see its experimental limitations.

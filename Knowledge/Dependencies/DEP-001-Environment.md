@@ -17,6 +17,11 @@ supersedes: []
 
 # Accepted installation snapshot
 
+Focused follow-up, 2026-10-25: [[INV-003-Magic-book-tome-compatibility]] records current
+fingerprints for MagicPlugin, PoV, SeneaL API/UI and Magic Supremacy, verified equipment API
+signatures and their differing Tome classifiers. This supplements the baseline without
+refreshing its accepted snapshot or implying that all runtime behavior has been revalidated.
+
 ## Accepted metadata baseline
 
 [environment-snapshot.json](environment-snapshot.json) stores 245 assembly fingerprints/reference

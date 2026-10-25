@@ -50,4 +50,9 @@ Related: [[CFG-001-Configuration-map]], [[COMP-001-Warnings]], [[DEP-001-Environ
 
 ## Engineering notes
 
-Integration behavior and authorship beyond metadata remain unreviewed. Add verified evidence here; this section survives inventory rendering.
+Initial inventory coverage was metadata only; authorship beyond metadata remains unreviewed.
+
+2026-10-25: [[INV-003-Magic-book-tome-compatibility]] verifies the three book registrations,
+equipment effects and config-gated Tome predicate. The observed disk toggle is Off. The
+investigation distinguishes native PoV acceptance from SeneaL's redirected Azu/custom-slot
+paths and records the related accessory family. Runtime ownership/effects remain open.

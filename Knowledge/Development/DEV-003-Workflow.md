@@ -122,6 +122,7 @@ See [[DIAG-001-Logging]] and [[INV-001-Startup-message]]. Reports may describe a
 
 ```powershell
 .\Scripts\tests\Test-DevWorkflow.ps1
+.\Scripts\tests\Test-TomeDiagnostic.ps1
 python -B -m unittest discover -s Scripts/tests -v
 python -B Scripts/knowledge.py validate --strict
 ```
@@ -137,3 +138,11 @@ rollback or gameplay/world-entry test has been performed.
 Before the first real test, the Release rebuild differed in hash from the installed DLL while
 retaining version 0.1.0. After the authorized deployment, build and installed hashes match.
 That difference is not evidence of a runtime defect; do not overwrite the historical deployed hash.
+
+Follow-up, 2026-10-25: [[INV-003-Magic-book-tome-compatibility]] records the first verified
+real-installation rollback after the user closed the game normally. The standard command,
+confirmation prompt, completed receipt and original deployed hash were verified. The earlier
+untested-rollback statement describes the previous checkpoint. Temporary diagnostic source was
+archived outside compilation; ordinary build and installed DLL both exclude instrumentation.
+The fresh normal rebuild differs in hash from the exact original DLL restored from backup;
+it was not redeployed. Third-party config content drift during the run is documented in INV-003.

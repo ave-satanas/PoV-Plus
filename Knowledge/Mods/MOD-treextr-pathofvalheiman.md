@@ -54,4 +54,9 @@ Related: [[CFG-001-Configuration-map]], [[COMP-001-Warnings]], [[DEP-001-Environ
 
 ## Engineering notes
 
-Integration behavior and authorship beyond metadata remain unreviewed. Add verified evidence here; this section survives inventory rendering.
+Initial inventory coverage was metadata only; authorship beyond metadata remains unreviewed.
+
+2026-10-25: [[INV-003-Magic-book-tome-compatibility]] traces installed `utility.tome`
+acceptance through Utility routing and MagicPlugin's predicate, and virtual utility status
+effects/regen. It verifies public Equipment signatures against the installed DLL and records
+the unresolved distinction between the native cell and SeneaL/Magic Supremacy's Tome route.

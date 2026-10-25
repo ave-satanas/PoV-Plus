@@ -51,4 +51,9 @@ Related: [[CFG-001-Configuration-map]], [[COMP-001-Warnings]], [[DEP-001-Environ
 
 ## Engineering notes
 
-Integration behavior and authorship beyond metadata remain unreviewed. Add verified evidence here; this section survives inventory rendering.
+Initial inventory coverage was metadata only; authorship beyond metadata remains unreviewed.
+
+2026-10-25: [[INV-003-Magic-book-tome-compatibility]] distinguishes PoV-hosted cell
+acceptance from the UI's Magic Supremacy custom Tome routing. The displayed cell owner must
+be verified at runtime; similar slot labels and the leftover PovEquipment config entry do
+not establish which equipment authority is active.
