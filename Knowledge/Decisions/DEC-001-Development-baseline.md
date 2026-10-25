@@ -32,6 +32,11 @@ outside scope. Builds do not authorize deployment or game launch.
 - Startup-only plugin establishes a minimal baseline before gameplay modifications.
 - Build script uses local-only restore and checks output DLL names.
 
+## Controlled development workflow
+
+[[DEC-003-Workflow-safety]] formalizes explicit authorization and DLL-only transaction boundaries.
+[[DEV-003-Workflow]] supersedes the earlier manual deployment procedure; Build.ps1 remains unchanged.
+
 ## Knowledge system decision
 
 Use Markdown/YAML, stable IDs/wikilinks, sanitized JSON metadata, PowerShell collection and Python

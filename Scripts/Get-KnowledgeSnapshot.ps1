@@ -70,7 +70,7 @@ $packages = @(Get-ChildItem -LiteralPath (Join-Path $ValheimDevPath 'BepInEx\plu
 $configs = @(Get-ChildItem -LiteralPath (Join-Path $ValheimDevPath 'BepInEx\config') -Recurse -Filter '*.cfg' | Sort-Object FullName | ForEach-Object {
     [ordered]@{ path=Get-RelativeDevPath $_.FullName; sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash }
 })
-$sourceHashes = @(foreach ($relative in @('AGENTS.md','Source\PoVPlus\Plugin.cs','Source\PoVPlus\PoVPlus.csproj','Scripts\Build.ps1')) {
+$sourceHashes = @(foreach ($relative in @('AGENTS.md','Source\PoVPlus\Plugin.cs','Source\PoVPlus\PoVPlus.csproj','Scripts\Build.ps1','Scripts\Dev.ps1','Scripts\DevWorkflow.psm1','Scripts\tests\Test-DevWorkflow.ps1')) {
     [ordered]@{ path=$relative.Replace('\','/'); sha256=(Get-FileHash -LiteralPath (Join-Path $repoRoot $relative) -Algorithm SHA256).Hash }
 })
 $snapshot = [ordered]@{ schema_version=1; captured_utc=[DateTime]::UtcNow.ToString('o'); installation_root=$ValheimDevPath; assemblies=$assemblies; packages=$packages; configurations=$configs; repository_sources=$sourceHashes }

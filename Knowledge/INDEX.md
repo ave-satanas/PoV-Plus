@@ -26,14 +26,21 @@ Open Knowledge/ as an Obsidian vault, or navigate/search in an editor. No Obsidi
 |---|---|
 | Architecture and constraints | [[ARCH-001-PoVPlus]], [[DEC-001-Development-baseline]] |
 | Build and reference APIs | [[DEV-001-Build]], [[DEP-001-Environment]] |
+| Controlled deployment, launch, diagnostics and rollback | [[DEV-003-Workflow]], [[DEC-003-Workflow-safety]], [[EXP-002-First-deployment]], [[EXP-003-First-runtime-smoke]] |
 | Mod GUIDs, versions, dependencies, configs | [[MOD-000-Inventory]], [[CFG-001-Configuration-map]] |
 | Startup and missing messages | [[DIAG-001-Logging]], [[INV-001-Startup-message]], [[EXP-001-Logging-override]] |
 | Warnings and patch triage | [[COMP-001-Warnings]], [[INV-002-Compatibility-triage]] |
 | Evidence and external research | [[EVID-001-Local-observations]], [[REF-001-External-docs]] |
 | Record schema and maintenance | [[KB-001-System]], [[DEV-002-Maintenance]] |
-| Session history and agent instructions | [[SESSION-20261024-Knowledge-bootstrap]], [[DEC-002-Agent-integration]] |
+| Session history and agent instructions | [[SESSION-20261024-Knowledge-bootstrap]], [[SESSION-20261024-Workflow]], [[DEC-002-Agent-integration]] |
 
 ## Current state
+
+The first authorized on-disk deployment completed successfully; [[EXP-002-First-deployment]]
+records build/deployment/backup hashes and the unchanged-file comparison. The subsequent
+authorized startup/clean-close test passed: [[EXP-003-First-runtime-smoke]]. PoVPlus loaded once,
+its own startup message appeared once, and no new warning/error signatures were observed.
+The game is stopped; gameplay, save isolation and real-installation rollback remain untested.
 
 The later 18:48:04 startup contains PoVPlus's own startup log. The earlier filtering hypothesis
 is supported by the observed configuration/result comparison; see its experimental limitations.

@@ -26,6 +26,13 @@ there are no gameplay patches. [[DEV-001-Build]] owns build details.
 References come from S:\Valheim-Modding\PoVPlus-Dev. All five explicit references use Private=false.
 Unity Mono loads components through BepInEx 5. [[DIAG-001-Logging]] owns lifecycle/log behavior.
 
+## Controlled development operations
+
+Scripts/Dev.ps1 dispatches Build, Deploy, Launch, Diagnose, Rollback and Status.
+Scripts/DevWorkflow.psm1 owns guarded metadata/planning/transaction and diagnostic functions.
+Only PoVPlus.dll is managed; local backup/audit/report state lives under ignored .dev-state/.
+See [[DEV-003-Workflow]] and [[DEC-003-Workflow-safety]] for authorization and recovery.
+
 ## Directory responsibilities
 
 Source/: solution/code. Scripts/: build and knowledge tools. Configs/: reserved, currently empty.

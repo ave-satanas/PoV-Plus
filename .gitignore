@@ -2,6 +2,7 @@
 /cache/
 /BepInEx/cache/
 /BepInEx/interop/
+*.log
 
 # Third-party binary patchers
 /patchers/
@@ -20,3 +21,6 @@
 # Python generated caches
 **/__pycache__/
 *.py[cod]
+
+# Local deployment backups, staging, audits and diagnostic reports
+/.dev-state/

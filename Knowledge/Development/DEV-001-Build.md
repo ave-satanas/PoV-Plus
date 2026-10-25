@@ -34,6 +34,13 @@ checks dependency DLLs, never deploys/launches. Earlier session build passed 0 w
 no plugin rebuild during knowledge creation. Initial validation-rule bug was corrected to ignore
 framework references without HintPath. Root README owns manual deployment/rollback instructions.
 
+## Workflow entry point
+
+Use `Scripts/Dev.ps1 Build` to invoke the same Build.ps1. Deployment, rollback, launch and
+diagnostics use the separate commands in [[DEV-003-Workflow]]; none runs automatically after build.
+The controlled workflow replaces manual copy/rollback instructions. Historical build/hash observations
+above remain historical; the workflow implementation task rebuilt Release successfully without deploying.
+
 ## Previously verified tooling
 
 SDKs 8.0.405/9.0.201/10.0.100; Visual Studio Community/Build Tools 2022 17.13.5; .NET Framework

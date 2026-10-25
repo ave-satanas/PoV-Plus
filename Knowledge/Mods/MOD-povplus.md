@@ -50,3 +50,6 @@ Project-owned source/build: [[ARCH-001-PoVPlus]] and [[DEV-001-Build]]. Startup-
 compiled initialization path, and the later observed startup message are recorded in
 [[INV-001-Startup-message]]. Filtering rules belong to [[DIAG-001-Logging]].
 No gameplay patches or configuration entries are created by the current plugin source.
+The later first authorized deployment is [[EXP-002-First-deployment]]; current DLL/build hashes
+match and the original is backed up. The subsequent [[EXP-003-First-runtime-smoke]] passed
+startup and clean close with one load/message and no new error/warning signatures; no gameplay test.

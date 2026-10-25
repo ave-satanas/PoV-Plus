@@ -17,6 +17,10 @@ supersedes: []
 
 # Compatibility warning register
 
+Follow-up runtime session 2026-10-24_23-37-47: [[EXP-003-First-runtime-smoke]] found the same
+31 normalized unique warning/error signatures as the captured 18:48 baseline, with zero
+error/exception lines and no new signatures. This confirms recurrence, not gameplay impact.
+
 ## Observed warnings, not automatic defects
 
 Affected mod records: [[MOD-randyknapp-epicloot]], [[MOD-treextr-pathofvalheiman]],

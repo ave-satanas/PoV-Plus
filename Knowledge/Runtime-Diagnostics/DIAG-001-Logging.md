@@ -17,6 +17,11 @@ supersedes: []
 
 # Runtime diagnostics and logging authority
 
+Use `Scripts/Dev.ps1 Diagnose` for a local, ignored report with session boundaries and correlated
+profiler evidence. It never changes logging settings. See [[DEV-003-Workflow]].
+The first verified current-binary runtime session is [[EXP-003-First-runtime-smoke]]; it also
+demonstrates that equal log lengths across launches do not establish session identity.
+
 ## Sources and authority
 
 | Source | Establishes | Does not establish |

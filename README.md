@@ -67,20 +67,52 @@ BepInEx or Harmony libraries to resolve a compilation problem.
 
 ## Safe development deployment
 
-Building does not deploy files or launch Valheim. Deployment and launching require
-separate approval. After approval:
+Use the standardized Windows PowerShell workflow. Building and diagnostics do not
+authorize deployment, rollback, launching, or game configuration edits. A general
+debugging request is not authorization to change the installation.
 
-1. Exit the development game and server. Confirm the destination is
-   `S:\Valheim-Modding\PoVPlus-Dev`, not a production installation.
-2. If `BepInEx\plugins\PoVPlus` already exists, preserve its contents in a backup
-   outside the plugin scan directory before replacing anything. Check for an
-   older PoVPlus DLL elsewhere under `plugins` to avoid duplicate plugin GUIDs.
-3. Create `BepInEx\plugins\PoVPlus` and copy only the built `PoVPlus.dll` there.
-   The matching PDB is optional for debugging. Do not copy dependencies or configs.
-4. Launch only after approval and check `BepInEx\LogOutput.log` for
-   `PoVPlus 0.1.0 loaded.` and any new errors.
-5. To roll back with the game stopped, remove only the newly deployed PoVPlus
-   files and restore any previous PoVPlus version from the backup.
+```powershell
+.\Scripts\Dev.ps1 Build
+.\Scripts\Dev.ps1 Status
+.\Scripts\Dev.ps1 Deploy -WhatIf
+.\Scripts\Dev.ps1 Deploy -DryRun
+.\Scripts\Dev.ps1 Diagnose
+.\Scripts\Dev.ps1 Rollback -WhatIf
+.\Scripts\Dev.ps1 Launch -WhatIf
+```
+
+Only after separate explicit approval for each real operation:
+
+```powershell
+.\Scripts\Dev.ps1 Deploy -Authorized -Confirm
+.\Scripts\Dev.ps1 Rollback -Authorized
+.\Scripts\Dev.ps1 Launch -Authorized -Confirm
+```
+
+Rollback lists receipts, defaults to undoing the latest completed operation, and
+requires an interactive confirmation. `-BackupId <id>` selects a specific compatible
+receipt. `-DryRun` and `-WhatIf` do not write backups, reports, or installation files.
+`-Authorized` records caller intent; it does not replace obtaining user approval.
+
+Deployment validates the exact configured development path, plugin identity,
+duplicate GUIDs, stopped processes, clean DLL output and hashes. It manages **only
+PoVPlus.dll**; existing PDBs and configurations are left untouched. Backups, audit
+receipts, staging and diagnostic reports stay in ignored `.dev-state/`. No operation
+automatically deploys or launches another command. The repository and installation
+must share a volume; junctions/reparse points are rejected.
+
+**Save warning:** the development client may access the same character and world
+saves as the normal game. Do not rely on `-savedir` for isolation. Launch uses the
+development executable/working directory, windowed 2560x1440, popup window and console.
+
+See [workflow and recovery instructions](Knowledge/Development/DEV-003-Workflow.md)
+for crash recovery, diagnostic session selection, tests, and limitations.
+
+```powershell
+.\Scripts\tests\Test-DevWorkflow.ps1
+python -B -m unittest discover -s Scripts/tests -v
+python -B Scripts/knowledge.py validate --strict
+```
 
 There are no automated gameplay tests yet. Compilation and the build output
 check validate this scaffold; startup behavior requires the approved runtime

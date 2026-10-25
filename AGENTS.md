@@ -43,3 +43,8 @@ using BepInEx, Harmony, and C#.
 - After meaningful work, update canonical records and related links, record tests/outcomes and remaining questions, and add a concise session entry when useful.
 - Run python Scripts/knowledge.py validate; review drift and revalidation notices. Do not change accepted snapshots merely to silence warnings.
 - Treat the development installation as read-only unless explicitly authorized; knowledge maintenance does not authorize deployment, configuration changes, or game launch.
+
+## Development workflow authorization
+- Builds and read-only diagnostics may run during ordinary development.
+- Deployments, rollbacks, game launches, and game configuration changes require explicit user authorization; a general debugging request does not grant it.
+- Use Scripts/Dev.ps1 for the supported workflow instead of improvising file-copy or launch commands.
