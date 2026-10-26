@@ -1,10 +1,12 @@
 [CmdletBinding()]
 param(
     [switch]$Enabled,
+    [switch]$StageB,
     [string]$Dll = (Join-Path $PSScriptRoot '..\..\Source\PoVPlus\bin\Release\net48\PoVPlus.dll'),
     [string]$ValheimDevPath = 'S:\Valheim-Modding\PoVPlus-Dev'
 )
 $ErrorActionPreference = 'Stop'
+if ($StageB -and -not $Enabled) { throw 'Stage B artifact audit also requires -Enabled.' }
 Add-Type -LiteralPath (Join-Path $ValheimDevPath 'BepInEx\core\Mono.Cecil.dll')
 $assembly = [Mono.Cecil.AssemblyDefinition]::ReadAssembly((Resolve-Path -LiteralPath $Dll).Path)
 function Get-AllTypes($Types) { foreach ($type in $Types) { $type; Get-AllTypes $type.NestedTypes } }
@@ -22,6 +24,24 @@ try {
         return
     }
     if (-not $diagnostic) { throw 'Diagnostic build is missing its probe.' }
+    $probe = $assembly.MainModule.GetType('PoVPlus.Diagnostics.TomeStageBProbe')
+    if ([bool]$probe -ne [bool]$StageB) { throw 'Stage B probe inclusion does not match the explicit expected build mode.' }
+    if ($StageB) {
+        $ownLookups = @($probe.Methods | Where-Object HasBody | ForEach-Object { $_.Body.Instructions } |
+            Where-Object { $_.Operand -is [Mono.Cecil.MethodReference] -and $_.Operand.DeclaringType.FullName -eq 'BepInEx.Bootstrap.Chainloader' })
+        if ($ownLookups.Count) { throw 'Stage B probe must not query own Chainloader registration during Awake.' }
+        $ctor = $diagnostic.Methods | Where-Object IsConstructor
+        if ($ctor.Parameters.Count -ne 2 -or $ctor.Parameters[1].ParameterType.FullName -ne 'System.Nullable`1<System.Boolean>') { throw 'Missing explicit immutable setting snapshot constructor.' }
+        $awake = $assembly.MainModule.GetType('PoVPlus.Plugin').Methods | Where-Object Name -eq 'Awake'
+        $newProbe = @($awake.Body.Instructions | Where-Object { $_.OpCode.Code -eq 'Newobj' -and $_.Operand.DeclaringType.FullName -eq 'PoVPlus.Diagnostics.TomeDiagnostic' })
+        if ($newProbe.Count -ne 1 -or $newProbe[0].Previous.Operand.DeclaringType.FullName -ne 'System.Nullable`1<System.Boolean>' -or
+            $newProbe[0].Previous.Previous.Operand.Name -ne 'get_Value') { throw 'Awake must pass bound setting value directly to diagnostic.' }
+        $calls = @($diagnostic.Methods | Where-Object HasBody | ForEach-Object { $_.Body.Instructions } |
+            Where-Object { $_.Operand -is [Mono.Cecil.MethodReference] } | ForEach-Object { $_.Operand.FullName })
+        foreach ($required in @('CheckStartup','RequireInitializedRegistry','CaptureInternal','CheckVisible','RequireReviewed')) {
+            if (-not ($calls -match "TomeStageBProbe::$required\(")) { throw "Missing Stage B observation guard: $required" }
+        }
+    }
     $methods = @((Get-AllTypes @($assembly.MainModule.Types | Where-Object Namespace -eq 'PoVPlus.Diagnostics')) | ForEach-Object { $_.Methods })
     $checked = 0
     foreach ($method in $methods) {

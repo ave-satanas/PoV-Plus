@@ -32,6 +32,7 @@ Open Knowledge/ as an Obsidian vault, or navigate/search in an editor. No Obsidi
 | Startup and missing messages | [[DIAG-001-Logging]], [[INV-001-Startup-message]], [[EXP-001-Logging-override]] |
 | Warnings and patch triage | [[COMP-001-Warnings]], [[INV-002-Compatibility-triage]] |
 | Magic books, Tome acceptance and equipment ownership | [[INV-003-Magic-book-tome-compatibility]] |
+| Proposed supervised Tome equipment lifecycle test | [[EXP-004-Tome-equipment-lifecycle-plan]] |
 | Repaired offline diagnostics and experimental single-owner bridge | [[DEV-005-Tome-diagnostics]], [[COMP-002-Tome-bridge-design]] |
 | Evidence and external research | [[EVID-001-Local-observations]], [[REF-001-External-docs]] |
 | Record schema and maintenance | [[KB-001-System]], [[DEV-002-Maintenance]] |
@@ -39,10 +40,17 @@ Open Knowledge/ as an Obsidian vault, or navigate/search in an editor. No Obsidi
 
 ## Current state
 
-Corrected Stage A baseline evidence and original-DLL restoration are complete. Next milestone:
-review a separately authorized Stage B plan using [[COMP-002-Tome-bridge-design]], including the
-remaining direct internal-validator and gameplay/effect/persistence gaps. The bridge remains
-disabled; no Stage B activation is authorized by this cleanup.
+Stage B retry acceptance and cleanup are complete. All three books pass both MS acceptance gates
+and the actual rendered Tome cell; native control and negative controls behave as expected.
+The original non-diagnostic DLL and exact own configuration bytes are restored, bridge disabled,
+client stopped and all343 monitored fingerprints match. Transient Warfare configuration drift
+is preserved in [[INV-003-Magic-book-tome-compatibility]]. Acceptance does not verify equipment
+behavior or effects. The reviewed Stage B checkpoint includes the unexecuted
+[[EXP-004-Tome-equipment-lifecycle-plan]]; its equipment, persistence, recovery and multiplayer
+scopes require separate authorization.
+
+The following chronological observations preserve earlier checkpoints; later entries supersede
+pending-state statements without rewriting their historical evidence.
 
 Historical offline/failed-run checkpoints (superseded by the corrected Stage A evidence below):
 
@@ -106,3 +114,44 @@ internal validator was not called. User normal exit and exact original-DLL rollb
 client stopped, bridge Off, diagnostic absent and all 343 baseline DLL/config hashes match. See
 [[INV-003-Magic-book-tome-compatibility]] for distinctions and [[COMP-002-Tome-bridge-design]]
 for Stage B limits; no gameplay compatibility is claimed.
+
+
+Stage B checkpoint: session 2026-10-25_19-09-09 reports the bridge active, but the temporary
+probe aborted during Awake because its own Chainloader PluginInfo.Instance was not yet assigned.
+No acceptance snapshot or direct internal-gate result was obtained. The attempt is stopped;
+user normal exit, original-DLL rollback and exact own-config restoration are pending. Do not
+repair/redeploy automatically or claim Stage B passed. [[INV-003-Magic-book-tome-compatibility]]
+records the installed Chainloader ordering, local evidence and reviewed future repair options.
+
+Stage B cleanup is now verified after user normal exit: standard rollback restored the exact
+original non-diagnostic DLL and the exact original PoVPlus configuration bytes (bridge false).
+All 343 baseline DLL/configuration hashes match; development client stopped, separate server
+untouched. Evidence and experimental work remain preserved and uncommitted. The startup-probe
+failure still requires a reviewed repair and separately authorized retry; no Stage B acceptance
+or gameplay success is claimed. See [[INV-003-Magic-book-tome-compatibility]] for hashes/receipt.
+
+
+Current Stage B retry: diagnostic startup repaired and runtime-initialized in session
+2026-10-25_19-24-38. Both bridge postfixes are verified; user world/inventory handoff pending.
+No acceptance snapshot yet; development client is running and own bridge setting temporarily true.
+Do not deploy/restore/edit ordinary configs while it runs. See [[DEV-005-Tome-diagnostics]] and
+[[INV-003-Magic-book-tome-compatibility]]; original DLL/config restoration remains pending.
+
+
+Latest Stage B retry snapshot is runtime-confirmed: exact guard passed, one snapshot, both MS
+acceptance gates and visible cell accept all three books, native control preserved, Wood and
+non-Tome belt identifier rejected. MP native slot remains Off; gameplay effects/lifecycle remain
+unverified. See [[INV-003-Magic-book-tome-compatibility]] and [[COMP-002-Tome-bridge-design]].
+Client still running; await explicit user normal exit before original DLL/config restoration.
+Observed Warfare cfg hash drift must be preserved and reviewed rather than automatically reverted.
+
+
+Stage B retry cleanup completed after user normal exit: exact original non-diagnostic DLL and
+own config bytes restored, bridge false, client stopped, separate server untouched. All343
+monitored DLL/config fingerprints match baseline. Warfare.cfg changed transiently during the
+run and returned to its baseline hash without cleanup writing it; preserve both observations
+in [[INV-003-Magic-book-tome-compatibility]]. Successful acceptance evidence remains valid;
+equipment behavior/effects/exclusivity/persistence/multiplayer remain unverified. Experimental
+source/tests/docs remain uncommitted. Next: review checkpoint and separately authorize a scoped
+equipment-lifecycle plan; no further runtime work is implied. Restoration hashes/receipt:
+.dev-state/stage-b-retry/restoration-comparison.json.

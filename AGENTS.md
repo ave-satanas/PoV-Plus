@@ -55,3 +55,8 @@ using BepInEx, Harmony, and C#.
 - Minimum unnecessary duplication, maximum intentional design.
 - Classify the problem and separate evidence from user preferences; configure, integrate, patch, extend, replace, and remove are options, not a mandatory sequence.
 - Preserve intentional mod-author compatibility adaptations. Preserving progression/balance is the baseline; user-directed design changes require explicit rationale and impact review.
+
+## Development client file locks
+- While the development client runs, do not replace deployed DLLs, edit ordinary plugin configurations, deploy, or roll back. Never bypass file locks or terminate the client automatically.
+- Read-only logs and audited observation are permitted. Live configuration requires documented support and explicit authorization; it is not permitted during Stage B.
+- After user normal exit, verify the specific development client stopped before restoring DLL/configuration bytes; verify hashes and fingerprints. Leave separate servers and naturally changed third-party configurations untouched.

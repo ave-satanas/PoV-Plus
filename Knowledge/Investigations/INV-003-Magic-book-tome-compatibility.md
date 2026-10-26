@@ -19,6 +19,17 @@ supersedes: []
 
 ## Finding and limits
 
+**Current checkpoint: Stage B acceptance and rollback verified.** The exact guard passed for
+PoVPlus_Test / PoVPlus_Lab; one snapshot confirmed the rendered AzuEPI.emulated/$tome_DO MS
+callback. The three books passed descriptor, visible-cell and directly executed internal tome
+validation with the bridge enabled. Native control passes; Wood and nonregistered belt identifier
+fail. Books remain absent from MS's registry; MP native Tome remains Off. Original DLL and exact
+own config bytes were restored, all343 monitored fingerprints match, client stopped. Equipment
+operations, actual inventory-instance behavior, Eitr/regen, exclusivity, persistence and multiplayer
+remain unverified. The detailed Stage B matrix and precise local evidence are preserved below.
+
+### Historical Stage A summary (superseded current-state label)
+
 **Current state (corrected Stage A retry complete, original restored):** exact identities
 passed and one read-only snapshot confirmed the active AzuEPI.emulated/$tome_DO binding and MS
 callback. Three BMP books fail descriptor/visible acceptance; native control passes. Registry
@@ -1271,3 +1282,204 @@ Effects/max-Eitr, regeneration exactly once, swaps/unequip, Belt/Tome exclusivit
 save/load, safe disablement and multiplayer remain unverified. Manual unequip and normal exit
 before disabling/removing an enabled bridge remain essential precautions. No Stage B approval
 is inferred from completion of Stage A cleanup; no bridge activation has occurred.
+
+
+## Stage B first attempt: startup probe abort, awaiting normal exit
+
+Stage A was committed/pushed first as 446f8e5e4a208e97bd430e1a937ca7f3ff5ef4e7 and fetched
+main/origin were clean/equal. Current authorization covers acceptance-only Stage B, no item
+operations. Own bridge setting false -> true was backed up exactly; no third-party config or
+bridge source changes. Standard deployment ID 20261026T0209042704928Z-8e4f7e0393434d5d819d5c1950ec67f2
+preserves original DLL 351E948AFC75D8B5BFBEF67F2F1FBABB5A8A645AA7A5D51E9E804F7D501DF548.
+Only own cfg and managed DLL changed among 343 baseline fingerprints before launch.
+
+Session 2026-10-25_19-09-09 / development PID 18068 loaded 88 plugins with zero skipped/failed.
+The bridge reports both acceptance extensions active after its own complete-pair verification.
+The temporary diagnostic ARMED then aborted: Missing object for property Config. Its own
+Chainloader.PluginInfos[povplus.core].Instance was null during Awake. Installed BepInEx
+Chainloader.Start IL_07ea AddComponent executes before IL_07f4 PluginInfo.set_Instance. This
+confirms an instrumentation lifecycle problem; no direct gate test occurred and no bridge
+failure is established. Detailed patch-order/identity/rendered/item results remain unavailable.
+
+Agent stopped without automatic repair/redeployment and issued no manual world/item handoff.
+Game is still running pending user normal exit; bridge/config true and diagnostic remain until
+safe cleanup. Own original bytes are .dev-state/stage-b/povplus.core.cfg.before; state.json
+records hashes, receipt and required config restoration. After user exit verify stopped and
+restore exact original DLL and own cfg only. No Stage B experimental changes are committed.
+
+Local report: .dev-state/reports/INV-003-stage-b.md; focused matched evidence:
+INV-003-stage-b-startup-evidence.md and JSON alongside it. Offline tests passed (17 new probe,
+18 identity, 22 bridge, 25 contracts, 26 Python, 14 workflow, purity/build-mode guards and audits)
+but did not cover own-instance assignment timing. Future approved instrumentation repair can
+pass caller configuration directly or defer self-lookup; preserve existing safety gates and
+add a lifecycle regression. Do not infer acceptance, effects or persistence from activation.
+
+## Stage B cleanup verified - 2026-10-26 UTC
+
+After explicit user confirmation of normal exit, process inspection confirmed the development
+client stopped. The separate G:\valheim-server loader was left untouched. Standard workflow
+rollback completed with receipt
+`.dev-state/backups/20261026T0217367655955Z-b8bfeef0389f47d98c7d2d1c06e1c7cd/manifest.json`.
+The installed original non-diagnostic DLL SHA-256 is
+`351E948AFC75D8B5BFBEF67F2F1FBABB5A8A645AA7A5D51E9E804F7D501DF548`.
+Only PoVPlus's own configuration was restored from its exact pre-test byte backup; SHA-256
+`3F21FABF4696D7BA4193B130700F3C794BF1C244664DA38E176FB8132A1A4798` matches.
+`EnableMagicPluginTomeBridge = false`; temporary instrumentation is no longer deployed.
+All 343 pre-test DLL/configuration fingerprints match, with no third-party restoration needed.
+Evidence: `.dev-state/stage-b/restoration-comparison.json` and
+`.dev-state/reports/INV-003-stage-b.md`. All diagnostic evidence and experimental source/tests
+remain preserved and uncommitted. No relaunch, redeployment, commit or push occurred during cleanup.
+Stage B acceptance remains unverified because the startup probe aborted before its snapshot;
+repair and a separately authorized retry remain outstanding, not performed by this cleanup.
+
+
+## Authorized Stage B retry: startup snapshot repair (offline)
+
+Previous startup failure is confined to the temporary probe's own Chainloader.Instance lookup
+inside Awake. Installed Chainloader calls AddComponent before assigning PluginInfo.Instance.
+Plugin.Awake now passes its already-bound boolean setting as an immutable nullable value snapshot
+to TomeDiagnostic/CheckStartup; null or false fails closed with a useful message. No own
+registration lookup or new global singleton is needed. Existing bridge-active, patch-owner,
+registry-purity, exact identities, bounded readiness and one-snapshot guards remain unchanged.
+The bridge implementation/default false are unchanged. Twenty executable Stage B managed
+fixtures cover the two pre-registration cases, missing snapshot and prior safety cases; compiled
+IL checks verify actual Awake-to-constructor wiring and no own Chainloader lookup. These fixtures
+are doubles, not actual Harmony gameplay tests. Eighteen identity/policy, 22 bridge, 25 installed
+contracts, 26 Python and 16 workflow cases pass; ordinary/Stage B builds and artifact audits pass.
+File-lock policy and process-guard regression coverage are in [[DEV-003-Workflow]] and AGENTS.md.
+Runtime retry evidence will be recorded separately in .dev-state/reports/INV-003-stage-b-retry.md;
+no new acceptance, effects, persistence or multiplayer result is implied by this offline repair.
+
+
+Stage B retry startup (2026-10-25_19-24-38) now succeeds after immutable-setting repair:
+88 plugins loaded, none skipped/failed; bridge active; diagnostic verifies both exact owned
+postfixes at priority400/index0, no other interceptors or before/after constraints. No startup
+ABORT. Manual authorized character/world/inventory handoff is pending; no acceptance snapshot
+or gameplay result is claimed. The development client is running with temporary own-config true;
+normal user exit and original-DLL/config restoration are still required. Local evidence:
+.dev-state/reports/INV-003-stage-b-retry-startup-evidence.md; receipt/state in
+.dev-state/stage-b-retry/state.json. Earlier failure and cleanup remain historical evidence.
+
+
+## Stage B retry acceptance snapshot - runtime confirmed
+
+Session: 2026-10-25_19-24-38. User confirmed manually loading exact PoVPlus_Test / PoVPlus_Lab,
+world initialization and opening inventory without item interactions. Primary log1452 records
+both exact-name comparisons true;1453 BEGIN;1491 END;1492 COMPLETE. One snapshot, no ABORT.
+Evidence preserved in .dev-state/reports/INV-003-stage-b-retry-acceptance-evidence.{md,json};
+comparison: .dev-state/stage-b-retry/acceptance-comparison.json. Stage A comparison source is
+INV-003-stage-a-retry-final-evidence.json, session2026-10-25_18-38-00; it was not overwritten.
+
+### Acceptance matrix (existing prefab ItemData; no inventory/equipment operations)
+
+| Prefab | Stage A descriptor/visible | Stage B descriptor | Stage B visible | Stage B internal tome | MS registry member | Stage B non-Tome belt |
+|---|---|---|---|---|---|---|
+| BMP_BeginnersMagicBook | False/False | True | True | True | False | False |
+| BMP_AdvanceMagicBook | False/False | True | True | True | False | False |
+| BMP_DruidsTome | False/False | True | True | True | False | False |
+| ArmorMushroomcallerTome_DO | True/True | True | True | True | True | False |
+| Wood | Not measured | False | False | False | False | False |
+
+Direct descriptor/visible/internal evidence spans1465-1490. Six bridge extension rows directly
+identify descriptor and equipment false-to-true intervention for the three books. No native
+extension is needed. Stage A did NOT invoke the private internal validator: do not describe
+internal before/after as a direct paired measurement. Stage B did directly invoke the patched
+validator, with audited existing-registry preconditions; every observation logs registryUnchanged=True.
+The belt string is not registered in this MS registry; this is a non-Tome identifier negative
+control, not a live Belt UI/exclusivity test or proof of every unrelated slot's behavior.
+
+### Authority, metadata and patch controls
+
+Log1462-1464 identifies the active rendered SeneaLUI_Link1 bound to
+AzuEPI.emulated/$tome_DO, origin Magic_Supremacy, with actual callback
+Magic_Supremacy.Magic_SupremacyPlugin.IsTomeItem. Log1460-1461 identifies MS authority and
+internal tome definition. The bridge did not create a slot or add books to the live registry.
+Both reviewed postfixes were verified at startup197-199: owner povplus.core.magicplugin-tomes,
+DescriptorPostfix/EquipmentPostfix, priority400/index0, empty before/after and no other
+interceptors; guarded invocation rechecks the permitted patch chain. No Harmony conflict or
+diagnostic exception was observed. Log1459 confirms MagicPlugin.EnableTomeSlot=Off.
+Books/control retain Utility18, original equip status-effect identifiers and recorded shared
+regen values0.15/0.25/0.25/0; Wood is Material1. These prefab metadata readings do not establish
+applied player bonuses, actual equipped items, or lifecycle behavior.
+
+### Errors and installation observations
+
+The only captured Error/exception signature is log1426, the previously recorded EpicLoot Cyan
+shardstone variant1/one-variant fallback (also Stage A1422). No causal relationship to the Tome
+bridge is established. No new diagnostic/Harmony error is observed in the captured session.
+Among343 baseline DLL/config paths, only the authorized PoVPlus DLL and own config plus
+Therzie.Warfare.cfg differ at collection. Warfare baseline SHA256
+CBBE2220C97DCEE058D2F1A21376B1562AEA6004BB9BB1BB18B0528F6D0445F2; observed
+136ABF3F570E8C2EA24B36DC81711A4FA4B4C5A36D6600ED2569D8AF60F77F9B.
+That third-party configuration changed during the session; this investigation did not write it.
+Cause/content impact remain unverified. Preserve the difference; do not automatically revert it.
+All other monitored plugin/config hashes match; no third-party DLL hash changed. This bounded
+fingerprint set does not claim all game files/saves were scanned. No saves were accessed.
+
+### Conclusions and pending cleanup
+
+The tested acceptance-only bridge design is supported for these pinned versions and canonical
+prefab metadata: three books now pass both MS gates and the rendered cell, native acceptance
+survives and Wood/non-Tome identifier rejection survives. Magic Supremacy remains authoritative.
+Successful predicates are NOT successful equipment behavior. Eitr/status-effect application,
+regen (MP classifier still false), equip/unequip, exclusivity, actual inventory item metadata,
+persistence and multiplayer remain unverified. A separately authorized supervised equipment
+lifecycle test is the next milestone after cleanup/review; do not infer readiness for normal use.
+
+Evidence collection complete. Development PID22152 remains running; bridge setting temporarily
+true and diagnostic DLL remains deployed. Ask the user to exit normally and wait for explicit
+confirmation; independently verify stopped before standard rollback and exact own-config byte
+restoration. No running-installation writes, automatic termination, bridge edits, commit or push.
+
+
+## Stage B retry closed and restoration verified - 2026-10-26 UTC
+
+After explicit user confirmation of normal exit, independent process inspection confirmed the
+PoVPlus development client stopped. External ValheimBakaLoader PID34372 at G:\valheim-server
+was left untouched. Standard Rollback -BackupId20261026T0224265408072Z-e061c12996d4452994fa0814e9da2095
+completed with receipt
+.dev-state/backups/20261026T0231118302719Z-20ab3227ccd24e138e8268f25fff8588/manifest.json.
+Only the managed DLL and explicitly authorized own PoVPlus configuration were restored.
+
+- Original installed DLL SHA256: 351E948AFC75D8B5BFBEF67F2F1FBABB5A8A645AA7A5D51E9E804F7D501DF548.
+- Own config SHA256: 3F21FABF4696D7BA4193B130700F3C794BF1C244664DA38E176FB8132A1A4798,
+  byte-for-byte equal to .dev-state/stage-b-retry/povplus.core.cfg.before.
+- EnableMagicPluginTomeBridge=false. Installed artifact audit confirms no diagnostic types or
+  polling callback; ordinary Release rebuild also excludes diagnostics and keeps default false.
+- All343 monitored DLL/config fingerprints now match the pre-test baseline. Warfare.cfg's
+  intermediate136ABF3F570E8C2EA24B36DC81711A4FA4B4C5A36D6600ED2569D8AF60F77F9B hash is
+  preserved in acceptance-comparison.json. Final Warfare hash returned to the baseline
+  CBBE2220C97DCEE058D2F1A21376B1562AEA6004BB9BB1BB18B0528F6D0445F2 without any cleanup
+  write to that file. The session-time change and its cause remain an observation/open question;
+  final baseline equality does not erase it. No third-party config was restored or edited.
+
+Successful Stage B evidence is preserved in
+.dev-state/reports/INV-003-stage-b-retry-acceptance-evidence.{md,json}; final post-exit collection
+is INV-003-stage-b-retry-final-evidence.{md,json}; restoration-comparison.json under
+.dev-state/stage-b-retry contains hashes, receipt and final comparison. Earlier failed-run and
+Stage A evidence remain intact. Diagnostic source/tests remain opt-in, uncommitted review work.
+
+Final checks passed: Release build0warnings/errors;20 Stage B managed fixtures;18 diagnostic
+identity/policy;22 bridge fixtures;25 installed contracts;conditional-purity contract;26 Python;
+16 workflow fixtures; ordinary and installed diagnostic exclusion;bridge artifact audit.
+Strict knowledge and whitespace results are recorded in the local completion report.
+No relaunch, deployment of a new build, save access, server action, commit or push during cleanup.
+
+Acceptance is runtime-confirmed for this pinned installation: all three approved books pass
+MS descriptor, visible cell and directly invoked internal tome validator; native control passes,
+Wood/non-Tome identifier rejected, original registry unchanged and MP native slot Off. Equipment
+operations, actual inventory item instances, Eitr/status effects, regeneration, exclusivity,
+persistence and multiplayer are NOT verified. Next milestone: review this uncommitted checkpoint,
+then design a separately authorized supervised equipment-lifecycle test with explicit item/save
+permissions and safe unequip-before-disable/rollback conditions. Do not begin that test implicitly.
+
+
+## Stage B checkpoint review and Stage C proposal
+
+Stage B source/tests and canonical summaries have been reviewed for Git preservation. Earlier
+pending/uncommitted statements above describe those historical checkpoints. Acceptance and
+original DLL/config restoration are verified; no equipment/effects/persistence claim is added.
+[[EXP-004-Tome-equipment-lifecycle-plan]] defines the proposed, unexecuted Stage C procedure,
+separate C1/C2/C3/C4 approvals, manual preparation, evidence/failure criteria and explicit
+unequip-and-confirm-neutral-persistence before disablement/rollback. It grants no deployment,
+launch, item/save or multiplayer permission. The existing dedicated server remains out of scope.

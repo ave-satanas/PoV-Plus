@@ -19,6 +19,17 @@ supersedes: []
 
 ## Scope and evidence boundary
 
+**Current checkpoint: Stage B acceptance verified, original installation restored; bridge default Off.**
+Session2026-10-25_19-24-38 confirms all three supported books pass MS descriptor, rendered Tome
+cell and directly invoked internal validator. Native control remains accepted; Wood and the
+tested nonregistered belt identifier are rejected. The visible binding is
+AzuEPI.emulated/$tome_DO through SeneaL UI and MS IsTomeItem. This is acceptance-only evidence,
+not equipment, effects, exclusivity, persistence or multiplayer verification. See the Stage B
+matrix/cleanup in [[INV-003-Magic-book-tome-compatibility]]. Historical observations below retain
+the knowledge available at those earlier checkpoints.
+
+## Historical pre-runtime scope
+
 **Initial acceptance bridge implemented offline, disabled by default; never deployed or runtime-tested.** The user prefers Magic Supremacy (MS)
 as the sole authoritative Tome equipment system. Retain its existing slot, lifecycle and save
 format. MagicPlugin (MP) remains the provider of book prefabs and original magical effects.
@@ -241,3 +252,69 @@ inventory metadata guards and test original effects/regeneration, exclusivity, p
 disablement and multiplayer as separately authorized. No bridge activation or new gameplay
 behavior occurred in Stage A. [[INV-003-Magic-book-tome-compatibility]] owns the final report,
 rollback receipt and source-line evidence. The corrected diagnostic source remains for review.
+
+
+Stage B checkpoint: session 2026-10-25_19-09-09 reports the bridge active, but the temporary
+probe aborted during Awake because its own Chainloader PluginInfo.Instance was not yet assigned.
+No acceptance snapshot or direct internal-gate result was obtained. The attempt is stopped;
+user normal exit, original-DLL rollback and exact own-config restoration are pending. Do not
+repair/redeploy automatically or claim Stage B passed. [[INV-003-Magic-book-tome-compatibility]]
+records the installed Chainloader ordering, local evidence and reviewed future repair options.
+
+Stage B cleanup is now verified after user normal exit: standard rollback restored the exact
+original non-diagnostic DLL and the exact original PoVPlus configuration bytes (bridge false).
+All 343 baseline DLL/configuration hashes match; development client stopped, separate server
+untouched. Evidence and experimental work remain preserved and uncommitted. The startup-probe
+failure still requires a reviewed repair and separately authorized retry; no Stage B acceptance
+or gameplay success is claimed. See [[INV-003-Magic-book-tome-compatibility]] for hashes/receipt.
+
+
+Stage B retry startup (2026-10-25_19-24-38) now succeeds after immutable-setting repair:
+88 plugins loaded, none skipped/failed; bridge active; diagnostic verifies both exact owned
+postfixes at priority400/index0, no other interceptors or before/after constraints. No startup
+ABORT. Manual authorized character/world/inventory handoff is pending; no acceptance snapshot
+or gameplay result is claimed. The development client is running with temporary own-config true;
+normal user exit and original-DLL/config restoration are still required. Local evidence:
+.dev-state/reports/INV-003-stage-b-retry-startup-evidence.md; receipt/state in
+.dev-state/stage-b-retry/state.json. Earlier failure and cleanup remain historical evidence.
+
+
+## Stage B retry acceptance verified; cleanup pending
+
+Session2026-10-25_19-24-38 passed exact identities and completed one snapshot without ABORT.
+Runtime primary1462-1492 confirms the visible AzuEPI.emulated/$tome_DO MS callback and three
+books changing Stage A descriptor/visible False to Stage B True. Direct private internal tome
+validation now also returns True for all three; native ArmorMushroomcallerTome_DO passes all
+three queries, Wood fails all three. All five fail the nonregistered non-Tome belt identifier.
+Registry membership remains unchanged (books absent, native present); no gameplay mutations.
+Stage A never called the private validator, so its internal baseline remains static/inferred.
+Both exact owned postfixes were verified (priority400/index0, no other interceptors). MP native
+Tome slot remains Off. This supports acceptance integration only, not equipment effects,
+exclusivity, actual inventory items, persistence or multiplayer. See
+[[INV-003-Magic-book-tome-compatibility]] for matrix, line references, limits and the recurring
+EpicLoot warning. Evidence: .dev-state/reports/INV-003-stage-b-retry-acceptance-evidence.md.
+A Warfare cfg hash drift occurred during the session and is preserved, not automatically reverted.
+Client still running; original DLL/exact own-config restoration awaits user normal exit. No
+installation changes were made by collection and no experimental changes were committed/pushed.
+
+
+Stage B retry cleanup completed after user normal exit: exact original non-diagnostic DLL and
+own config bytes restored, bridge false, client stopped, separate server untouched. All343
+monitored DLL/config fingerprints match baseline. Warfare.cfg changed transiently during the
+run and returned to its baseline hash without cleanup writing it; preserve both observations
+in [[INV-003-Magic-book-tome-compatibility]]. Successful acceptance evidence remains valid;
+equipment behavior/effects/exclusivity/persistence/multiplayer remain unverified. Experimental
+source/tests/docs remain uncommitted. Next: review checkpoint and separately authorize a scoped
+equipment-lifecycle plan; no further runtime work is implied. Restoration hashes/receipt:
+.dev-state/stage-b-retry/restoration-comparison.json.
+
+
+## Stage B checkpoint review and Stage C proposal
+
+Stage B source/tests and canonical summaries have been reviewed for Git preservation. Earlier
+pending/uncommitted statements above describe those historical checkpoints. Acceptance and
+original DLL/config restoration are verified; no equipment/effects/persistence claim is added.
+[[EXP-004-Tome-equipment-lifecycle-plan]] defines the proposed, unexecuted Stage C procedure,
+separate C1/C2/C3/C4 approvals, manual preparation, evidence/failure criteria and explicit
+unequip-and-confirm-neutral-persistence before disablement/rollback. It grants no deployment,
+launch, item/save or multiplayer permission. The existing dedicated server remains out of scope.

@@ -57,3 +57,10 @@ Documentation/: existing empty area. Knowledge/: linked engineering memory and s
 Original game and saves are outside task scope. At bootstrap, no GitHub remote or .git metadata
 was present. The repository has since been initialized; [[INDEX]] records the verified current remote/branch.
 See [[DEC-001-Development-baseline]] for constraints and [[DEP-001-Environment]] for runtime scope.
+
+
+Stage B source applicability review: the additional opt-in observation flag requires the
+existing diagnostic flag and includes no Stage B code in ordinary builds. Bridge default false
+and ordinary plugin initialization are unchanged. [[DEV-005-Tome-diagnostics]] owns the temporary
+own-config activation, installed conditional-purity proof and extra artifact/fixture checks.
+This is experimental source/tooling, not gameplay verification or production activation.

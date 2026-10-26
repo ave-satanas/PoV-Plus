@@ -39,6 +39,8 @@ public class ObjectDB : UnityEngine.Object
         if (FailLookup) throw new InvalidOperationException("fixture lookup failure");
         UnityEngine.GameObject value; return Items.TryGetValue(id, out value) ? value : null;
     }
+    public UnityEngine.GameObject GetItemPrefab(int hash) { return null; }
+    public bool TryGetItemPrefab(int hash, out UnityEngine.GameObject value) { value = null; return false; }
 }
 namespace BepInEx.Logging
 {
@@ -62,17 +64,30 @@ namespace HarmonyLib
 {
     public enum HarmonyPatchType { All }
     public class HarmonyMethod { public HarmonyMethod(MethodInfo method) { } }
-    public class Patch { public string owner; public MethodInfo PatchMethod; }
+    public class Patch
+    {
+        public string owner;
+        public MethodInfo PatchMethod;
+        public int priority = 400;
+        public int index;
+        public string[] before = new string[0], after = new string[0];
+    }
     public class Patches
     {
         public readonly List<string> Owners = new List<string>();
         public readonly List<Patch> Postfixes = new List<Patch>();
+        public readonly List<Patch> Prefixes = new List<Patch>(), Transpilers = new List<Patch>(),
+            Finalizers = new List<Patch>(), ILManipulators = new List<Patch>();
     }
     public class Harmony
     {
         public static int Constructed;
+        public static readonly Dictionary<MethodBase, Patches> TestPatches = new Dictionary<MethodBase, Patches>();
         public Harmony(string id) { Constructed++; }
-        public static Patches GetPatchInfo(MethodBase method) { return null; }
+        public static Patches GetPatchInfo(MethodBase method)
+        {
+            Patches value; return TestPatches.TryGetValue(method, out value) ? value : null;
+        }
         public void Patch(MethodInfo target, HarmonyMethod postfix) { }
         public void Unpatch(MethodInfo target, HarmonyPatchType type, string owner) { }
     }

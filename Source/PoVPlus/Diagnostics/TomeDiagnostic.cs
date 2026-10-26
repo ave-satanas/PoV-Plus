@@ -24,7 +24,11 @@ namespace PoVPlus.Diagnostics
         private readonly DiagnosticSession _session;
         private float _nextPoll;
         private static readonly string[] Items = { "BMP_BeginnersMagicBook", "BMP_AdvanceMagicBook",
-            "BMP_DruidsTome", "ArmorMushroomcallerTome_DO" };
+            "BMP_DruidsTome", "ArmorMushroomcallerTome_DO"
+#if POVPLUS_TOME_STAGE_B_DIAGNOSTIC
+            , "Wood"
+#endif
+        };
         private static readonly string[,] Dependencies = {
             { "blacks7ar.MagicPlugin", "6504C2FF9CEAAE7B317820E41EF84D8C28D33FEDBF32B7D0F4FDDFD680BDA795" },
             { "Dreanegade.Magic_Supremacy", "8BAFE7DAEFB9B6AF057FC3B10534764ED9CCEBA430B526A014B2DD12CFABA787" },
@@ -33,7 +37,7 @@ namespace PoVPlus.Diagnostics
             { "treextr.pathofvalheiman", "83BD50F23D9C301FE469B5FBE2C430FD35C928D7A2CCFD99AF5A1040558C9D72" }
         };
 
-        internal TomeDiagnostic(ManualLogSource log)
+        internal TomeDiagnostic(ManualLogSource log, bool? bridgeEnabledAtStartup = null)
         {
             _log = log;
             _session = new DiagnosticSession(Say);
@@ -42,6 +46,10 @@ namespace PoVPlus.Diagnostics
             {
                 VerifyHash(typeof(Player).Assembly, "94998885B103D6E5F5480123EAEE0A093E82AF2DDEEEE37536C15BF555F24F3A");
                 VerifyHash(typeof(Harmony).Assembly, "1A21CC03424FC82C3DD1346905D16494536B9595AE4162228D99FB7C285C1031");
+#if POVPLUS_TOME_STAGE_B_DIAGNOSTIC
+                VerifyDependencies();
+                TomeStageBProbe.CheckStartup(_assemblies["Dreanegade.Magic_Supremacy"], Say, bridgeEnabledAtStartup);
+#endif
             }
             catch (Exception error) { _session.Abort("UnauditedRuntime " + DiagnosticSession.Quote(error.Message)); }
         }
@@ -126,13 +134,18 @@ namespace PoVPlus.Diagnostics
             Say("AUTHORITY MS.owner=" + AppDomain.CurrentDomain.GetData("DO_CustomSlotSystem_Owner") +
                 " registryAvailable=" + (registry != null));
             var customSystem = TypeFor("Dreanegade.Magic_Supremacy", "Magic_Supremacy.CustomSlotSystem");
+#if POVPLUS_TOME_STAGE_B_DIAGNOSTIC
+            TomeStageBProbe.RequireInitializedRegistry();
+#endif
             var definitions = Field(customSystem, "SlotDefinitions", null) as IEnumerable;
             if (definitions != null)
                 foreach (var def in definitions)
                     Say("MS_DEFINITION slotId=" + Field(def.GetType(), "SlotId", def) +
                         " predicate=" + Describe(Field(def.GetType(), "IsValid", def) as Delegate));
             var api = TypeFor("seneaL.valheim.api", "SeneaL.API.CustomSlots");
-            var descriptors = (IEnumerable)Method(api, "Snapshot").Invoke(null, null);
+            var snapshot = Method(api, "Snapshot");
+            RequireUnpatched(snapshot);
+            var descriptors = (IEnumerable)snapshot.Invoke(null, null);
             foreach (var def in descriptors)
                 if (IsTome(def)) Say("REGISTERED " + Descriptor(def));
             var auditedCells = new HashSet<object>();
@@ -145,6 +158,10 @@ namespace PoVPlus.Diagnostics
                 try { ValidateVisiblePredicate(def); auditedCells.Add(cell); }
                 catch (InvalidOperationException error) { Say("SKIP visiblePredicate " + DiagnosticSession.Quote(error.Message)); }
             }
+#if POVPLUS_TOME_STAGE_B_DIAGNOSTIC
+            if (cells.Count != 1 || auditedCells.Count != 1)
+                throw new InvalidOperationException("Stage B requires exactly one audited rendered Tome descriptor.");
+#endif
             foreach (var id in Items)
             {
                 var prefab = ObjectDB.instance.GetItemPrefab(id);
@@ -167,11 +184,17 @@ namespace PoVPlus.Diagnostics
                     " MSRegistryTome=" + (registry != null && registry.TryGetValue("tome", out names)
                         ? names.Contains(id).ToString() : "unavailable") +
                     " nativePoV=" + Query(povPredicate, null, "utility.tome", item));
+#if POVPLUS_TOME_STAGE_B_DIAGNOSTIC
+                TomeStageBProbe.CaptureInternal(item, id, Say);
+#endif
                 foreach (var cell in auditedCells)
                 {
                     var def = Field(cell.GetType(), "Def", cell);
                     var result = Query(Method(def.GetType(), "Allows", typeof(ItemDrop.ItemData)), def, item);
                     Say("VISIBLE_ACCEPT prefab=" + id + " key=" + Property(def, "Key") + " result=" + result);
+#if POVPLUS_TOME_STAGE_B_DIAGNOSTIC
+                    TomeStageBProbe.CheckVisible(id, result);
+#endif
                 }
             }
             Say("END snapshotComplete=true observationOnly=true; no equipment/stat/persistence test performed");
@@ -239,9 +262,13 @@ namespace PoVPlus.Diagnostics
         }
         private static void RequireUnpatched(MethodInfo method)
         {
+#if POVPLUS_TOME_STAGE_B_DIAGNOSTIC
+            TomeStageBProbe.RequireReviewed(method);
+#else
             var patches = Harmony.GetPatchInfo(method);
             if (patches != null && patches.Owners.Count > 0)
                 throw new InvalidOperationException("Unaudited runtime patches on " + method.DeclaringType.FullName + "." + method.Name);
+#endif
         }
         private static string Query(MethodInfo method, object instance, params object[] arguments)
         {

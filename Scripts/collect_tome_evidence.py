@@ -13,6 +13,7 @@ INSTALLATION = Path("S:/Valheim-Modding/PoVPlus-Dev")
 SESSION = re.compile(r"\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}\Z")
 MAX_BYTES = 8 * 1024 * 1024
 MARKER = "[PoVPlus.TomeDiagnostic]"
+BRIDGE_MARKER = "[PoVPlus.TomeBridge]"
 
 
 def redact(text: str) -> str:
@@ -60,7 +61,7 @@ def collect(installation: Path, session: str, receipts: list[Path], repository: 
             if referenced and referenced[-1] == session + ".log":
                 result.update(status="matched", session_start_line=start + 1)
                 for i, line in enumerate(current, start + 1):
-                    bucket = "diagnostic" if MARKER in line else "errors" if line.startswith("[Error") else None
+                    bucket = "diagnostic" if MARKER in line or BRIDGE_MARKER in line else "errors" if line.startswith("[Error") else None
                     if bucket:
                         if len(result[bucket]) < 256:
                             result[bucket].append(dict(line=i, text=redact(line)))

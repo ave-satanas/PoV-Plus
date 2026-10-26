@@ -160,3 +160,21 @@ collection path; inaccessible optional evidence is recorded without touching cac
 The later default-off bridge is source-only and covered by the bridge fixture/artifact checks.
 [[COMP-002-Tome-bridge-design]] records startup-only configuration, no hot disablement, and
 manual unequip/exit requirements before an authorized rollback. No real deployment is implied.
+
+## Development client file locks and configuration writes
+
+User-observed files in use may be locked, including deployed DLLs and ordinary configurations.
+OS sharing locks and application configuration reload support are separate concerns: neither
+successful file access nor a configuration watcher grants permission to edit a running client.
+While the development client runs, do not deploy, roll back, replace DLLs, edit ordinary
+configurations, bypass locks, or terminate it automatically. Permit read-only logs and explicitly
+audited observations only. Live configuration requires documented support plus explicit approval;
+Stage B does not use live editing. After user normal exit, verify the specific client stopped,
+restore authorized DLL/configuration bytes and compare hashes/fingerprints. Preserve natural
+third-party changes separately and leave external dedicated servers/loaders untouched.
+
+`Assert-DevStopped` already guards deployment/rollback planning and execution. The workflow
+has no general configuration-write command: a separately authorized own-config operation must
+call that guard before writing, rather than assume the DLL guard covers arbitrary shell writes.
+Unknown client/server executable paths fail closed; verified processes outside the development
+installation are not stopped or treated as its client. Regression fixtures cover these cases.

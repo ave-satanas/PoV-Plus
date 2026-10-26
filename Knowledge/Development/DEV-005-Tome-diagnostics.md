@@ -9,7 +9,7 @@ versions: {"PoVPlus": "0.1.0", "Valheim": "1.0.20", "BepInEx": "5.4.23.5"}
 evidence: ["Source/PoVPlus/Diagnostics/DiagnosticSession.cs", "Source/PoVPlus/Diagnostics/TomeDiagnostic.cs", "Scripts/collect_tome_evidence.py", "Scripts/tests/TomeDiagnosticHarness.cs", "Scripts/tests/Test-TomeContracts.ps1"]
 related: ["[[INV-003-Magic-book-tome-compatibility]]", "[[COMP-002-Tome-bridge-design]]", "[[DEV-003-Workflow]]", "[[DEV-001-Build]]", "[[ARCH-001-PoVPlus]]", "[[DEP-001-Environment]]", "[[DIAG-001-Logging]]"]
 confidence: "mixed"
-watch: ["src:Source/PoVPlus/Plugin.cs", "src:Source/PoVPlus/PoVPlus.csproj", "src:Source/PoVPlus/Diagnostics/DiagnosticSession.cs", "src:Source/PoVPlus/Diagnostics/TomeDiagnostic.cs", "src:Scripts/collect_tome_evidence.py"]
+watch: ["src:Source/PoVPlus/Plugin.cs", "src:Source/PoVPlus/PoVPlus.csproj", "src:Source/PoVPlus/Diagnostics/DiagnosticSession.cs", "src:Source/PoVPlus/Diagnostics/TomeDiagnostic.cs", "src:Scripts/collect_tome_evidence.py", "src:Source/PoVPlus/Diagnostics/TomeStageBProbe.cs"]
 claims: {}
 contradicts: []
 supersedes: []
@@ -27,7 +27,7 @@ The startup log is retained. The later ordinary-build bridge is controlled separ
 default-false startup configuration option: [[COMP-002-Tome-bridge-design]]. With that option Off
 no bridge patches are applied; temporary diagnostic types remain absent from ordinary builds.
 
-The local baseline is main at 9f6261f before this offline repair. The installed ordinary DLL remains
+The historical offline-repair baseline was main at 9f6261f. The installed ordinary DLL remains
 the exact restored binary recorded in INV-003. Builds here write only repository ignored outputs;
 no game launch, deployment, save access or third-party config changes are part of offline checks.
 
@@ -236,3 +236,134 @@ Final tests: 18 identity/policy, 22 bridge, 25 contracts, 24 Python, 14 workflow
 artifact/exclusion checks, strict knowledge and whitespace checks pass. No Stage B was started.
 [[INV-003-Magic-book-tome-compatibility]] separates actual callback observations from private
 internal-validator inference and records the remaining supervised testing requirements.
+
+
+## Historical Stage B preparation (uncommitted at that checkpoint)
+
+Stage A checkpoint 446f8e5e4a208e97bd430e1a937ca7f3ff5ef4e7 was pushed and fetched; main/origin
+were clean/equal before this work. The current user explicitly authorizes only an enabled-bridge
+acceptance test with the same manual character/world handoffs and no equipment/item operations.
+At that checkpoint no Stage B change was authorized for commit or push; the later checkpoint task authorizes preservation after review.
+
+EnableTomeStageBDiagnostic=true additionally requires EnableTomeDiagnostic=true; otherwise the
+build fails. Ordinary builds exclude the Stage B type. This build option never changes the
+bridge default or activates it by itself. Activation is a temporary single-value edit of only
+BepInEx/config/povplus.core.cfg from false to true, after validation, with exact original bytes
+backed up under .dev-state/stage-b/. Restore those bytes only after user normal exit/rollback.
+No third-party configuration is changed; MP native Tome remains Off. The existing bridge code
+and its atomic inactive-until-complete patch installation are unchanged.
+
+The Stage B-only helper reads own configuration/activation, verifies exact patch MethodInfos,
+owner povplus.core.magicplugin-tomes and one postfix per gate with no prefixes/transpilers/
+finalizers/IL manipulators. It logs actual priority/index/before/after lists. Other patched
+predicates/helpers remain refused. Existing Stage A's unpatched-only policy is unchanged unless
+the extra Stage B compile flag is set. Startup dependency hashes and patch metadata may be read
+before local-player authorization; no item/registry evaluation occurs until exact identities,
+initialized UI, existing registry and native control pass the usual bounded single snapshot.
+
+Pinned MS helper GetSharedSlotRegistry (0x0600044a) returns an existing dictionary at IL_0018-19;
+only its missing-registry branch calls SetData at IL_0030. IsItemValidForSlot (0x0600044c) reads
+null/prefab/slot validity and membership. Direct invocation is allowed only after observing a
+correct-type existing tome registry/native control and verifying helper/target patch metadata.
+Supporting ObjectDB lookup methods must be unpatched; installed IL reads dictionaries only.
+Registry reference and contents are compared before/after. Do not initialize missing state to
+force a result. The reviewed bridge postfix reads metadata and updates only its own activation/
+bounded logging state; it performs no inventory, equipment, SE, stats, save or registry writes.
+
+The snapshot adds verified-at-runtime prefab Wood and a belt non-Tome identifier query, logging
+whether belt is actually registered in MS. Its original registry expectation is compared with
+the observed result; native positive overlap is preserved, not mislabeled as a conflict. All
+three books and native control are inspected as existing prefab ItemData, never constructed.
+Before-intervention reference values come from Stage A; no reverse patch/unpatch is used to
+invoke original methods. Existing bridge first-extension logs prove the guarded false-to-true
+path was visited; direct post-bridge values and membership are recorded separately.
+
+Run Test-TomeStageB.ps1 (managed doubles, no real detours), Test-TomeStageBContracts.ps1 (pinned
+installed purity contract), all prior tests and artifact audits. For the extra probe audit use
+Test-TomeDiagnostic.ps1 -Enabled -StageB -Dll <artifact>. The evidence collector now retains
+same-session TomeBridge lines alongside TomeDiagnostic events; snapshot counts still use only
+the diagnostic prefix. No effects, persistence, exclusivity or multiplayer correctness is proven.
+
+
+Stage B checkpoint: session 2026-10-25_19-09-09 reports the bridge active, but the temporary
+probe aborted during Awake because its own Chainloader PluginInfo.Instance was not yet assigned.
+No acceptance snapshot or direct internal-gate result was obtained. The attempt is stopped;
+user normal exit, original-DLL rollback and exact own-config restoration are pending. Do not
+repair/redeploy automatically or claim Stage B passed. [[INV-003-Magic-book-tome-compatibility]]
+records the installed Chainloader ordering, local evidence and reviewed future repair options.
+
+Stage B cleanup is now verified after user normal exit: standard rollback restored the exact
+original non-diagnostic DLL and the exact original PoVPlus configuration bytes (bridge false).
+All 343 baseline DLL/configuration hashes match; development client stopped, separate server
+untouched. Evidence and experimental work remain preserved and uncommitted. The startup-probe
+failure still requires a reviewed repair and separately authorized retry; no Stage B acceptance
+or gameplay success is claimed. See [[INV-003-Magic-book-tome-compatibility]] for hashes/receipt.
+
+
+## Authorized Stage B retry: startup snapshot repair (offline)
+
+Previous startup failure is confined to the temporary probe's own Chainloader.Instance lookup
+inside Awake. Installed Chainloader calls AddComponent before assigning PluginInfo.Instance.
+Plugin.Awake now passes its already-bound boolean setting as an immutable nullable value snapshot
+to TomeDiagnostic/CheckStartup; null or false fails closed with a useful message. No own
+registration lookup or new global singleton is needed. Existing bridge-active, patch-owner,
+registry-purity, exact identities, bounded readiness and one-snapshot guards remain unchanged.
+The bridge implementation/default false are unchanged. Twenty executable Stage B managed
+fixtures cover the two pre-registration cases, missing snapshot and prior safety cases; compiled
+IL checks verify actual Awake-to-constructor wiring and no own Chainloader lookup. These fixtures
+are doubles, not actual Harmony gameplay tests. Eighteen identity/policy, 22 bridge, 25 installed
+contracts, 26 Python and 16 workflow cases pass; ordinary/Stage B builds and artifact audits pass.
+File-lock policy and process-guard regression coverage are in [[DEV-003-Workflow]] and AGENTS.md.
+Runtime retry evidence will be recorded separately in .dev-state/reports/INV-003-stage-b-retry.md;
+no new acceptance, effects, persistence or multiplayer result is implied by this offline repair.
+
+
+Stage B retry startup (2026-10-25_19-24-38) now succeeds after immutable-setting repair:
+88 plugins loaded, none skipped/failed; bridge active; diagnostic verifies both exact owned
+postfixes at priority400/index0, no other interceptors or before/after constraints. No startup
+ABORT. Manual authorized character/world/inventory handoff is pending; no acceptance snapshot
+or gameplay result is claimed. The development client is running with temporary own-config true;
+normal user exit and original-DLL/config restoration are still required. Local evidence:
+.dev-state/reports/INV-003-stage-b-retry-startup-evidence.md; receipt/state in
+.dev-state/stage-b-retry/state.json. Earlier failure and cleanup remain historical evidence.
+
+
+## Stage B retry acceptance verified; cleanup pending
+
+Session2026-10-25_19-24-38 passed exact identities and completed one snapshot without ABORT.
+Runtime primary1462-1492 confirms the visible AzuEPI.emulated/$tome_DO MS callback and three
+books changing Stage A descriptor/visible False to Stage B True. Direct private internal tome
+validation now also returns True for all three; native ArmorMushroomcallerTome_DO passes all
+three queries, Wood fails all three. All five fail the nonregistered non-Tome belt identifier.
+Registry membership remains unchanged (books absent, native present); no gameplay mutations.
+Stage A never called the private validator, so its internal baseline remains static/inferred.
+Both exact owned postfixes were verified (priority400/index0, no other interceptors). MP native
+Tome slot remains Off. This supports acceptance integration only, not equipment effects,
+exclusivity, actual inventory items, persistence or multiplayer. See
+[[INV-003-Magic-book-tome-compatibility]] for matrix, line references, limits and the recurring
+EpicLoot warning. Evidence: .dev-state/reports/INV-003-stage-b-retry-acceptance-evidence.md.
+A Warfare cfg hash drift occurred during the session and is preserved, not automatically reverted.
+Client still running; original DLL/exact own-config restoration awaits user normal exit. No
+installation changes were made by collection and no experimental changes were committed/pushed.
+
+
+Stage B retry cleanup completed after user normal exit: exact original non-diagnostic DLL and
+own config bytes restored, bridge false, client stopped, separate server untouched. All343
+monitored DLL/config fingerprints match baseline. Warfare.cfg changed transiently during the
+run and returned to its baseline hash without cleanup writing it; preserve both observations
+in [[INV-003-Magic-book-tome-compatibility]]. Successful acceptance evidence remains valid;
+equipment behavior/effects/exclusivity/persistence/multiplayer remain unverified. Experimental
+source/tests/docs remain uncommitted. Next: review checkpoint and separately authorize a scoped
+equipment-lifecycle plan; no further runtime work is implied. Restoration hashes/receipt:
+.dev-state/stage-b-retry/restoration-comparison.json.
+
+
+## Stage B checkpoint review and Stage C proposal
+
+Stage B source/tests and canonical summaries have been reviewed for Git preservation. Earlier
+pending/uncommitted statements above describe those historical checkpoints. Acceptance and
+original DLL/config restoration are verified; no equipment/effects/persistence claim is added.
+[[EXP-004-Tome-equipment-lifecycle-plan]] defines the proposed, unexecuted Stage C procedure,
+separate C1/C2/C3/C4 approvals, manual preparation, evidence/failure criteria and explicit
+unequip-and-confirm-neutral-persistence before disablement/rollback. It grants no deployment,
+launch, item/save or multiplayer permission. The existing dedicated server remains out of scope.

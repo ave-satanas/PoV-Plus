@@ -22,7 +22,7 @@ namespace PoVPlus
                 "Experimental acceptance-only bridge. Default Off; read at startup. Requires supervised testing. Unequip books before disabling/removing; restart required.");
             new Compatibility.MagicPluginTomeBridge(Logger).Start(bridge.Value);
 #if POVPLUS_TOME_DIAGNOSTIC
-            _tomeDiagnostic = new Diagnostics.TomeDiagnostic(Logger);
+            _tomeDiagnostic = new Diagnostics.TomeDiagnostic(Logger, bridge.Value);
 #endif
         }
 

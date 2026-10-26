@@ -10,6 +10,8 @@
     <EnableNETAnalyzers>false</EnableNETAnalyzers>
     <EnableTomeDiagnostic Condition="'$(EnableTomeDiagnostic)' == ''">false</EnableTomeDiagnostic>
     <DefineConstants Condition="'$(EnableTomeDiagnostic)' == 'true'">$(DefineConstants);POVPLUS_TOME_DIAGNOSTIC</DefineConstants>
+    <EnableTomeStageBDiagnostic Condition="'$(EnableTomeStageBDiagnostic)' == ''">false</EnableTomeStageBDiagnostic>
+    <DefineConstants Condition="'$(EnableTomeStageBDiagnostic)' == 'true'">$(DefineConstants);POVPLUS_TOME_STAGE_B_DIAGNOSTIC</DefineConstants>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <ValheimDevPath Condition="'$(ValheimDevPath)' == ''">S:\Valheim-Modding\PoVPlus-Dev</ValheimDevPath>
   </PropertyGroup>
@@ -43,6 +45,8 @@
   </ItemGroup>
 
   <Target Name="ValidateLocalReferences" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="'$(EnableTomeStageBDiagnostic)' == 'true' and '$(EnableTomeDiagnostic)' != 'true'"
+           Text="Stage B observation requires EnableTomeDiagnostic=true; it must never be included alone." />
     <Error Condition="'%(Reference.HintPath)' != '' and !Exists('%(Reference.HintPath)')"
            Text="Missing local reference: %(Reference.HintPath). Set ValheimDevPath to a compatible Valheim development installation." />
   </Target>

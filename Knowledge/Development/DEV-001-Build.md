@@ -54,3 +54,10 @@ SDKs 8.0.405/9.0.201/10.0.100; Visual Studio Community/Build Tools 2022 17.13.5;
 4.8 reference pack; VS Code command and Git. Current task verifies Python 3.14.0; no packages
 installed. SDK version does not change Unity runtime/plugin TFM. Earlier ilspycmd absence on PATH
 does not establish absence of every GUI decompiler.
+
+
+Stage B source applicability review: the additional opt-in observation flag requires the
+existing diagnostic flag and includes no Stage B code in ordinary builds. Bridge default false
+and ordinary plugin initialization are unchanged. [[DEV-005-Tome-diagnostics]] owns the temporary
+own-config activation, installed conditional-purity proof and extra artifact/fixture checks.
+This is experimental source/tooling, not gameplay verification or production activation.

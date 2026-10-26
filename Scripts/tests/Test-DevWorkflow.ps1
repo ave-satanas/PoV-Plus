@@ -77,6 +77,27 @@ try {
         Assert-Throws { New-DeploymentPlan $c } 'must be stopped'
         & $module { function script:Get-DevProcesses { @() } }
     }
+    Test-Case 'located development client blocks deployment rollback and own-config guard' {
+        $c = New-Fixture
+        Write-FakePlugin $c.Target '0.1.0'
+        Write-FakePlugin (Build-Path $c) '0.2.0'
+        $plan = New-DeploymentPlan $c
+        Invoke-DevTransition $c $plan
+        $rollback = New-RollbackPlan $c
+        & $module { param($path) $script:TestClientPath=$path; function script:Get-DevProcesses { @([pscustomobject]@{ ProcessId=43; ExecutablePath=$script:TestClientPath }) } } (Join-Path $c.Installation 'valheim.exe')
+        try {
+            Assert-Throws { Assert-DevStopped $c } 'must be stopped'
+            Assert-Throws { New-DeploymentPlan $c } 'must be stopped'
+            Assert-Throws { New-RollbackPlan $c } 'must be stopped'
+            Assert-Throws { Invoke-DevTransition $c $rollback } 'must be stopped'
+            Assert-True ((Get-FileHash $c.Target).Hash -eq $plan.After.Hash) 'blocked rollback leaves DLL intact'
+        } finally { & $module { function script:Get-DevProcesses { @() } } }
+    }
+    Test-Case 'verified external dedicated server does not block the development stopped guard' {
+        $c = New-Fixture
+        & $module { function script:Get-DevProcesses { @([pscustomobject]@{ ProcessId=44; ExecutablePath='G:\separate-server\valheim_server.exe' }) } }
+        try { Assert-DevStopped $c } finally { & $module { function script:Get-DevProcesses { @() } } }
+    }
     Test-Case 'verified deployment backup and rollback leave unrelated files intact' {
         $c = New-Fixture
         Write-FakePlugin $c.Target '0.1.0'
