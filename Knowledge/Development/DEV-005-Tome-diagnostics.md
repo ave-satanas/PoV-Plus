@@ -33,7 +33,8 @@ no game launch, deployment, save access or third-party config changes are part o
 
 ## Identity and readiness
 
-Expected names remain exactly PoVPlus_Test and POVPlus_Lab. Comparison is ordinal, case-sensitive;
+Expected names are exactly PoVPlus_Test and PoVPlus_Lab (world label corrected with explicit
+user authorization after the prior mismatch). Comparison is ordinal, case-sensitive;
 case-only differences are logged but rejected. The probe does not accept filenames, normalized
 aliases or guessed alternative casing. Name APIs validate labels, not unique save identities;
 duplicate display names cannot be distinguished without further approved evidence. Manual
@@ -121,7 +122,7 @@ This is the next development milestone, requiring separate runtime authorization
 EnableMagicPluginTomeBridge false throughout Stage A; do not apply bridge patches. Use the
 repaired opt-in Tome diagnostic and the standard deployment/launch/rollback workflow.
 
-1. Verify the exact PoVPlus_Test / POVPlus_Lab identity guard after manual user selection.
+1. Verify the exact PoVPlus_Test / PoVPlus_Lab identity guard after manual user selection.
 2. Confirm the actual active rendered Tome descriptor and equipment authority.
 3. Compare BMP_BeginnersMagicBook, BMP_AdvanceMagicBook and BMP_DruidsTome against the native
    ArmorMushroomcallerTome_DO control, including classifications and descriptor acceptance.
@@ -144,7 +145,7 @@ bindings/equipment state; retain the manual-unequip and normal-exit precautions 
    authorization correction before changing the allowlist; do not guess casing from save paths.
 2. Record ordinary deployed hash and preview/build/deploy a reviewed opt-in artifact using the
    standardized workflow and approved output configuration. Keep the original receipt/backup.
-3. Launch only with separate approval. The user manually selects PoVPlus_Test / POVPlus_Lab,
+3. Launch only with separate approval. The user manually selects PoVPlus_Test / PoVPlus_Lab,
    waits for loading and opens inventory within the bounded observation window. No automatic inputs.
 4. After user confirmation, collect the exact new session; require a bound active RENDERED
    descriptor and a valid MS positive control before drawing acceptance conclusions. Inspect
@@ -186,3 +187,52 @@ run an ordinary Build and the default exclusion audit. These commands are a futu
 no opt-in normal-output build or deployment was performed in this offline task. Launch warnings
 about shared saves continue to apply. Use [[DIAG-001-Logging]] to interpret per-plugin filtering;
 missing informational output alone does not prove failed execution.
+
+
+## First repaired Stage A attempt: observable abort
+
+Session 2026-10-25_18-25-08 reached initialized player/inventory readiness but failed the exact
+world comparison: expected POVPlus_Lab, observed ZNet.GetWorldName() PoVPlus_Lab. Character
+PoVPlus_Test matched. The guard logged a case-only mismatch and aborted before any snapshot.
+This confirms logging/strict rejection, not a successful authorization or equipment evaluation.
+No literal/normalization change or automatic redeployment was made. Any subsequent attempt
+must explicitly review the corrected exact world label; never silently accept aliases.
+See [[INV-003-Magic-book-tome-compatibility]] for evidence and completed normal-exit/rollback.
+The exact original DLL is restored, instrumentation inactive and bridge false. A subsequent
+attempt requires a separately authorized exact-label review; no correction was applied here.
+The documented DryRun plan was used after a Windows PowerShell WhatIf/Get-FileHash preview
+error; it runs the same validation without WhatIf propagation. Workflow source is unchanged.
+
+
+## Authorized exact-label correction for Stage A retry
+
+The user explicitly corrected the expected world to PoVPlus_Lab. DiagnosticSession.ExpectedWorld
+and the snapshot label now use that exact spelling; ExpectedCharacter remains PoVPlus_Test.
+Ordinal comparisons, separate API logging, readiness, timeout and one-snapshot policy are
+unchanged. Regression coverage now rejects observed POVPlus_Lab with case-only evidence and
+zero snapshots. The historical failed-attempt values above are preserved; no saves were renamed
+or inspected, and no bridge source/configuration behavior changed.
+
+
+## Corrected retry snapshot: identity and rendered-cell proof
+
+Session 2026-10-25_18-38-00 passed exact PoVPlus_Test / PoVPlus_Lab comparisons and completed
+one snapshot (primary log 1448-1474). The bound active SeneaLUI_Link1 descriptor is
+AzuEPI.emulated/$tome_DO with MS IsTomeItem callback. Three BMP books return false, native MS
+control true, through direct descriptor and visible-wrapper queries. Registry membership was
+read; private IsItemValidForSlot was not invoked, so direct internal-gate execution remains
+unverified. No item/effect mutation was performed. [[INV-003-Magic-book-tome-compatibility]]
+contains the matrix and source lines. Await user normal exit before rollback; bridge remains Off.
+
+
+## Corrected retry cleanup verified
+
+After manual normal exit, independent process/Status checks and the exact-receipt standard
+rollback restored original SHA-256 351E948AFC75D8B5BFBEF67F2F1FBABB5A8A645AA7A5D51E9E804F7D501DF548.
+Completed rollback receipt: 20261026T0144272444449Z-402d964125ea45bfa48137b6813caaf0.
+All 343 retry DLL/config baseline hashes match; bridge false, native MP slot Off, diagnostic
+not deployed and client stopped. Source correction and regression tests remain unstaged.
+Final tests: 18 identity/policy, 22 bridge, 25 contracts, 24 Python, 14 workflow; ordinary build,
+artifact/exclusion checks, strict knowledge and whitespace checks pass. No Stage B was started.
+[[INV-003-Magic-book-tome-compatibility]] separates actual callback observations from private
+internal-validator inference and records the remaining supervised testing requirements.

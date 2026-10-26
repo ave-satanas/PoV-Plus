@@ -109,7 +109,7 @@ namespace PoVPlus.Diagnostics
         private void Capture(Player player, List<object> cells)
         {
             Say("BEGIN utc=" + DateTime.UtcNow.ToString("o") +
-                " character=PoVPlus_Test world=POVPlus_Lab localPlayer=true inventoryVisible=true");
+                " character=PoVPlus_Test world=PoVPlus_Lab localPlayer=true inventoryVisible=true");
             foreach (var pair in _assemblies)
                 Say("DEPENDENCY guid=" + pair.Key + " version=" + Chainloader.PluginInfos[pair.Key].Metadata.Version);
             var magic = TypeFor("blacks7ar.MagicPlugin", "MagicPlugin.Functions.MagicSlot");

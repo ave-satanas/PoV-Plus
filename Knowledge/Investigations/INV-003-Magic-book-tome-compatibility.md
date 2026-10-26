@@ -19,11 +19,13 @@ supersedes: []
 
 ## Finding and limits
 
-**Current state (offline follow-up):** the historical runtime probe aborted before a
-snapshot; visible slot ownership and acceptance remain unverified. The original DLL remains
-installed. A repaired, opt-in observational probe and offline tests are now prepared, but have
-not been deployed or run in Valheim. Ordinary builds exclude all diagnostic types. The earlier
-cleanup/source-restoration account below describes that historical checkpoint.
+**Current state (corrected Stage A retry complete, original restored):** exact identities
+passed and one read-only snapshot confirmed the active AzuEPI.emulated/$tome_DO binding and MS
+callback. Three BMP books fail descriptor/visible acceptance; native control passes. Registry
+membership agrees, but the private internal validator was not executed. The user exited
+normally; original DLL restored and client stopped. All 343 DLL/config baseline hashes match,
+bridge false and diagnostic inactive. Source correction/tests remain unstaged; Stage B requires
+separate authorization and no gameplay/effects/persistence correctness is claimed.
 
 A subsequent explicitly authorized offline task has now implemented the initial acceptance
 bridge in source, default disabled. It has not been deployed or runtime-tested. See the final
@@ -1026,3 +1028,246 @@ then exit normally and restore the original DLL. [[DEV-005-Tome-diagnostics]] re
 observation limits and handoffs. Stage B requires separate later approval to enable/test the
 bridge. Neither stage was started by the review/commit task. Existing disabling/removal while
 equipped warnings and independent configuration/shardstone investigations remain open.
+
+
+## Stage A started: awaiting manual inventory handoff (2026-10-25)
+
+Original DLL/backup verified; clean main at 5998c9206ebf0839728c7bffc8f3afbcb8f3994e.
+All required offline checks passed. Standard workflow deployed the repaired diagnostic with
+bridge default false; completed deployment receipt/rollback ID
+20261026T0124520418928Z-6d00a52e4e4841afab8c46e4b0bb0ba0. Only the managed DLL changed among
+342 baseline files before launch. The WhatIf hash-helper error was resolved for this preview
+by the documented DryRun path, which ran the same complete plan checks; workflow code unchanged.
+
+Development PID 33104, LoadTimeProfiler session 2026-10-25_18-25-08. Current startup log confirms
+88 loaded, zero skipped/failed, PoVPlus loaded once and diagnostic ARMED with no startup Error
+rows. The plugin-generated own cfg explicitly has EnableMagicPluginTomeBridge = false; no
+active bridge message. The guard is waiting for a local player; no snapshot/acceptance/visible
+cell evidence yet. User must manually select only PoVPlus_Test / POVPlus_Lab and open inventory.
+The agent is paused at handoff 1 and has issued no gameplay actions. The diagnostic remains
+deployed and game running; original-DLL rollback is pending the later normal-exit handoff.
+Local report: .dev-state/reports/INV-003-stage-a.md; baseline/checkpoint under
+.dev-state/inv003-stage-a/. Historical findings above remain unchanged. No commit/push.
+
+
+## Stage A collection: world-label case mismatch, no snapshot (2026-10-25)
+
+After the user's explicit manual selection/inventory confirmation, the matched session
+2026-10-25_18-25-08 produced an observable identity abort. Primary BepInEx log line 1438 shows
+WaitingForInventory with characterExact=True; lines 1453-1454 show IdentityMismatch/ABORT after
+inventory readiness. Player.GetPlayerName returned PoVPlus_Test, matching its expected label.
+ZNet.GetWorldName returned **PoVPlus_Lab**, while the exact allowlist expects **POVPlus_Lab**:
+worldExact=False, worldCaseOnly=True. This is the confirmed reason this run stopped. It does
+not imply wrong user selection or a broken equipment system. The guard correctly enforced its
+current ordinal policy; authorization did not pass. The prior run's omitted values still leave
+its exact cause unproven, although the same explanation is now plausible.
+
+The collector matched primary/profiler/receipt sources without skipped inputs. ARMED=1, GUARD=4,
+ABORT=1; BEGIN, END, COMPLETE, RENDERED and VISIBLE_ACCEPT are all zero. All three BMP books and
+ArmorMushroomcallerTome_DO have **not reached** runtime item/classification/descriptor/internal
+or visible-slot evaluation. No bound-cell ownership is established. Preserve the static two-gate
+analysis separately; it is not a substitute for the missing runtime evidence. The profiler
+explicitly allowed PoVPlus Information logging, so this is a logged abort, not log filtering.
+
+Bridge own cfg line 9 remains false and MP native slot cfg line 32 remains Off. One Error row
+(line 1427) repeats the separately documented Epic Loot Cyan shardstone invalid-variant error;
+no connection to this investigation or new diagnostic exception is established. The optional
+ExtraSlots.Slots lookup warning is not automatically a compatibility defect.
+
+Local evidence: .dev-state/reports/INV-003-stage-a-evidence.md and corresponding JSON;
+interpretation/checkpoint: .dev-state/reports/INV-003-stage-a.md and
+.dev-state/inv003-stage-a/state.json. No guard edits, aliases, rebuild, redeploy or gameplay
+mutations were performed after abort. Stage A is incomplete; do not advance to Stage B.
+A future authorized attempt needs the exact expected world label reviewed/corrected to
+PoVPlus_Lab, preserving ordinal matching. The game remains running pending mandatory user
+normal-exit handoff 2, then stopped-process verification and receipt rollback. Original DLL
+restoration, post-exit third-party configuration comparison and final checks remain pending.
+
+
+## Stage A cleanup complete after user normal exit (2026-10-25)
+
+User confirmed normal exit. A separate process query and Dev.ps1 Status verified Stopped before
+rollback. Standard Rollback -BackupId 20261026T0124520418928Z-6d00a52e4e4841afab8c46e4b0bb0ba0
+-DryRun produced the exact restoration plan. Rollback -Authorized then completed with its normal
+ShouldContinue prompt answered Yes, without bypassing checks. Completed rollback receipt:
+.dev-state/backups/20261026T0131539588963Z-0da867760706442f8746ccbe459bc900/manifest.json.
+That receipt preserves the diagnostic DLL outside discovery and points to the Stage A deployment.
+
+Installed SHA-256 is exactly the original pretest value:
+351E948AFC75D8B5BFBEF67F2F1FBABB5A8A645AA7A5D51E9E804F7D501DF548.
+Installed diagnostic exclusion audit passed. No diagnostic or bridge implementation is deployed.
+All 342 selected DLL/config fingerprints match the pretest baseline; no unrelated plugin DLL or
+third-party configuration content changes were detected in this scope. The PoVPlus-owned cfg
+was generated by BepInEx/plugin startup and is retained with EnableMagicPluginTomeBridge=false.
+MagicPlugin's native Tome setting remains Off. No guessed values were restored or saves accessed.
+This audit intentionally excludes saves, assets, runtime caches and large-log copying.
+
+Fresh ordinary Release build and bridge/default diagnostic-exclusion audits passed, zero build
+warnings/errors. It was not deployed: exact original backup restoration is authoritative.
+22 bridge fixture, 25 installed-contract, 15 diagnostic-policy, 24 Python and 14 workflow tests
+passed. Strict knowledge validation: 119 records, zero errors/warnings; Git whitespace check passed.
+No source files, accepted fingerprints, game configurations, commits or pushes were changed by
+this cleanup. Knowledge documents are updated with findings and limitations.
+
+Final evidence collector retained the same one abort, zero rendered/snapshot results and one
+previously documented shardstone Error after normal exit. Final evidence/report:
+.dev-state/reports/INV-003-stage-a-final-evidence.md and .dev-state/reports/INV-003-stage-a.md.
+
+Stage A findings remain incomplete: character comparison passed; exact world comparison failed
+because expected POVPlus_Lab differs from actual PoVPlus_Lab. No rendered owner, either acceptance
+gate or native-control result was captured. This establishes the current guard failure, not
+Beginner's Magic Book rejection. Review the exact expected world label under explicit future
+authorization, preserving ordinal matching. Do not proceed to Stage B on this evidence. The
+known shardstone error and WhatIf hash-helper issue remain separate investigation items.
+
+
+## Authorized Stage A retry: corrected exact world label, awaiting handoff 1
+
+User authorized changing only expected world POVPlus_Lab to PoVPlus_Lab. Expected character
+remains PoVPlus_Test; no matching/API/readiness/timeout/snapshot logic changed. The snapshot
+label and harness expectations were aligned; historical mismatch records remain unchanged.
+18 policy/identity regressions now include rejection of old world casing and unavailable names;
+all other predeployment checks passed (22 bridge, 25 contracts, 24 Python, 14 workflow).
+Both build variants/audits and strict knowledge validation passed. No compatibility code changed.
+
+Standard DryRun/authorized deployment preserved original DLL and changed only the managed DLL
+among 343 baseline fingerprints. Deployment/rollback ID:
+20261026T0137558279786Z-da6f9cc1f8164555869cc7d02c4596d0. Corrected diagnostic SHA-256:
+B8D95D3DEBB5E00113C255837683530F05E159325B050F0A84E22B20147ADDA3.
+Development PID 6264; LoadTimeProfiler session 2026-10-25_18-38-00. Chainloader completed;
+PoVPlus loaded once and diagnostic ARMED. Initial guard logs expectedWorld=PoVPlus_Lab.
+Bridge own setting remains false and MP native slot Off; no diagnostic initialization error.
+The agent is paused at manual handoff 1; no player/inventory snapshot yet. The user alone will
+select PoVPlus_Test / PoVPlus_Lab and open inventory, then confirm. Do not infer rendered owner
+or either acceptance gate from startup. Local report: .dev-state/reports/INV-003-stage-a-retry.md;
+baseline/checkpoint: .dev-state/inv003-stage-a-retry/. Original-DLL rollback remains pending
+normal manual exit after evidence collection. Prior four modified knowledge records preserved;
+corrected source/tests retained unstaged. No commits or pushes.
+
+
+## Corrected Stage A runtime snapshot collected after handoff 1
+
+Session 2026-10-25_18-38-00. User confirmed test character/world loaded and inventory open;
+actual runtime labels are PoVPlus_Test / PoVPlus_Lab. GUARD Ready at primary-log line 1448
+reports characterExact=True and worldExact=True, both case-only flags false. BEGIN line 1449,
+END 1473 and COMPLETE 1474: one successful observation-only snapshot, zero ABORT.
+The profiler allows PoVPlus Information messages; primary/profiler/receipt sources matched,
+no skipped files. Own bridge config remains false and MP native Tome setting Off.
+
+### Runtime-confirmed rendered ownership
+
+Line 1459 identifies an actual bound active LinkCell, not only a registered descriptor:
+owner AzuEPI.emulated, id $tome_DO, key AzuEPI.emulated/$tome_DO, origin Magic_Supremacy,
+mode Linked, activeInHierarchy=True; hierarchy ends SeneaLUI_Inventory/panel/grid/SeneaLUI_Link1.
+Line 1460 validates the underlying callback as Magic_SupremacyPlugin.IsTomeItem. Line 1456
+reads MS.owner=Magic_Supremacy with a live registry; line 1457 identifies internal slotId=tome
+and its SyncDefinitionsFromSharedRegistry validation closure. SeneaL renders/emulates the
+descriptor; Magic Supremacy supplies its acceptance/equipment authority. Native PoV equipment
+is On, but utility.tome is a distinct statically verified API route, not this rendered descriptor.
+Its acceptance query returns false for every control/book. No separate rendered native PoV
+Tome cell was proven by this snapshot.
+
+### Item comparison (prefab ItemData, not equipped inventory instances)
+
+| Prefab | MP classifier | MS descriptor predicate | Live MS tome registry | Visible slot | Direct private internal validator |
+|---|---|---|---|---|---|
+| BMP_BeginnersMagicBook | False | False | Absent | False | Not invoked |
+| BMP_AdvanceMagicBook | False | False | Absent | False | Not invoked |
+| BMP_DruidsTome | False | False | Absent | False | Not invoked |
+| ArmorMushroomcallerTome_DO | False | True | Present | True | Not invoked |
+
+Evidence: Beginners lines 1461-1463, Advance 1464-1466, Druids 1467-1469, native control
+1470-1472. All four prefabs are Utility, numeric type 18, with matching m_dropPrefab names,
+empty custom-data key lists and prototype equipped=False. These are prefab observations,
+not assertions about the player's real equipped inventory. Original book equip-SE names are
+bmp_beginners_magicbook / bmp_advance_magicbook / bmp_druidstome. Shared regen values are
+0.15 / 0.25 / 0.25. Control equip-SE is SE_MushroomcallerTome_DO, shared regen 0. No actual
+Eitr/stat/effect change was measured. Component lists are retained in the focused evidence.
+
+### Conclusions and limits
+
+The visible slot rejection is now runtime-confirmed through its audited MS prefab predicate;
+the books and working control share Utility/18, so broad ItemType mismatch is not the cause.
+The installed seven-prefab whitelist excludes BMP books; actual predicate/visible results
+corroborate this restriction for the three-item family. MP classifier false is a separate,
+config-gated route with its native Tome setting Off; it does not supply the visible callback.
+
+The live internal tome registry excludes books and includes the control. Pinned installed IL
+shows IsItemValidForSlot(ItemData,string) performs null/prefab/slot checks then registry membership.
+Given these captured metadata/registry values, its false/true outcomes are strongly supported
+code-derived conclusions, not a direct runtime invocation or full equipment lifecycle test.
+The private validator was deliberately not called because its helper may initialize shared
+state. Keep direct internal-gate results unverified. Do not say the native control directly
+passed both methods; it passed descriptor and visible checks and was present in the registry.
+
+The two-gate bridge design matches the observed restrictions and the original SE names exist.
+No bridge activation/equipment effects are verified. Canonical shared-reference checks on real
+inventory items, internal gate instrumentation, swaps/unequip, max Eitr, regeneration exactly
+once, Belt/Tome exclusivity, inventory capacity, save/load and multiplayer remain separate
+supervised Stage B requirements. Evidence supports planning a gated Stage B after cleanup and
+explicit approval, not immediate activation or a claim of gameplay readiness.
+
+The sole current Error at line 1422 repeats the known Epic Loot Cyan shardstone invalid-variant
+message; it is not newly attributed to the diagnostic/bridge. No diagnostic exception is logged.
+The older unnamed abort remains historical; the recent case mismatch is confirmed separately.
+
+Collection is complete. Await mandatory manual handoff 2: user normal exit, independent client
+stopped verification, then standard rollback using deployment ID
+20261026T0137558279786Z-da6f9cc1f8164555869cc7d02c4596d0. Do not replace DLLs while the game runs.
+Original restoration/final fingerprints/validation remain pending. No item or save operations,
+configuration writes, compatibility-code changes, commits or pushes occurred during collection.
+
+
+## Corrected Stage A retry cleanup complete (2026-10-25)
+
+User explicitly confirmed normal exit. Process inspection and Dev.ps1 Status independently
+confirmed Stopped before replacement. Standard Rollback -DryRun reviewed the exact receipt;
+Rollback -Authorized then completed with its normal confirmation answered Yes. Receipt:
+.dev-state/backups/20261026T0144272444449Z-402d964125ea45bfa48137b6813caaf0/manifest.json.
+The receipt restores deployment 20261026T0137558279786Z-da6f9cc1f8164555869cc7d02c4596d0 and
+preserves the diagnostic DLL outside plugin discovery. No automatic termination or bypass.
+
+The installed DLL exactly matches the original SHA-256:
+351E948AFC75D8B5BFBEF67F2F1FBABB5A8A645AA7A5D51E9E804F7D501DF548.
+Diagnostic-exclusion check passed on that installed file. No bridge implementation is deployed;
+bridge own config remains false and MP native Tome slot Off. All 343 selected DLL/config hashes
+match the retry baseline, including own cfg: zero unrelated plugin or config content differences.
+No natural configuration changes needed reversal. Scope excludes saves, assets and caches.
+Comparison: .dev-state/inv003-stage-a-retry/restoration-comparison.json.
+
+Fresh ordinary Release build passed with zero warnings/errors and was not deployed. Its bridge
+artifact audit and default diagnostic exclusion passed. Final tests: 18 diagnostic/identity,
+22 bridge fixture, 25 installed contracts, 24 Python and 14 workflow cases all pass. Strict
+knowledge validation passes 119 records with zero errors/warnings; Git whitespace check passes.
+The corrected two diagnostic literals, 3 additional identity regressions and relevant source
+fingerprint review remain unstaged. Previous four modified knowledge records are preserved
+and extended. No bridge implementation change, direct save access, third-party write, commit
+or push occurred. No further runtime session was launched.
+
+The final collector confirms one completed snapshot, zero aborts, one active rendered descriptor,
+four visible acceptance results and the same separately documented Epic Loot shardstone Error.
+Evidence: .dev-state/reports/INV-003-stage-a-retry-final-evidence.md and JSON. Core source lines
+1448-1474 and item matrix from the collection section remain authoritative for this snapshot.
+
+## Final conclusions and next task
+
+Runtime-confirmed: exact corrected identities; initialized inventory; active bound
+AzuEPI.emulated/$tome_DO LinkCell; MS callback/equipment registry owner; three BMP false and
+native MS true for descriptor/visible acceptance; live registry exclusion/inclusion; all four
+prefabs Utility/18 with original SE names. The explicit MS prefab restriction is the confirmed
+visible rejection mechanism. Broad ItemType mismatch does not explain these compared prefabs.
+
+Direct private IsItemValidForSlot execution remains unverified. Its false/true results follow
+from pinned installed IL and captured metadata/registry values as a strong code-derived inference,
+not a direct method invocation or equip/persistence test. Native control passed descriptor and
+visible checks, with registry membership observed; do not claim directly executed internal success.
+PoV utility.tome is a separate installed-code/API route, returning false for all queried prefabs;
+no separate rendered PoV Tome cell was proven.
+
+The existing two-gate adapter design addresses the observed eligibility restrictions. This
+supports preparing a separately authorized Stage B plan, with the internal-validator execution
+limit explicit and actual inventory metadata guards checked before relying on acceptance.
+Effects/max-Eitr, regeneration exactly once, swaps/unequip, Belt/Tome exclusivity/capacity,
+save/load, safe disablement and multiplayer remain unverified. Manual unequip and normal exit
+before disabling/removing an enabled bridge remain essential precautions. No Stage B approval
+is inferred from completion of Stage A cleanup; no bridge activation has occurred.

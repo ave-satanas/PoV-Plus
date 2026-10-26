@@ -203,3 +203,41 @@ runtime/gameplay-test authorization for: equip/unequip and swaps,
 max Eitr and regen exactly once, upstream effect overrides, full bag/belt duplication, death/grave
 recovery, logout/reload, feature removal, dependency drift and multiplayer visuals. A predicate
 passing or an offline contract test is not evidence that any of these gameplay behaviors passed.
+
+
+## Stage A runtime evidence boundary
+
+The first repaired Stage A attempt (2026-10-25_18-25-08), with bridge false, aborted at the
+world-name guard: expected POVPlus_Lab, observed PoVPlus_Lab. No item/gate/rendered-cell snapshot
+was taken. Thus none of this record's equipment assumptions were newly runtime-verified and
+Stage B is not yet supported by Stage A evidence. [[INV-003-Magic-book-tome-compatibility]]
+preserves the exact comparisons and the completed normal-exit/rollback receipt. The original
+DLL is restored, client stopped and bridge false. No bridge-On runtime test occurred.
+
+
+## Corrected Stage A evidence: restrictions corroborated, bridge still Off
+
+Session 2026-10-25_18-38-00 confirms the actual active bound AzuEPI.emulated/$tome_DO LinkCell,
+Magic_Supremacy origin, MS IsTomeItem callback and internal tome registry/definition. All three
+BMP books are Utility/18, like the working native control, and retain the exact SE names in
+the adapter policy. Their descriptor/visible acceptance is false; control acceptance is true.
+Registry membership is absent/present respectively. This corroborates the two-restriction
+model and rejects broad ItemType mismatch as the explanation for these compared prefabs.
+Private internal validator execution is still unverified; membership plus pinned IL predicts
+its result, not full lifecycle behavior. No bridge-On behavior, actual inventory shared-data
+identity, Eitr/effect/regen, equipment exclusivity, persistence or multiplayer was tested.
+The design remains appropriate for separately approved Stage B planning after cleanup, with
+these gaps explicit. [[INV-003-Magic-book-tome-compatibility]] owns runtime source lines and
+matrix; original-DLL restoration awaits the user-normal-exit handoff. Do not activate now.
+
+
+## Corrected Stage A final deployment state and next review
+
+Normal exit and exact original-DLL rollback are verified; client stopped, bridge false,
+diagnostic inactive, all 343 retry DLL/config hashes unchanged. The confirmed visible predicate
+and registry restrictions support this design; direct private internal-validator execution
+remains unverified. Stage B planning must explicitly retain that distinction, confirm actual
+inventory metadata guards and test original effects/regeneration, exclusivity, persistence,
+disablement and multiplayer as separately authorized. No bridge activation or new gameplay
+behavior occurred in Stage A. [[INV-003-Magic-book-tome-compatibility]] owns the final report,
+rollback receipt and source-line evidence. The corrected diagnostic source remains for review.

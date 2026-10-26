@@ -9,7 +9,7 @@ internal static class TomeDiagnosticHarness
     {
         return new DiagnosticObservation { HasPlayer = true, PlayerReady = true, WorldReady = true,
             InventoryReady = true, DescriptorsReady = true, PrefabsReady = true,
-            Character = "PoVPlus_Test", World = "POVPlus_Lab" };
+            Character = "PoVPlus_Test", World = "PoVPlus_Lab" };
     }
     private static void Check(bool condition, string reason) { if (!condition) throw new Exception(reason); }
     private static void Test(string name, Action test) { test(); _passed++; Console.WriteLine("PASS " + name); }
@@ -21,12 +21,31 @@ internal static class TomeDiagnosticHarness
                 int count = 0; var session = new DiagnosticSession(_ => { });
                 session.Tick(0, Ready(), () => count++); session.Tick(1, Ready(), () => count++);
                 Check(count == 1 && session.Captured, "Single snapshot invariant"); });
+            Test("authorized character and corrected world are exact and accepted", () => {
+                Check(DiagnosticSession.ExpectedCharacter == "PoVPlus_Test" &&
+                    DiagnosticSession.ExpectedWorld == "PoVPlus_Lab", "Authorized literals");
+                Check(DiagnosticSession.Authorized(Ready()), "Authorized identity"); });
+            Test("previous uppercase world is rejected with case-only evidence before snapshot", () => {
+                var rows = new List<string>(); var session = new DiagnosticSession(rows.Add); var o = Ready();
+                o.World = "POVPlus_Lab"; int snapshots = 0;
+                session.Tick(0, o, () => snapshots++);
+                Check(!DiagnosticSession.Authorized(o) && session.Finished && !session.Captured && snapshots == 0, "No alias/snapshot");
+                Check(rows.Exists(s => s.Contains("worldExact=False") && s.Contains("worldCaseOnly=True")) &&
+                    rows.Exists(s => s.StartsWith("ABORT IdentityMismatch")), "Case-only rejection logged"); });
+            Test("unavailable character or world never authorizes a snapshot", () => {
+                foreach (string absent in new[] { null, "", "..." })
+                    foreach (bool character in new[] { true, false }) {
+                        var session = new DiagnosticSession(_ => { }, 10); var o = Ready(); int snapshots = 0;
+                        if (character) o.Character = absent; else o.World = absent;
+                        session.Tick(0, o, () => snapshots++); session.Tick(10, o, () => snapshots++);
+                        Check(session.Finished && !session.Captured && snapshots == 0, "Unavailable identity fails closed");
+                    } });
             foreach (var label in new[] { "character", "world", "case", "whitespace" })
                 Test("reject " + label, () => {
                     var rows = new List<string>(); var o = Ready();
                     if (label == "character") o.Character = "other";
                     if (label == "world") o.World = "other";
-                    if (label == "case") o.World = "PoVPlus_Lab";
+                    if (label == "case") o.World = "POVPlus_Lab";
                     if (label == "whitespace") o.Character += " ";
                     var session = new DiagnosticSession(rows.Add);
                     session.Tick(0, o, () => { throw new Exception("Unauthorized callback"); });

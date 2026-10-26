@@ -39,10 +39,12 @@ Open Knowledge/ as an Obsidian vault, or navigate/search in an editor. No Obsidi
 
 ## Current state
 
-Next milestone: **INV-003 Stage A - Controlled Baseline Runtime Verification**, with the bridge
-disabled. [[DEV-005-Tome-diagnostics]] defines the read-only baseline and original-DLL restoration;
-Stage B bridge activation/gameplay testing requires separate later authorization. Neither stage
-is part of the repository checkpoint.
+Corrected Stage A baseline evidence and original-DLL restoration are complete. Next milestone:
+review a separately authorized Stage B plan using [[COMP-002-Tome-bridge-design]], including the
+remaining direct internal-validator and gameplay/effect/persistence gaps. The bridge remains
+disabled; no Stage B activation is authorized by this cleanup.
+
+Historical offline/failed-run checkpoints (superseded by the corrected Stage A evidence below):
 
 The offline INV-003 follow-up repaired the opt-in guard/collector and added fixture/contract
 tests; [[DEV-005-Tome-diagnostics]] owns reproducible commands. Ordinary builds exclude the
@@ -88,3 +90,19 @@ and `git remote -v` on 2026-10-24). Earlier no-Git observations describe the boo
 
 After meaningful work, update canonical evidence, tests/outcomes and links; add a concise session
 entry when useful and validate. Root AGENTS integration is approved and applied; future relevant sessions must follow this workflow.
+
+
+Stage A follow-up: session 2026-10-25_18-25-08 logged an exact world-label case mismatch
+(POVPlus_Lab expected, PoVPlus_Lab observed) and aborted before a snapshot. Character matched;
+no rendered ownership or item acceptance is verified. User normal exit and exact original-DLL
+rollback are now verified; client stopped, diagnostic absent and bridge false. All 342 baseline
+DLL/config hashes match. See [[INV-003-Magic-book-tome-compatibility]]; Stage B remains deferred.
+
+
+Corrected Stage A retry (2026-10-25_18-38-00): exact identities passed and one snapshot completed.
+Visible active Tome binding AzuEPI.emulated/$tome_DO and MS callback are confirmed. Three BMP
+books fail descriptor/visible acceptance; native control passes; live registry agrees. Private
+internal validator was not called. User normal exit and exact original-DLL rollback are verified;
+client stopped, bridge Off, diagnostic absent and all 343 baseline DLL/config hashes match. See
+[[INV-003-Magic-book-tome-compatibility]] for distinctions and [[COMP-002-Tome-bridge-design]]
+for Stage B limits; no gameplay compatibility is claimed.

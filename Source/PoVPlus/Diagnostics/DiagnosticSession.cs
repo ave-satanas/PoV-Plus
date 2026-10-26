@@ -13,7 +13,7 @@ namespace PoVPlus.Diagnostics
     internal sealed class DiagnosticSession
     {
         internal const string ExpectedCharacter = "PoVPlus_Test";
-        internal const string ExpectedWorld = "POVPlus_Lab";
+        internal const string ExpectedWorld = "PoVPlus_Lab";
         private readonly Action<string> _log;
         private readonly double _timeout;
         private double? _started;
