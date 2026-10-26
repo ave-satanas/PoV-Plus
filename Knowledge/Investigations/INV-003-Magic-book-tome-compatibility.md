@@ -25,7 +25,15 @@ installed. A repaired, opt-in observational probe and offline tests are now prep
 not been deployed or run in Valheim. Ordinary builds exclude all diagnostic types. The earlier
 cleanup/source-restoration account below describes that historical checkpoint.
 
-## Paused checkpoint and next-session work
+A subsequent explicitly authorized offline task has now implemented the initial acceptance
+bridge in source, default disabled. It has not been deployed or runtime-tested. See the final
+implementation section and [[COMP-002-Tome-bridge-design]]; all earlier no-bridge statements
+describe their historical checkpoints.
+
+## Historical paused checkpoint and next-session work
+
+This section describes the earlier 9f6261f checkpoint. Later offline source implementation and
+the current Stage A/B plan are recorded below; its old outstanding list is historical.
 
 The current design preference is **Magic Supremacy as the authoritative Tome equipment system**.
 No bridge exists and the visible slot has not been runtime-confirmed. Read the final cleanup
@@ -947,3 +955,74 @@ disposable-character/world test; capture actual rendered ownership and positive/
 acceptance; then review the bridge design before implementation. Independently review the two
 historical third-party configuration changes. Keep the Epic Loot shardstone error separate;
 causation is still unestablished. Do not begin these tasks as part of offline preparation.
+
+
+## Initial default-off acceptance bridge source implementation - 2026-10-25
+
+Baseline was clean main at b461543609c2591922307dba6c5ebfb37bf13949. The user explicitly
+approved offline implementation without renewed runtime testing. Installed ordinary PoVPlus
+DLL matches the completed rollback receipt and original SHA-256
+351E948AFC75D8B5BFBEF67F2F1FBABB5A8A645AA7A5D51E9E804F7D501DF548.
+No deployment, game launch/termination, configuration change, save access, commit or push
+was performed. Available rollback receipts were inspected only. A targeted 342-file DLL/cfg
+baseline was captured; final comparison is in the local bridge verification report.
+
+This is missing-integration work, not proof of an upstream technical defect. The chosen design
+retains MS's authoritative slot and lifecycle. Source/PoVPlus/Compatibility contains the policy,
+inactive-until-complete installation transaction and reflection-based adapter. Plugin.Awake
+binds Compatibility.MagicSupremacy / EnableMagicPluginTomeBridge, default false, startup-only.
+Five soft dependency declarations ensure ordering when dependencies exist. Disabled startup
+installs no patches and performs no dependency inspection; the existing startup LogInfo remains.
+This adds own-config binding/load ordering, so it is not byte-identical to the historical plugin.
+
+Installed metadata reverified the two exact private static bool targets: IsTomeItem(ItemData)
+on Magic_SupremacyPlugin (0x06000501), and IsItemValidForSlot(ItemData,string) on CustomSlotSystem
+(0x0600044c). The second is restricted to slotId "tome". Both preserve original true results.
+Postfixes extend only the three approved prefab IDs, canonical ObjectDB/shared-data references,
+original equip-SE names and an existing upstream registry containing the native control. No
+numeric ItemType is rewritten. No slot, registry, item, effect, config or save mutation is added.
+Seven assembly pins and exact signature checks fail closed. Both patches remain inactive until
+installed and verified; owner-only cleanup is attempted on failure and residual callbacks remain
+passive. Existing target patch owners are refused pending review. Errors and runtime candidate
+read failures are logged, not silently suppressed. The MP native slot must stay Off.
+
+The adapter logs each observed successful extension once per prefab/gate (at most six lines).
+These are predicate observations, not equip/effect success. The diagnostic deliberately skips
+patched predicate execution, even for PoVPlus-owned patches. First establish bridge-Off runtime
+descriptor/identity/control evidence; use separately approved bridge-On observations and the
+bounded gate logs, or a reviewed observer, without weakening the diagnostic purity checks.
+
+No maximum-Eitr, regeneration, SE, lifecycle, serialization or multiplayer formula/hooks were
+added. Existing MP status effects and MS lifecycle are reused. MP classifier-based regeneration
+with its native setting Off remains a known static limitation pending measurement. Strict
+canonical/SE checks may exclude upstream customized items; investigate rather than loosening
+rules automatically. Startup Harmony-owner checks cannot establish final later patch order.
+A fail-closed disable can invalidate a currently equipped item's later upstream restore check;
+this is a persisted-state risk, not a promise of seamless recovery. Manually unequip under a
+separately approved test before removal, disablement or rollback. Do not hot-toggle or edit saves.
+
+Offline verification now includes 22 bridge fixture cases exercising the production adapter
+against test doubles, 25 installed metadata contracts, the existing 15 diagnostic policy cases,
+24 Python tests and 14 workflow fixtures. Builds and artifact safety/exclusion checks are
+recorded separately; mocks do not execute real Harmony detours or prove game correctness.
+[[COMP-002-Tome-bridge-design]] owns implementation details, conservative dependency limits,
+original effect mappings, failure semantics and the supervised regression plan. [[DEV-005-Tome-diagnostics]]
+owns temporary instrumentation and manual identity/session constraints.
+
+Remaining supervised work: verify repaired guard and rendered slot with bridge Off; then review
+an explicitly authorized bridge-On test of native and BMP items, both gates, equipment swaps,
+maximum Eitr, regeneration exactly once, Belt/Tome exclusivity and inventory capacity, save/load
+and appropriate multiplayer peers. Exit normally and restore the recorded original DLL only
+when stopped. Preserve the independent two-config-drift investigation and separate Epic Loot
+shardstone error; no causal link was established. No supervised step was executed here.
+
+
+## Next checkpoint milestone: Stage A, bridge disabled
+
+**INV-003 Stage A - Controlled Baseline Runtime Verification** is the next supervised task.
+Use the repaired diagnostic, keep the bridge Off, verify identity and rendered ownership, compare
+all three BMP books with a native Tome, evaluate both gates using strictly read-only evidence,
+then exit normally and restore the original DLL. [[DEV-005-Tome-diagnostics]] records the precise
+observation limits and handoffs. Stage B requires separate later approval to enable/test the
+bridge. Neither stage was started by the review/commit task. Existing disabling/removal while
+equipped warnings and independent configuration/shardstone investigations remain open.

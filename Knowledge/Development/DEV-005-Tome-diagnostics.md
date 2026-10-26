@@ -23,7 +23,9 @@ This is observation tooling, not an equipment bridge. Diagnostic sources are rem
 compilation by the csproj. EnableTomeDiagnostic=true explicitly includes them and defines
 POVPLUS_TOME_DIAGNOSTIC; Plugin's observation entry point is compiled only then. No installed
 configuration is created to enable it. Never deploy an opt-in artifact without specific approval.
-The ordinary startup log and absence of gameplay patches remain the production baseline.
+The startup log is retained. The later ordinary-build bridge is controlled separately by a
+default-false startup configuration option: [[COMP-002-Tome-bridge-design]]. With that option Off
+no bridge patches are applied; temporary diagnostic types remain absent from ordinary builds.
 
 The local baseline is main at 9f6261f before this offline repair. The installed ordinary DLL remains
 the exact restored binary recorded in INV-003. Builds here write only repository ignored outputs;
@@ -113,7 +115,30 @@ does not prove equipment gameplay. Redaction is bounded/basic; review excerpts b
 For installation-integrity auditing use separately planned stopped-process targeted fingerprints;
 this focused collector deliberately does not claim whole-installation coverage.
 
-## Next supervised session â€” planning only
+## INV-003 Stage A - Controlled Baseline Runtime Verification
+
+This is the next development milestone, requiring separate runtime authorization. Keep
+EnableMagicPluginTomeBridge false throughout Stage A; do not apply bridge patches. Use the
+repaired opt-in Tome diagnostic and the standard deployment/launch/rollback workflow.
+
+1. Verify the exact PoVPlus_Test / POVPlus_Lab identity guard after manual user selection.
+2. Confirm the actual active rendered Tome descriptor and equipment authority.
+3. Compare BMP_BeginnersMagicBook, BMP_AdvanceMagicBook and BMP_DruidsTome against the native
+   ArmorMushroomcallerTome_DO control, including classifications and descriptor acceptance.
+4. Evaluate the internal MS acceptance gate through audited read-only evidence. The current
+   probe records registry membership rather than invoking its potentially initializing helper;
+   distinguish that evidence from a directly executed predicate and leave gaps unverified.
+5. Collect session-specific read-only evidence; do not infer effects/equipping from predicates.
+6. Ask for normal manual exit, verify stopped, restore the recorded original DLL through the
+   standardized rollback workflow and verify its original hash. No save edits or automated inputs.
+
+**Stage B is a separate later authorization** to enable and test the bridge, including both
+acceptance gates, native regression controls, effects, exclusivity, persistence and multiplayer
+where appropriate. Neither stage is authorized or executed by this repository checkpoint task.
+Disabling/removing the bridge while a MagicPlugin book is equipped can invalidate upstream
+bindings/equipment state; retain the manual-unequip and normal-exit precautions for Stage B.
+
+## Earlier supervised plan details (subject to Stage A/B boundary)
 
 1. Review guard tests and expected spellings. If displayed names differ, obtain an explicit
    authorization correction before changing the allowlist; do not guess casing from save paths.

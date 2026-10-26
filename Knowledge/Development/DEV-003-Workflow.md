@@ -125,6 +125,8 @@ See [[DIAG-001-Logging]] and [[INV-001-Startup-message]]. Reports may describe a
 .\Scripts\tests\Test-TomeDiagnostic.ps1
 .\Scripts\tests\Test-TomeOffline.ps1
 .\Scripts\tests\Test-TomeContracts.ps1
+.\Scripts\tests\Test-TomeBridge.ps1
+.\Scripts\tests\Test-TomeBridgeArtifact.ps1
 python -B -m unittest discover -s Scripts/tests -v
 python -B Scripts/knowledge.py validate --strict
 ```
@@ -153,3 +155,8 @@ The later offline repair adds reproducible guard/harness tests, installed contra
 focused collector: [[DEV-005-Tome-diagnostics]]. Those commands do not launch or deploy. The old
 recursive one-off installation collector is retained as local history, not the runtime evidence
 collection path; inaccessible optional evidence is recorded without touching cache permissions.
+
+
+The later default-off bridge is source-only and covered by the bridge fixture/artifact checks.
+[[COMP-002-Tome-bridge-design]] records startup-only configuration, no hot disablement, and
+manual unequip/exit requirements before an authorized rollback. No real deployment is implied.

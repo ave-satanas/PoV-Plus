@@ -17,6 +17,12 @@ supersedes: []
 
 # Missing PoVPlus startup message
 
+Later source applicability review, 2026-10-25: the initial default-off bridge now binds its own
+startup setting and declares soft dependencies, retaining the same startup LogInfo. With the
+setting Off it applies no Harmony patches. This is a source/build review, not renewed runtime
+startup verification; the historical filtering evidence below is unchanged. See
+[[COMP-002-Tome-bridge-design]] for the separate feature and its offline tests.
+
 Source applicability review, 2026-10-25: the offline INV-003 repair adds an opt-in diagnostic
 entry point, excluded from ordinary builds. The ordinary Awake startup LogInfo call is retained;
 build/exclusion tests passed. This does not rerun or change the historical runtime/filtering

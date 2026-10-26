@@ -66,7 +66,7 @@ The default reference installation is `S:\Valheim-Modding\PoVPlus-Dev`, assessed
 with BepInEx 5.4.23.5 and HarmonyX (`0Harmony.dll` assembly version 2.9.0.0).
 References also include `assembly_valheim.dll`, `UnityEngine.dll`, and
 `UnityEngine.CoreModule.dll`. HarmonyX and the game reference are available for
-future work; this startup plugin does not call them. No third-party DLLs are
+the experimental default-off Tome acceptance bridge; no patches are applied with its setting Off. No third-party DLLs are
 vendored or copied into build output, and no NuGet packages are required.
 
 ## Build
@@ -142,3 +142,17 @@ check validate this scaffold; startup behavior requires the approved runtime
 smoke test. Existing compatibility configurations and third-party mods must
 remain intact. Verify actual API signatures and licenses before future patches
 or distribution.
+
+
+## Experimental Tome acceptance bridge
+
+The initial MagicPlugin to Magic Supremacy integration is included in ordinary source builds,
+but `[Compatibility.MagicSupremacy] EnableMagicPluginTomeBridge` defaults to `false` and is read
+only at startup. When Off it installs no Harmony patches. Do not enable/deploy it without a
+separately approved supervised test. No installed configuration was changed during development.
+
+It narrowly extends both MS acceptance gates for three approved BMP books and retains MS's
+single equipment system. Effects, regeneration, persistence and multiplayer behavior are not
+runtime-verified. Unequip books before removing/disabling it; hot toggles are unsupported.
+See [the implementation/design record](Knowledge/Compatibility/COMP-002-Tome-bridge-design.md).
+Offline checks include `Scripts/tests/Test-TomeBridge.ps1` and `Test-TomeBridgeArtifact.ps1`.

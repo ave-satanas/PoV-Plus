@@ -42,6 +42,13 @@ try {
     Assert-Contract ($strings.Count -eq 7 -and $strings -contains 'ArmorMushroomcallerTome_DO' -and -not ($strings -match '^BMP_')) 'MS descriptor whitelist has seven native prefabs, no BMP books'
     $valid=Get-Method ms 'Magic_Supremacy.CustomSlotSystem' 'IsItemValidForSlot'
     Assert-Contract ($valid.IsPrivate -and (IL $valid).Contains('Contains')) 'MS lifecycle has a separate private registry gate'
+    $descriptor=Get-Method ms 'Magic_Supremacy.Magic_SupremacyPlugin' 'IsTomeItem'
+    Assert-Contract ($descriptor.IsPrivate -and $descriptor.IsStatic -and $descriptor.ReturnType.FullName -eq 'System.Boolean' -and
+        $descriptor.Parameters.Count -eq 1 -and $descriptor.Parameters[0].ParameterType.FullName -eq 'ItemDrop/ItemData') 'Bridge descriptor exact private static bool signature'
+    Assert-Contract ($valid.IsStatic -and $valid.ReturnType.FullName -eq 'System.Boolean' -and $valid.Parameters.Count -eq 2 -and
+        $valid.Parameters[0].ParameterType.FullName -eq 'ItemDrop/ItemData' -and $valid.Parameters[1].ParameterType.FullName -eq 'System.String') 'Bridge internal gate exact private static bool signature'
+    Assert-Contract ((IL $valid).Contains('m_dropPrefab') -and (IL $valid).Contains('IsNullOrWhiteSpace') -and (IL $valid).Contains('GetSharedSlotRegistry')) 'Bridge preserves internal null/prefab and slot validity boundaries'
+    Assert-Contract ($food.Contains('bmp_advance_magicbook') -and $food.Contains('bmp_beginners_magicbook') -and $food.Contains('bmp_druidstome')) 'Bridge original three book effect identifiers remain present'
     Assert-Contract ((IL (Get-Method ms 'Magic_Supremacy.CustomSlotSystem' 'GetMatchingSlotDefinition')).Contains('::IsValid')) 'MS matching invokes definition predicate'
     $equip=IL (Get-Method ms 'Magic_Supremacy.CustomSlotSystem' 'EquipSlotInternal')
     Assert-Contract ($equip.Contains('ApplyStatusEffect') -and $equip.Contains('SetSavedEquippedGuid') -and $equip.Contains('UnequipSlotInternal')) 'MS lifecycle owns prior removal, effect application and saved GUID'

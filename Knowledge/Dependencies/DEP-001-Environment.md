@@ -54,3 +54,10 @@ Add only needed Unity modules; do not indiscriminately reference game framework 
 references. Different version numbers across those layers do not automatically indicate defects.
 Harmony attributes are declarations, not the active runtime patch registry/order.
 See [[DEV-002-Maintenance]] for snapshot drift and revalidation.
+
+
+Bridge source review, 2026-10-25: installed contracts and pins were rechecked read-only for the
+initial default-off adapter. Only tested repository source fingerprints are updated for the new
+startup binding/soft dependencies and adapter/policy. No installed assembly/configuration or
+package baseline is refreshed. [[COMP-002-Tome-bridge-design]] distinguishes implementation
+from unverified gameplay behavior; the original installed DLL is unchanged.

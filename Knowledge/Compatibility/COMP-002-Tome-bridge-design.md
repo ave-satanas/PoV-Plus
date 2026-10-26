@@ -1,25 +1,25 @@
 ---
 id: "COMP-002-Tome-bridge-design"
-title: "Proposed MagicPlugin to Magic Supremacy Tome adapter"
+title: "Experimental MagicPlugin to Magic Supremacy Tome adapter"
 type: "compatibility"
-status: "proposed"
+status: "partial"
 created: "2026-10-25"
 last_verified: "2026-10-25"
 versions: {"MagicPlugin": "2.2.2", "Magic Supremacy": "3.1.5", "PoV": "5.3.2", "SeneaL API": "1.2.0", "SeneaL UI": "1.2.7", "Valheim": "1.0.20"}
 evidence: ["[[INV-003-Magic-book-tome-compatibility]]", "Scripts/tests/Test-TomeContracts.ps1: installed metadata contract checks", "Magic_Supremacy.CustomSlotSystem methods 0x0600044c,456,467,46a-472,47a-481", "MagicPlugin.Patches.PlayerPatch methods 0x0600007f,82,85"]
 related: ["[[INV-003-Magic-book-tome-compatibility]]", "[[DEV-005-Tome-diagnostics]]", "[[MOD-blacks7ar-magicplugin]]", "[[MOD-dreanegade-magic-supremacy]]", "[[MOD-seneal-seneal-api]]", "[[MOD-seneal-seneal-ui]]", "[[MOD-treextr-pathofvalheiman]]", "[[DEV-004-Intervention-framework]]"]
 confidence: "mixed"
-watch: ["dll:BepInEx/plugins/blacks7ar-MagicPlugin/MagicPlugin.dll", "dll:BepInEx/plugins/Dreanegade-Magic_Supremacy/Magic_Supremacy.dll", "dll:BepInEx/plugins/seneaL-SeneaL_API/SeneaL-API/SeneaL-API.dll", "dll:BepInEx/plugins/seneaL-SeneaL_UI/SeneaL-UI/SeneaL-UI.dll", "dll:BepInEx/plugins/treextr-PathOfValheiman/PathOfValheiman/PathOfValheiman.dll"]
+watch: ["dll:BepInEx/plugins/blacks7ar-MagicPlugin/MagicPlugin.dll", "dll:BepInEx/plugins/Dreanegade-Magic_Supremacy/Magic_Supremacy.dll", "dll:BepInEx/plugins/seneaL-SeneaL_API/SeneaL-API/SeneaL-API.dll", "dll:BepInEx/plugins/seneaL-SeneaL_UI/SeneaL-UI/SeneaL-UI.dll", "dll:BepInEx/plugins/treextr-PathOfValheiman/PathOfValheiman/PathOfValheiman.dll", "src:Source/PoVPlus/Plugin.cs", "src:Source/PoVPlus/Compatibility/TomeBridgePolicy.cs", "src:Source/PoVPlus/Compatibility/MagicPluginTomeBridge.cs"]
 claims: {}
 contradicts: []
 supersedes: []
 ---
 
-# Proposed MagicPlugin to Magic Supremacy Tome adapter
+# Experimental MagicPlugin to Magic Supremacy Tome adapter
 
 ## Scope and evidence boundary
 
-**Design only. No gameplay bridge is implemented.** The user prefers Magic Supremacy (MS)
+**Initial acceptance bridge implemented offline, disabled by default; never deployed or runtime-tested.** The user prefers Magic Supremacy (MS)
 as the sole authoritative Tome equipment system. Retain its existing slot, lifecycle and save
 format. MagicPlugin (MP) remains the provider of book prefabs and original magical effects.
 The apparent displayed descriptor is `AzuEPI.emulated/$tome_DO`, rendered by SeneaL UI;
@@ -30,6 +30,89 @@ Classify the desired change as integration/customization, not a demonstrated ups
 Do not enable MP's native Tome slot, add a second descriptor, alter progression recipes or
 change third-party configuration. Restrict the candidate family to BMP_BeginnersMagicBook,
 BMP_AdvanceMagicBook and BMP_DruidsTome. Earrings, belts, weapons and materials remain excluded.
+
+## Implemented offline acceptance bridge - 2026-10-25
+
+The current user instruction explicitly authorizes offline implementation before renewed runtime
+confirmation. Source is experimental and inactive unless the PoVPlus-owned BepInEx setting
+`[Compatibility.MagicSupremacy] EnableMagicPluginTomeBridge = true` is present at startup.
+Default is false. No installed configuration was created/edited; a future plugin launch may bind
+this setting in its own povplus.core.cfg. The setting is startup-only, not a live toggle.
+
+Source: Source/PoVPlus/Compatibility/TomeBridgePolicy.cs and MagicPluginTomeBridge.cs.
+Plugin.Awake retains its startup log, binds the Boolean default false and starts the adapter.
+Five soft dependencies order MP, MS, SeneaL API/UI and PoV before PoVPlus when present without
+hard assembly references. When disabled there is no Harmony construction, dependency inspection,
+acceptance/effect change or slot registration. Soft load-order declarations and config binding
+are startup changes even with the gameplay feature Off.
+
+When enabled, seven exact SHA-256 pins (five mods, game and HarmonyX) require the inspected
+versions in DEV-005. Both target methods must be private static Boolean methods with bodies:
+
+- Magic_Supremacy.Magic_SupremacyPlugin.IsTomeItem(ItemDrop.ItemData), token 0x06000501.
+- Magic_Supremacy.CustomSlotSystem.IsItemValidForSlot(ItemDrop.ItemData, string), 0x0600044c.
+
+Postfix argument bindings use __0 and __1, not guessed parameter names. The internal postfix
+requires slotId exactly `tome`. Both preserve every original true result. For an original false,
+the extension requires an exact allowlisted ID, nonnull ItemData/shared data, the actual canonical
+ObjectDB prefab reference, the canonical shared-data reference, and the original per-book SE name:
+
+| Prefab | Required original equip status effect |
+|---|---|
+| BMP_BeginnersMagicBook | bmp_beginners_magicbook |
+| BMP_AdvanceMagicBook | bmp_advance_magicbook |
+| BMP_DruidsTome | bmp_druidstome |
+
+It also requires MS's existing shared `tome` registry containing native control
+ArmorMushroomcallerTome_DO and MP's native Tome setting Off. The registry is read only through
+AppDomain.GetData; no getter that initializes it, slot creation or registry mutation is used.
+The canonical/shared/SE guards may intentionally reject valid customized instances if an upstream
+mod clones/replaces that data; record the failed condition in future investigation rather than
+broadening eligibility blindly. Numeric ItemType is not rewritten or invented as a new rule;
+actual effective types and any upstream lifecycle assumptions still need runtime confirmation.
+
+Both targets and all dependencies are validated before patching. Existing Harmony owners on
+either target are refused for review. Dedicated owner is povplus.core.magicplugin-tomes. The
+activation flag stays false during both installs and patch verification; only a complete pair
+activates. Failure logs a warning, attempts owner-only cleanup of both targets, and leaves any
+residual postfixes passive even if unpatch fails. Native results continue unchanged. A candidate
+runtime read failure or MP native-slot activation disables both extensions until restart and
+logs a warning. This safety failure may affect later upstream validation of already equipped
+books, so it is not a guarantee of seamless in-game recovery. No live reconfiguration is supported.
+Other mods may patch later; startup owner checks are not proof of final Harmony order.
+
+At most six first-extension Info lines (two gates x three books) identify observed predicate
+extensions without per-frame spam. They are not evidence of successful equipping or effects.
+Per-plugin logging filters can hide them; use the session-specific diagnostic sources.
+
+No equipment/lifecycle/effects, regeneration formula, SE application, item serialization, type
+mutation, multiplayer messages or second registry are implemented. MS owns all of those. MP's
+maximum-Eitr status path is retained; its disabled-classifier regeneration limitation remains
+pending. The acceptance bridge is not a complete gameplay solution until tests below pass.
+
+## Offline verification and next supervised test
+
+Run Scripts/tests/Test-TomeBridge.ps1 (production adapter/policy compiled against explicit test
+doubles, no game assemblies executed), Test-TomeBridgeArtifact.ps1 (compiled ordinary artifact),
+Test-TomeContracts.ps1 (installed read-only metadata), plus the existing diagnostic, workflow,
+Python and strict knowledge checks. These do not execute real Harmony patching in the game.
+Mocks cover the installation transaction and error paths, not the actual native detour engine.
+
+The next task is **INV-003 Stage A - Controlled Baseline Runtime Verification**, with the
+bridge disabled throughout; [[DEV-005-Tome-diagnostics]] owns the plan. Stage A must verify the repaired identity guard and actual
+active Tome descriptor using DEV-005, plus native control and BMP metadata. The diagnostic
+conservatively skips methods with active Harmony owners, including this bridge; do not weaken
+that guard or treat a skipped callback as false. A separately approved bridge-On trial can use
+bounded bridge gate logs from real UI/lifecycle calls plus a reviewed observer if more predicate
+evidence is needed. No automatic gameplay inputs are authorized by this plan.
+
+Only in separately authorized **Stage B**, manually test native MS Tomes and all three books, swaps/unequip, max-Eitr and regeneration
+exactly once, Belt/Tome exclusivity, full inventory, logout/reload and multiplayer peers if approved.
+Read-only lifecycle evidence must be distinguished from actual persistence/effect tests. Before
+turning Off/removing/updating the feature, manually unequip eligible books under the approved test
+scope and exit normally; do not rely on hot-disable/unpatch to preserve bindings. After stopped
+process verification, restore the original DLL using the exact recorded workflow receipt and
+verify its hash. Do not edit saves or guess a migration. Nothing in this plan was executed here.
 
 ## Verified installed contracts
 
@@ -58,7 +141,7 @@ methods found no suitable extension. Embedded Azu AddSlot is slot creation, not 
 API. Public setters are not automatically supported lifecycle APIs. An upstream supported hook
 would be preferable if the author provides one later; none is assumed to exist now.
 
-## Smallest candidate implementation after runtime confirmation
+## Historical candidate design at b461543 (before offline implementation)
 
 1. One centralized family policy: exact prefab IDs from the verified three-item set, dependency
    availability, original shared metadata/equip SE, and confirmed supported item classification.
@@ -77,7 +160,7 @@ would be preferable if the author provides one later; none is assumed to exist n
    force MP.IsTomeItem true: that also enables MP's own Azu-gated equipment path and risks a
    second owner. Maximum Eitr stays in MP's original status-based mechanism.
 5. Use a new PoVPlus-owned feature flag, default disabled, with dependency/signature/version guards
-   and clear logging. This flag does not exist yet. Keep foreign assemblies behind soft dependency
+   and clear logging. That flag did not exist at the design checkpoint; it now exists as described below. Keep foreign assemblies behind soft dependency
    boundaries and validate targets before installing any hooks. Fail closed on unknown versions;
    do not broaden the allowlist to compensate for API drift.
 
@@ -111,11 +194,12 @@ using original SE objects is necessary but not proof of correct effective result
 | UI-only extension / public SetEquippedItem call | Inconsistent eligibility and bypassed effects/persistence; reject as incomplete |
 | Replace MS equipment system | Permitted by philosophy but adds avoidable migration/network responsibility without present evidence of need |
 
-## Required gates before implementation approval
+## Required gates before runtime approval and further effects work
 
 Use [[DEV-005-Tome-diagnostics]] for the next supervised observation. Confirm the bound cell,
 both predicate layers, actual item types/components and absence of duplicate seats first.
-Then obtain separate implementation/gameplay-test authorization for: equip/unequip and swaps,
+Source implementation was authorized in the subsequent offline task. Obtain separate
+runtime/gameplay-test authorization for: equip/unequip and swaps,
 max Eitr and regen exactly once, upstream effect overrides, full bag/belt duplication, death/grave
 recovery, logout/reload, feature removal, dependency drift and multiplayer visuals. A predicate
 passing or an offline contract test is not evidence that any of these gameplay behaviors passed.

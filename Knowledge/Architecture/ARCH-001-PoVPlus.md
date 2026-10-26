@@ -19,20 +19,26 @@ supersedes: []
 
 [[ARCH-002-Project-philosophy]] defines the project identity and priorities;
 [[DEV-004-Intervention-framework]] governs intervention choices. The facts below describe the
-current implementation, whose startup-only behavior is a development baseline rather than a
+initial implementation, whose startup-only behavior was a development baseline rather than a
 limit on future compatibility, integration, customization, or original functionality.
 
 ## Verified boundaries
 
 Source/PoVPlus.sln contains the SDK-style Source/PoVPlus/PoVPlus.csproj library, net48, C# 7.3.
-Plugin.cs declares povplus.core, PoVPlus 0.1.0, derived from BaseUnityPlugin. Awake only logs;
-there are no gameplay patches. [[DEV-001-Build]] owns build details.
+Plugin.cs declares povplus.core, PoVPlus 0.1.0, derived from BaseUnityPlugin. The initial
+Awake only logged; this historical baseline preceded the default-off bridge below. [[DEV-001-Build]] owns build details.
 
 Offline review, 2026-10-25: this statement applies to the ordinary build. An explicit
 EnableTomeDiagnostic=true build now includes a bounded read-only observation module; the csproj
 excludes all Diagnostics sources by default. Default artifact exclusion and the opt-in compile
 were verified offline; no deployment/runtime behavior is inferred. [[DEV-005-Tome-diagnostics]]
-owns the guard, collector, tests and authorization limits; no Tome gameplay bridge exists.
+owns the guard, collector, tests and authorization limits. At that checkpoint no bridge existed.
+
+The later offline source implementation adds a startup-bound default-false acceptance feature
+and five soft dependency declarations. With the feature Off no patches apply. When explicitly
+enabled, it validates and extends only the two MS Tome gates; MS retains all lifecycle ownership.
+No runtime behavior is verified and nothing is deployed. [[COMP-002-Tome-bridge-design]] owns the
+configuration, guards, tests and limitations. Ordinary builds still exclude diagnostic tooling.
 
 References come from S:\Valheim-Modding\PoVPlus-Dev. All five explicit references use Private=false.
 Unity Mono loads components through BepInEx 5. [[DIAG-001-Logging]] owns lifecycle/log behavior.

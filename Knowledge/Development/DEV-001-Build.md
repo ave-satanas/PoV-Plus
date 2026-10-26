@@ -19,11 +19,13 @@ supersedes: []
 
 ## Source and behavior
 
-Source/PoVPlus/Plugin.cs:5-15 declares BepInPlugin/constants and private void Awake with LogInfo.
+Source/PoVPlus/Plugin.cs declares BepInPlugin/constants and private void Awake with LogInfo.
+The later offline bridge adds soft dependencies and a default-false startup config binding;
+[[COMP-002-Tome-bridge-design]] owns its acceptance behavior and runtime limitations.
 PoVPlus.csproj: net48, C# 7.3, no packages. BepInEx, 0Harmony, assembly_valheim, UnityEngine,
 UnityEngine.CoreModule references all Private=false.
 
-2026-10-25 source review: ordinary behavior is unchanged, while an explicit diagnostic-only
+Earlier 2026-10-25 source review: ordinary behavior was unchanged at that checkpoint, while an explicit diagnostic-only
 compile flag can include the repaired observation module. All Diagnostics sources are excluded
 from the normal project compilation. See [[DEV-005-Tome-diagnostics]] for the opt-in output path,
 offline harness and exclusion test. Its compile check does not deploy or launch anything.
