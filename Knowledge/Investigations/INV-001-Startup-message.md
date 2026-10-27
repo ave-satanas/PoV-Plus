@@ -49,3 +49,9 @@ Startup logging is verified in the later run. Filtering explains the earlier omi
 confidence; no code correction is indicated. Actor/change time and isolation of every changed
 variable are unknown, so this is not a fully controlled experiment. If it recurs, compare effective
 policy, exact GUID, hashes and session identity before changing initialization code.
+
+
+C1 source applicability review (2026-10-26): the lifecycle observer is another explicit diagnostic
+compile mode; ordinary builds exclude it and keep the exact startup message and default-Off
+bridge semantics. [[DEV-006-Tome-C1-preflight]] owns activation and limits. No installed snapshot,
+startup/runtime finding or production bridge policy was revised by the offline source change.

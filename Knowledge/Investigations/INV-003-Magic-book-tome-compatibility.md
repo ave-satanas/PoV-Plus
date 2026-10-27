@@ -1483,3 +1483,73 @@ original DLL/config restoration are verified; no equipment/effects/persistence c
 separate C1/C2/C3/C4 approvals, manual preparation, evidence/failure criteria and explicit
 unequip-and-confirm-neutral-persistence before disablement/rollback. It grants no deployment,
 launch, item/save or multiplayer permission. The existing dedicated server remains out of scope.
+
+
+## Offline C1 preflight (no runtime trial)
+
+[[DEV-006-Tome-C1-preflight]] owns the new acquisition/observation evidence and C1 matrix.
+MP Workbench1 recipes and native MagicWeaver4 recipe are corroborated by installed code/config
+and generated DataForge references; progression/availability and actual test possession remain
+unverified. MS GetEquippedItem calls GetOrCreateValue indirectly; SeneaL Claimed writes a cache:
+neither is an unconditional pure observation API. Proposed lifecycle reads must use pre-existing
+state/TryGetValue and audited fields, distinguish missing from empty, correlate all inventories
+and authorities, and require neutral save/reload before rollback. The new static contract suite
+has27 checks; it executes no mod code. C1 runtime instrumentation is designed, not implemented.
+Stage B remains acceptance-only evidence. No launch, deployment, config/save/item/server actions,
+commit or push are authorized/performed by this offline task.
+
+
+## C1 lifecycle observer offline implementation - 2026-10-26
+
+[[DEV-006-Tome-C1-preflight]] now documents the implemented opt-in observer and executable/static
+tests, superseding its earlier design-only status. New lifecycle build flag requires diagnostic
+mode and excludes Stage B mode; ordinary artifacts exclude its code/polling. Bound immutable
+setting, exact identity before every state capture, non-creating weak-table lookup and raw
+existing field reads isolate it from production bridge behavior. Complete PoV/SeneaL owner paths,
+rendered Source item, actual regen rate and neutral certification explicitly remain Unknown.
+The observer is NOT runtime-ready for the full equipment/neutral-state matrix; no C1 gameplay
+or purity is claimed from offline checks. Stage B evidence and original deployment remain intact.
+
+
+## C1 independent audit continuation - 2026-10-26
+
+[[DEV-007-C1-ownership-audit]] independently verifies the interrupted beforefieldinit finding,
+compiled refusal, original GetOrCreateValue/Claimed hazards,28 lifecycle fixtures and30 separate
+neutral checks including a killed unknown-to-empty mutant. It closes the offline audit without
+claiming C1 runtime success. MS ownership/saved-binding and UI binding are unknown because their
+static reads are refused; custom inventories/PoV owners/manifest and persistence evidence are
+incomplete. Equipment-lifecycle testing remains blocked. Stage B acceptance results/history
+remain unchanged. No bridge policy change, deployment, launch, save/config change or Git action.
+
+
+## Independent transition evidence architecture - 2026-10-26
+
+[[ARCH-003-Tome-transition-evidence]] records pinned mutation/restore topology, existing event
+coverage limits, the initial-state problem and falsifiable dual-channel evidence requirements.
+A game-initiated GetRuntimeData return could supply a real per-player instance root without
+an observer-created lookup. This is a conditional separate architecture, not an extension of
+the refused observer or an implemented hook. Recommendation A is a narrowly scoped future
+offline PoC. MS remains authoritative; C1 gameplay and safe rollback remain unproven. No new
+runtime session, save/configuration action, production source change, commit or push occurred.
+
+
+## ARCH-003 minimal offline PoC — 2026-10-26
+
+[[EXP-005-Passive-ownership-proof]] records the pinned actual MS returned-data contract, weak
+simulated capture, restricted field-reader experiment and conservative ledger. Verdict B: the
+reader accepts a derived Dictionary with foreign enumeration; two-pass ABA and caller-attested
+coverage also expose missing proof.36 narrow fixtures and two killed mutants do not establish
+the three propositions together. The experiment stopped without runtime deployment, patches,
+gameplay/source-bridge changes or neutral certification. Stage B success and historical
+restoration evidence remain unchanged; review the specific offline defects before any further
+runtime proposal.
+
+
+## EXP-005 corrected observation boundary — 2026-10-26
+
+[[EXP-005-Passive-ownership-proof]] preserves the original failures and documents the corrected
+reader/ledger: verdict A for limited offline observations, not full transition provenance.
+Derived collections are rejected before dispatch; endpoint equality and caller claims cannot
+prove continuity/coverage/initial state. Independent alias-collision and work-budget regressions
+were also corrected. Neutral/rollback and C1 gameplay remain blocked/unknown. No production
+bridge, original installed files, third-party configuration or saved-game state was changed.

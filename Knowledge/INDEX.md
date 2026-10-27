@@ -32,7 +32,7 @@ Open Knowledge/ as an Obsidian vault, or navigate/search in an editor. No Obsidi
 | Startup and missing messages | [[DIAG-001-Logging]], [[INV-001-Startup-message]], [[EXP-001-Logging-override]] |
 | Warnings and patch triage | [[COMP-001-Warnings]], [[INV-002-Compatibility-triage]] |
 | Magic books, Tome acceptance and equipment ownership | [[INV-003-Magic-book-tome-compatibility]] |
-| Proposed supervised Tome equipment lifecycle test | [[EXP-004-Tome-equipment-lifecycle-plan]] |
+| Proposed supervised Tome equipment lifecycle test | [[EXP-004-Tome-equipment-lifecycle-plan]], [[DEV-006-Tome-C1-preflight]] |
 | Repaired offline diagnostics and experimental single-owner bridge | [[DEV-005-Tome-diagnostics]], [[COMP-002-Tome-bridge-design]] |
 | Evidence and external research | [[EVID-001-Local-observations]], [[REF-001-External-docs]] |
 | Record schema and maintenance | [[KB-001-System]], [[DEV-002-Maintenance]] |
@@ -155,3 +155,65 @@ equipment behavior/effects/exclusivity/persistence/multiplayer remain unverified
 source/tests/docs remain uncommitted. Next: review checkpoint and separately authorize a scoped
 equipment-lifecycle plan; no further runtime work is implied. Restoration hashes/receipt:
 .dev-state/stage-b-retry/restoration-comparison.json.
+
+
+C1 offline preparation: [[DEV-006-Tome-C1-preflight]] contains recipe/progression evidence,
+read-only observer design, full matrix and mandatory neutral-reload cleanup. Static contracts
+are executable; a runtime lifecycle observer is not yet implemented. No C1 testing authorized.
+
+
+C1 observer now implemented offline: [[DEV-006-Tome-C1-preflight]] records safe existing-state
+reads, explicit unknowns, bounded deterministic evidence and new fixture/artifact audits.
+Whole-owner/exclusivity/neutral-state coverage remains incomplete; full C1 runtime readiness
+is not established. Ordinary bridge/default-Off behavior and installed original files are unchanged.
+
+
+C1 independent audit completed offline: [[DEV-007-C1-ownership-audit]] owns the reproducible
+ownership/purity ledger and classification B (equipment/neutral-state test blocked). Both
+unproven foreign-static reads are refused; MS ownership/saved binding and UI binding remain
+Unknown in the current observer. Green fixtures/builds do not establish runtime purity. The
+original installation remains intact; no runtime session or Git checkpoint was performed.
+
+
+C1 feasibility closure: [[DEV-007-C1-ownership-audit]] now distinguishes conditional existing
+UI/grid aliases from still-inaccessible authoritative ownership. Complete neutral certification
+is not demonstrably feasible with the current architecture. Recommendation C: stop observer
+development and investigate independent passive verification; no code/runtime work is implied.
+
+
+Alternative Tome evidence design: [[ARCH-003-Tome-transition-evidence]] traces actual MS
+mutation/restore boundaries and proposes a separately reviewed offline PoC of game-returned
+root provenance plus direct-state corroboration. Recommendation A concerns that future PoC
+only; the old observer remains closed and C1 equipment/neutral certification remains blocked.
+
+
+Latest ARCH-003 offline experiment: [[EXP-005-Passive-ownership-proof]] implements an isolated
+return-capture/field-reader/ledger model and records verdict B after falsification. A derived
+collection executes foreign enumeration, and endpoint/sequence equality cannot prove coherence
+or coverage. No runtime observer is activated; do not deploy this experiment. Stage B evidence
+is preserved; C1 equipment and neutral/rollback certification remain blocked/Unknown.
+
+
+EXP-005 correction continuation: [[EXP-005-Passive-ownership-proof]] now records verdict A
+for corrected, unwired local observations only, with frozen original failures and independent
+regression/IL mutation checks. Exact collection types are enforced before dispatch. Atomicity,
+continuity, coverage, initial authority, neutral state and rollback stay unknown. No production
+acceptance or C1 observer change; no runtime task is authorized.
+
+
+## Stage C1 research checkpoint - 2026-10-27
+
+This checkpoint preserves the opt-in C1 observer and its closed safety investigation,
+[[ARCH-003-Tome-transition-evidence]], and the corrected, unwired
+[[EXP-005-Passive-ownership-proof]]. The original counterexamples and seven regression
+protections remain executable. EXP-005 verdict A supports limited offline observations only.
+Stage B acceptance is verified. Stage C1 ownership completeness, equipment lifecycle,
+persistence, neutral-state certification, and rollback safety remain unverified.
+No C1 equipment test, deployment, launch, rollback or isolated-environment implementation
+is authorized by this research checkpoint. Earlier uncommitted/pending descriptions are
+historical; the current evidence boundary remains unchanged.
+
+Checkpoint reproducibility: narrowly scoped .gitattributes rules preserve the current exact
+line endings of fingerprinted sources and frozen EXP-005 fixtures. A fresh staged-file
+checkout passes strict knowledge validation and the frozen-fixture byte hashes without
+changing accepted snapshots or source/test behavior.

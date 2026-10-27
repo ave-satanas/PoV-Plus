@@ -21,12 +21,17 @@ namespace PoVPlus
                 Compatibility.TomeBridgePolicy.DefaultEnabled,
                 "Experimental acceptance-only bridge. Default Off; read at startup. Requires supervised testing. Unequip books before disabling/removing; restart required.");
             new Compatibility.MagicPluginTomeBridge(Logger).Start(bridge.Value);
-#if POVPLUS_TOME_DIAGNOSTIC
+#if POVPLUS_TOME_LIFECYCLE_DIAGNOSTIC
+            _lifecycleObserver = new Diagnostics.TomeLifecycleObserver(Logger, bridge.Value);
+#elif POVPLUS_TOME_DIAGNOSTIC
             _tomeDiagnostic = new Diagnostics.TomeDiagnostic(Logger, bridge.Value);
 #endif
         }
 
-#if POVPLUS_TOME_DIAGNOSTIC
+#if POVPLUS_TOME_LIFECYCLE_DIAGNOSTIC
+        private Diagnostics.TomeLifecycleObserver _lifecycleObserver;
+        private void Update() { _lifecycleObserver.Poll(); }
+#elif POVPLUS_TOME_DIAGNOSTIC
         private Diagnostics.TomeDiagnostic _tomeDiagnostic;
         private void Update() { _tomeDiagnostic.Poll(); }
 #endif

@@ -14,6 +14,7 @@ SESSION = re.compile(r"\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}\Z")
 MAX_BYTES = 8 * 1024 * 1024
 MARKER = "[PoVPlus.TomeDiagnostic]"
 BRIDGE_MARKER = "[PoVPlus.TomeBridge]"
+LIFECYCLE_MARKER = "[PoVPlus.TomeLifecycle]"
 
 
 def redact(text: str) -> str:
@@ -61,7 +62,7 @@ def collect(installation: Path, session: str, receipts: list[Path], repository: 
             if referenced and referenced[-1] == session + ".log":
                 result.update(status="matched", session_start_line=start + 1)
                 for i, line in enumerate(current, start + 1):
-                    bucket = "diagnostic" if MARKER in line or BRIDGE_MARKER in line else "errors" if line.startswith("[Error") else None
+                    bucket = "diagnostic" if MARKER in line or BRIDGE_MARKER in line or LIFECYCLE_MARKER in line else "errors" if line.startswith("[Error") else None
                     if bucket:
                         if len(result[bucket]) < 256:
                             result[bucket].append(dict(line=i, text=redact(line)))
@@ -101,6 +102,11 @@ def collect(installation: Path, session: str, receipts: list[Path], repository: 
     result["counts"] = {event: sum(MARKER + " " + event + " " in line for line in texts)
         for event in ("ARMED", "GUARD", "BEGIN", "END", "COMPLETE", "ABORT", "RENDERED", "VISIBLE_ACCEPT")}
     result["snapshot_complete"] = result["counts"]["END"] > 0 and result["counts"]["ABORT"] == 0
+    result["lifecycle"] = {
+        "observations": sum(LIFECYCLE_MARKER + " OBSERVATION " in line for line in texts),
+        "stops": sum(LIFECYCLE_MARKER + " STOP " in line for line in texts),
+        "interpretation": "Observation evidence only; STOP is not neutral-state or lifecycle success."
+    }
     result["interpretation"] = "Observed messages only; false, skipped and unavailable are distinct; no gameplay diagnosis inferred."
     return result
 
@@ -120,6 +126,7 @@ def write_report(result: dict, output: Path, repository: Path = REPOSITORY) -> N
         stream.write(f"# INV-003 diagnostic evidence\n\nSession: {result['session']}\n\n")
         stream.write(f"Collected UTC: {result['captured_utc']}\n\nStatus: {result['status']}\n\n")
         stream.write("Counts: " + json.dumps(result["counts"]) + "\n\n")
+        stream.write("Lifecycle: " + json.dumps(result.get("lifecycle", {})) + "\n\n")
         for bucket in ("sources", "skipped", "profile", "receipts", "diagnostic", "errors"):
             stream.write("## " + bucket + "\n\n")
             for item in result[bucket]:
@@ -136,7 +143,7 @@ def main() -> int:
     args = parser.parse_args()
     result = collect(INSTALLATION, args.session, args.receipt)
     write_report(result, args.output)
-    print(json.dumps({key: result[key] for key in ("status", "counts", "snapshot_complete")}))
+    print(json.dumps({key: result[key] for key in ("status", "counts", "snapshot_complete", "lifecycle")}))
     return 0 if result["status"] == "matched" else 2
 
 

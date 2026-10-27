@@ -1,0 +1,26 @@
+# Preserve the exact working-tree bytes used by source/evidence fingerprints.
+# Scope is limited to fingerprinted sources and frozen EXP-005 counterexamples.
+/AGENTS.md text eol=crlf
+/Scripts/Build.ps1 text eol=lf
+/Scripts/Dev.ps1 text eol=lf
+/Scripts/DevWorkflow.psm1 text eol=lf
+/Scripts/collect_tome_evidence.py text eol=crlf
+/Scripts/tests/Export-TomeOwnershipAudit.ps1 text eol=lf
+/Scripts/tests/Fixtures/EXP005Original/PassiveOwnershipProof.cs text eol=lf
+/Scripts/tests/Fixtures/EXP005Original/TomeProvenanceHarness.cs text eol=lf
+/Scripts/tests/Test-DevWorkflow.ps1 text eol=crlf
+/Scripts/tests/Test-TomeLifecycle.ps1 text eol=crlf
+/Scripts/tests/Test-TomeLifecycleArtifact.ps1 text eol=crlf
+/Scripts/tests/Test-TomeNeutral.ps1 text eol=lf
+/Scripts/tests/Test-TomeOwnershipAudit.ps1 text eol=crlf
+/Scripts/tests/TomeLifecycleHarness.cs text eol=crlf
+/Scripts/tests/TomeNeutralHarness.cs text eol=lf
+/Source/PoVPlus/Compatibility/MagicPluginTomeBridge.cs text eol=lf
+/Source/PoVPlus/Compatibility/TomeBridgePolicy.cs text eol=lf
+/Source/PoVPlus/Diagnostics/DiagnosticSession.cs text eol=lf
+/Source/PoVPlus/Diagnostics/LifecycleEvidence.cs text eol=crlf
+/Source/PoVPlus/Diagnostics/TomeDiagnostic.cs text eol=crlf
+/Source/PoVPlus/Diagnostics/TomeLifecycleObserver.cs text eol=crlf
+/Source/PoVPlus/Diagnostics/TomeStageBProbe.cs text eol=crlf
+/Source/PoVPlus/Plugin.cs text eol=crlf
+/Source/PoVPlus/PoVPlus.csproj text eol=crlf

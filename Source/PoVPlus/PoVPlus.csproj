@@ -12,6 +12,8 @@
     <DefineConstants Condition="'$(EnableTomeDiagnostic)' == 'true'">$(DefineConstants);POVPLUS_TOME_DIAGNOSTIC</DefineConstants>
     <EnableTomeStageBDiagnostic Condition="'$(EnableTomeStageBDiagnostic)' == ''">false</EnableTomeStageBDiagnostic>
     <DefineConstants Condition="'$(EnableTomeStageBDiagnostic)' == 'true'">$(DefineConstants);POVPLUS_TOME_STAGE_B_DIAGNOSTIC</DefineConstants>
+    <EnableTomeLifecycleDiagnostic Condition="'$(EnableTomeLifecycleDiagnostic)' == ''">false</EnableTomeLifecycleDiagnostic>
+    <DefineConstants Condition="'$(EnableTomeLifecycleDiagnostic)' == 'true'">$(DefineConstants);POVPLUS_TOME_LIFECYCLE_DIAGNOSTIC</DefineConstants>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <ValheimDevPath Condition="'$(ValheimDevPath)' == ''">S:\Valheim-Modding\PoVPlus-Dev</ValheimDevPath>
   </PropertyGroup>
@@ -45,6 +47,10 @@
   </ItemGroup>
 
   <Target Name="ValidateLocalReferences" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="'$(EnableTomeLifecycleDiagnostic)' == 'true' and '$(EnableTomeDiagnostic)' != 'true'"
+           Text="C1 lifecycle observation requires EnableTomeDiagnostic=true." />
+    <Error Condition="'$(EnableTomeLifecycleDiagnostic)' == 'true' and '$(EnableTomeStageBDiagnostic)' == 'true'"
+           Text="C1 lifecycle and Stage B snapshot modes are mutually exclusive." />
     <Error Condition="'$(EnableTomeStageBDiagnostic)' == 'true' and '$(EnableTomeDiagnostic)' != 'true'"
            Text="Stage B observation requires EnableTomeDiagnostic=true; it must never be included alone." />
     <Error Condition="'%(Reference.HintPath)' != '' and !Exists('%(Reference.HintPath)')"

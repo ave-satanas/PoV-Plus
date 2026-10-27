@@ -58,6 +58,21 @@ class EvidenceTests(unittest.TestCase):
         self.log.write_text(old + self.session_log(SESSION), encoding="utf-8")
         self.assertFalse(any(collector.BRIDGE_MARKER in row["text"] for row in self.collect()["diagnostic"]))
 
+    def test_lifecycle_rows_preserved_without_claiming_snapshot_or_neutral_success(self):
+        self.log.write_text(self.session_log(SESSION).split("[Info : PoVPlus]")[0], encoding="utf-8")
+        with self.log.open("a", encoding="utf-8") as stream:
+            stream.write('[Info : PoVPlus] [PoVPlus.TomeLifecycle] OBSERVATION {"schema":1}\n')
+            stream.write('[Info : PoVPlus] [PoVPlus.TomeLifecycle] STOP "CollectionBudgetReached"\n')
+        data = self.collect()
+        self.assertEqual(data["lifecycle"]["observations"], 1)
+        self.assertEqual(data["lifecycle"]["stops"], 1)
+        self.assertFalse(data["snapshot_complete"])
+
+    def test_prior_session_lifecycle_rows_are_excluded(self):
+        old = self.session_log("2026-10-24_01-01-03") + "[Info : PoVPlus] [PoVPlus.TomeLifecycle] OBSERVATION old\n"
+        self.log.write_text(old + self.session_log(SESSION), encoding="utf-8")
+        self.assertEqual(self.collect()["lifecycle"]["observations"], 0)
+
     def test_ignores_prior_launch(self):
         self.log.write_text(self.session_log("2026-10-24_01-01-03") + self.session_log(SESSION), encoding="utf-8")
         self.assertEqual(self.collect()["counts"]["BEGIN"], 1)

@@ -1,0 +1,13 @@
+{
+  "purpose": "Frozen original EXP-005; intentionally defective; synthetic offline reproduction only",
+  "files": [
+    {
+      "path": "PassiveOwnershipProof.cs",
+      "sha256": "924AA377F070A9FE0FD3FACE4B9690A4D8078A4BFD23380404E8793E75333131"
+    },
+    {
+      "path": "TomeProvenanceHarness.cs",
+      "sha256": "AC96DF0EBD7B3DD237F7EF33952DBA8FB3C6250498ACD15619EDEBADEEA16924"
+    }
+  ]
+}

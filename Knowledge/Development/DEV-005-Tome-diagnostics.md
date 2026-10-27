@@ -367,3 +367,29 @@ original DLL/config restoration are verified; no equipment/effects/persistence c
 separate C1/C2/C3/C4 approvals, manual preparation, evidence/failure criteria and explicit
 unequip-and-confirm-neutral-persistence before disablement/rollback. It grants no deployment,
 launch, item/save or multiplayer permission. The existing dedicated server remains out of scope.
+
+
+## Offline C1 preflight (no runtime trial)
+
+[[DEV-006-Tome-C1-preflight]] owns the new acquisition/observation evidence and C1 matrix.
+MP Workbench1 recipes and native MagicWeaver4 recipe are corroborated by installed code/config
+and generated DataForge references; progression/availability and actual test possession remain
+unverified. MS GetEquippedItem calls GetOrCreateValue indirectly; SeneaL Claimed writes a cache:
+neither is an unconditional pure observation API. Proposed lifecycle reads must use pre-existing
+state/TryGetValue and audited fields, distinguish missing from empty, correlate all inventories
+and authorities, and require neutral save/reload before rollback. The new static contract suite
+has27 checks; it executes no mod code. C1 runtime instrumentation is designed, not implemented.
+Stage B remains acceptance-only evidence. No launch, deployment, config/save/item/server actions,
+commit or push are authorized/performed by this offline task.
+
+
+## C1 lifecycle observer offline implementation - 2026-10-26
+
+[[DEV-006-Tome-C1-preflight]] now documents the implemented opt-in observer and executable/static
+tests, superseding its earlier design-only status. New lifecycle build flag requires diagnostic
+mode and excludes Stage B mode; ordinary artifacts exclude its code/polling. Bound immutable
+setting, exact identity before every state capture, non-creating weak-table lookup and raw
+existing field reads isolate it from production bridge behavior. Complete PoV/SeneaL owner paths,
+rendered Source item, actual regen rate and neutral certification explicitly remain Unknown.
+The observer is NOT runtime-ready for the full equipment/neutral-state matrix; no C1 gameplay
+or purity is claimed from offline checks. Stage B evidence and original deployment remain intact.

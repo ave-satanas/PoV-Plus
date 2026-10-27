@@ -61,3 +61,9 @@ existing diagnostic flag and includes no Stage B code in ordinary builds. Bridge
 and ordinary plugin initialization are unchanged. [[DEV-005-Tome-diagnostics]] owns the temporary
 own-config activation, installed conditional-purity proof and extra artifact/fixture checks.
 This is experimental source/tooling, not gameplay verification or production activation.
+
+
+C1 source applicability review (2026-10-26): the lifecycle observer is another explicit diagnostic
+compile mode; ordinary builds exclude it and keep the exact startup message and default-Off
+bridge semantics. [[DEV-006-Tome-C1-preflight]] owns activation and limits. No installed snapshot,
+startup/runtime finding or production bridge policy was revised by the offline source change.

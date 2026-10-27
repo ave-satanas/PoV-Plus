@@ -136,7 +136,9 @@ binding is uncertain.** Native MS gates reject those books without the bridge; c
 invalidate bindings/effects or strand equipment. A stopped process alone does not make this safe.
 
 Normal success: user unequips all bridged books with bridge On, verifies physical item counts,
-empty Tome and effect removal; if C2 was authorized, save/reload proves neutral persistence.
+empty Tome and effect removal; normal save/reload under the enabled bridge must prove neutral
+persistence even for C1, because autosave may have persisted an earlier equipped state. Include
+this cleanup permission in C1 authorization; otherwise rollback is blocked pending a decision.
 User exits normally and confirms. Independently verify stopped; restore original DLL through the
 recorded Dev.ps1 receipt and own config exact bytes. Verify both hashes, diagnostic absence,
 bridge Off and unrelated fingerprints. Preserve natural config drift without automatic reversal.
@@ -181,3 +183,20 @@ Update [[INV-003-Magic-book-tome-compatibility]] and [[COMP-002-Tome-bridge-desi
 which lifecycle gaps remain. Only the exact passed cases gain verified status. Cleanup must
 report whether rollback was safely completed or deliberately blocked by an equipped-item hazard.
 No ZIP/upstream contact or Stage C action is authorized by this planning document.
+
+
+## Stage C1 offline preflight refinement
+
+[[DEV-006-Tome-C1-preflight]] records verified registration/config recipes, console acquisition
+candidates (not authorized/executed), progression caveats, unsafe creating/cache-writing getters,
+a field/TryGetValue observer design and the complete C1 matrix. No C1 runtime observer is yet
+implemented. Neutral reload is mandatory before rollback after any actual equip, even without
+the broad C2 campaign. Read this preflight before approving deployment; missing observation or
+recovery data is Unknown/Blocked, never assumed empty or safe.
+
+
+C1 observer implementation follow-up (2026-10-26): [[DEV-006-Tome-C1-preflight]] now records an
+actual compile-gated observer, not just a design. It remains incomplete for whole-owner/custom
+inventory coverage and intentionally never certifies neutral state. Full C1 deployment/equipment
+approval remains blocked on those evidence gaps or a separately reviewed narrower scope. Existing
+manual/neutral-reload/recovery requirements remain unchanged; no Stage C trial has run.
