@@ -28,6 +28,7 @@ Open Knowledge/ as an Obsidian vault, or navigate/search in an editor. No Obsidi
 | Architecture and constraints | [[ARCH-001-PoVPlus]], [[DEC-001-Development-baseline]] |
 | Build and reference APIs | [[DEV-001-Build]], [[DEP-001-Environment]] |
 | Controlled deployment, launch, diagnostics and rollback | [[DEV-003-Workflow]], [[DEC-003-Workflow-safety]], [[EXP-002-First-deployment]], [[EXP-003-First-runtime-smoke]] |
+| Proposed supervised automation, isolation and disposable recovery | [[DEV-008-Supervised-testing]], [[EVID-002-Persistence-and-control]], [[EXP-006-Testing-policy-fixtures]] |
 | Mod GUIDs, versions, dependencies, configs | [[MOD-000-Inventory]], [[CFG-001-Configuration-map]] |
 | Startup and missing messages | [[DIAG-001-Logging]], [[INV-001-Startup-message]], [[EXP-001-Logging-override]] |
 | Warnings and patch triage | [[COMP-001-Warnings]], [[INV-002-Compatibility-triage]] |
@@ -217,3 +218,14 @@ Checkpoint reproducibility: narrowly scoped .gitattributes rules preserve the cu
 line endings of fingerprinted sources and frozen EXP-005 fixtures. A fresh staged-file
 checkout passes strict knowledge validation and the frozen-fixture byte hashes without
 changing accepted snapshots or source/test behavior.
+
+## DEV-008 offline architecture research - 2026-10-27
+
+[[DEV-008-Supervised-testing]] proposes permission-gated desktop control and independently
+verified disposable whole-environment recovery. [[EVID-002-Persistence-and-control]] traces
+installed client/server/cloud persistence paths and direct Unity mod storage; savedir and
+copied installs do not establish isolation. [[EXP-006-Testing-policy-fixtures]] records synthetic
+policy/recovery falsification and explicit focus-race/false-attestation limits. Level0 only;
+no VM/account provisioning, desktop input, game launch/deployment, save access or runtime approval.
+Stage B acceptance is verified. Stage C1 ownership completeness, equipment lifecycle,
+persistence, neutral-state certification, and rollback safety remain unverified.
