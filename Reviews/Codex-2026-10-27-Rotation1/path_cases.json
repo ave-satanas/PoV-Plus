@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "scope": "actor containment calibration only; future candidate acceptance is specified in MATRIX.md",
+  "blocked": [
+    {"id": "relative-parent", "path": "../protected/escape.lock"},
+    {"id": "nested-traversal", "path": "locks/../../escape.lock"},
+    {"id": "root-relative", "path": "/absolute.lock"},
+    {"id": "drive-relative", "path": "C:relative.lock"},
+    {"id": "outside-absolute", "path": "C:/outside.lock"},
+    {"id": "unc", "path": "\\\\host\\share\\x"},
+    {"id": "alternate-stream", "path": "locks/name:stream"},
+    {"id": "reserved-name", "path": "locks/CON.txt"},
+    {"id": "trailing-dot", "path": "locks/trailing."},
+    {"id": "empty-segment", "path": "locks//empty"},
+    {"id": "empty", "path": ""},
+    {"id": "device-prefix", "path": "\\\\?\\C:\\outside.lock"},
+    {"id": "nul", "path": "locks/bad\u0000name"},
+    {"id": "wildcard", "path": "locks/*.lock"}
+  ]
+}
