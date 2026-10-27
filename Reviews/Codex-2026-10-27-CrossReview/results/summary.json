@@ -1,0 +1,341 @@
+{
+  "base": "0c1f3d1a909e0c40a7bcf36425f8efc6a1c09722",
+  "reviewed": "d84903d8f383d8dac24c635fc9fa675b5e87264b",
+  "head": "27ba868f7bcc82d6f5bbef0c6b6acf23a6deac6f",
+  "main_builds": 156,
+  "independent_builds": 23,
+  "sweep": {
+    "edits": 77,
+    "killed53": 22,
+    "survived53": 55,
+    "killed36": 36,
+    "remaining19": 19,
+    "new_distinctions": 5
+  },
+  "audits": [
+    {
+      "name": "corrected",
+      "sha256": "12E0487278DF3C3FDC4CFF3391A5C57360C137F631E8149F10A631D2DE0F0847",
+      "verdict": "PASS"
+    },
+    {
+      "name": "unsafe-collection",
+      "sha256": "4944FCF2D933C31B1DCFABA181F155817DDCFA1C3231A796AA89CD75A601DEFC",
+      "verdict": "Concrete collection guard missing"
+    },
+    {
+      "name": "endpoint-continuity",
+      "sha256": "44A3102900B65CE2ED863B850D7723ABD4D424D634FD4D594CAE8368EE94D730",
+      "verdict": "Unsupported claim promotion: Snapshot.Continuity"
+    },
+    {
+      "name": "caller-coverage",
+      "sha256": "72280AAFC3784B2E5598F28CFF35043A8069DE6133118AD3A1953E790DC4A8F4",
+      "verdict": "Unsupported claim promotion: ProvenanceLedger.TransitionCoverage"
+    },
+    {
+      "name": "caller-initial",
+      "sha256": "8C8F88C346AC3BEBF8ED1F6BB5CA1C51C4E659163011489B4F88D8C3C8B3FB4A",
+      "verdict": "Unsupported claim promotion: ProvenanceLedger.InitialStateValidity"
+    },
+    {
+      "name": "alias-context",
+      "sha256": "FA436C7DDB8813B006EAFDE9F60F47DF7C166981499EA6A73F5448061AA68372",
+      "verdict": "Missing observation scope comparison"
+    },
+    {
+      "name": "storage-budget",
+      "sha256": "A63DE2A209751540E1F723D8A5199AD1236686D9B9A394410E95BED0D8CEAC7C",
+      "verdict": "Traversal bound missing"
+    },
+    {
+      "name": "string-budget",
+      "sha256": "EE16E6F29DE0D1F65B7B83195CF534469C00B8BBB84AA83C7EA746937E14D5D5",
+      "verdict": "Collection string bound missing"
+    },
+    {
+      "name": "escape-idictionary-add",
+      "sha256": "35547C85860C4C430EED57BCFF387F37DA042CE7560B5444A8A5AF128E0FCB9A",
+      "verdict": "PASS"
+    },
+    {
+      "name": "escape-array-clear",
+      "sha256": "A43143DEC389D4AC8DD821270CC12AAF006F05DED8F30ADFC1BCD055190D9F62",
+      "verdict": "PASS"
+    },
+    {
+      "name": "reachable-add",
+      "sha256": "4D5E760402D63F3A042EB1893FC927D151303650B6FCD0A6041B07367E75F680",
+      "verdict": "PASS"
+    },
+    {
+      "name": "reachable-clear",
+      "sha256": "E802DE7B1A3C1F9951A5448793760CE6EEF3A9946108496F3598B20CB8023F5B",
+      "verdict": "PASS"
+    }
+  ],
+  "identity": [
+    {
+      "mode": "ordinary",
+      "root": "a",
+      "sha256": "fdde0943a35934698f1f39215ca4199a88323b1f0496e0b135fd4fbf35eaba3e",
+      "mvid": "f86e292a-56df-4c9d-b2d7-eb11f11d1cb4",
+      "codeview": [
+        "S:\\Valheim-Modding\\PoV-Plus\\.dev-state\\crossreview-a\\identity\\a\\Source\\PoVPlus\\obj\\Release\\net48\\PoVPlus.pdb"
+      ],
+      "method_il_sha256": "226DFE6A0EDD1CB2F16C7540F4EA7B464B195DE7AE0FCF9D377E26F889AB2654"
+    },
+    {
+      "mode": "ordinary",
+      "root": "b",
+      "sha256": "9bcfddaa939650d57aa9983c4d4ef414a877dbd47330120d980412e1bf2bc06a",
+      "mvid": "2dce2bb5-0c76-4bc3-a1c7-7001df451984",
+      "codeview": [
+        "S:\\Valheim-Modding\\PoV-Plus\\.dev-state\\crossreview-a\\identity\\b\\Source\\PoVPlus\\obj\\Release\\net48\\PoVPlus.pdb"
+      ],
+      "method_il_sha256": "226DFE6A0EDD1CB2F16C7540F4EA7B464B195DE7AE0FCF9D377E26F889AB2654"
+    },
+    {
+      "mode": "pathmap",
+      "root": "a",
+      "sha256": "fdde0943a35934698f1f39215ca4199a88323b1f0496e0b135fd4fbf35eaba3e",
+      "mvid": "f86e292a-56df-4c9d-b2d7-eb11f11d1cb4",
+      "codeview": [
+        "S:\\Valheim-Modding\\PoV-Plus\\.dev-state\\crossreview-a\\identity\\a\\Source\\PoVPlus\\obj\\Release\\net48\\PoVPlus.pdb"
+      ],
+      "method_il_sha256": "226DFE6A0EDD1CB2F16C7540F4EA7B464B195DE7AE0FCF9D377E26F889AB2654"
+    },
+    {
+      "mode": "pathmap",
+      "root": "b",
+      "sha256": "9bcfddaa939650d57aa9983c4d4ef414a877dbd47330120d980412e1bf2bc06a",
+      "mvid": "2dce2bb5-0c76-4bc3-a1c7-7001df451984",
+      "codeview": [
+        "S:\\Valheim-Modding\\PoV-Plus\\.dev-state\\crossreview-a\\identity\\b\\Source\\PoVPlus\\obj\\Release\\net48\\PoVPlus.pdb"
+      ],
+      "method_il_sha256": "226DFE6A0EDD1CB2F16C7540F4EA7B464B195DE7AE0FCF9D377E26F889AB2654"
+    },
+    {
+      "mode": "pathmap-native",
+      "root": "a",
+      "sha256": "0209ac561ceebaa4453e970d6a5d688e0eb1af96731220757a35e060f4412063",
+      "mvid": "6d7cae73-a7a4-42f7-bb8b-63bbe60149c7",
+      "codeview": [
+        "/_/Source/PoVPlus/obj/Release/net48/PoVPlus.pdb"
+      ],
+      "method_il_sha256": "226DFE6A0EDD1CB2F16C7540F4EA7B464B195DE7AE0FCF9D377E26F889AB2654"
+    },
+    {
+      "mode": "pathmap-native",
+      "root": "b",
+      "sha256": "0209ac561ceebaa4453e970d6a5d688e0eb1af96731220757a35e060f4412063",
+      "mvid": "6d7cae73-a7a4-42f7-bb8b-63bbe60149c7",
+      "codeview": [
+        "/_/Source/PoVPlus/obj/Release/net48/PoVPlus.pdb"
+      ],
+      "method_il_sha256": "226DFE6A0EDD1CB2F16C7540F4EA7B464B195DE7AE0FCF9D377E26F889AB2654"
+    },
+    {
+      "mode": "ci",
+      "root": "a",
+      "sha256": "a2971a0a06d57badb55aceb0b333855f67aea55fb3eefc75a71f979f479287d8",
+      "mvid": "cdfd5d90-3ea7-40d3-b40a-bb0d50e79b22",
+      "codeview": [
+        "/_/.dev-state/crossreview-a/identity/a/Source/PoVPlus/obj/Release/net48/PoVPlus.pdb"
+      ],
+      "method_il_sha256": "226DFE6A0EDD1CB2F16C7540F4EA7B464B195DE7AE0FCF9D377E26F889AB2654"
+    },
+    {
+      "mode": "ci",
+      "root": "b",
+      "sha256": "f2b51ccd250de17cd76470ded725983bf36219ba29d36b2ec67b5427fcca3c0a",
+      "mvid": "e558067c-73eb-4cad-97e2-4295e63ae09d",
+      "codeview": [
+        "/_/.dev-state/crossreview-a/identity/b/Source/PoVPlus/obj/Release/net48/PoVPlus.pdb"
+      ],
+      "method_il_sha256": "226DFE6A0EDD1CB2F16C7540F4EA7B464B195DE7AE0FCF9D377E26F889AB2654"
+    }
+  ],
+  "independent_cases": [
+    {
+      "name": "independent-control-subclass-entry",
+      "source_sha256": "4bc6bfd3dcb26aba433003ff20e4cbf417aa3ed6b80a03d8f9bf2f7cbdc9b398",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "6081ba4f622f7f7a5d17a14a3082ff75286e53a05aed0c78ab154a54589fccfe",
+      "exit": 0
+    },
+    {
+      "name": "independent-control-subclass-tracked",
+      "source_sha256": "4bc6bfd3dcb26aba433003ff20e4cbf417aa3ed6b80a03d8f9bf2f7cbdc9b398",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "7ee12def9db92688d252b8d05287c1463d7dcbb196dd53c3d8c80baab845475b",
+      "exit": 0
+    },
+    {
+      "name": "independent-control-subclass-root",
+      "source_sha256": "4bc6bfd3dcb26aba433003ff20e4cbf417aa3ed6b80a03d8f9bf2f7cbdc9b398",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "7c168ea0e4b0363d4cbc5eebe032110e7ae30eb69a6c93ea90734531b97eee40",
+      "exit": 0
+    },
+    {
+      "name": "independent-control-virtual-equals",
+      "source_sha256": "4bc6bfd3dcb26aba433003ff20e4cbf417aa3ed6b80a03d8f9bf2f7cbdc9b398",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "2ab41ff4457979843f26256d75d02176e2af53a9a8b3182715c1911a96899383",
+      "exit": 0
+    },
+    {
+      "name": "independent-control-dead-root-latch",
+      "source_sha256": "4bc6bfd3dcb26aba433003ff20e4cbf417aa3ed6b80a03d8f9bf2f7cbdc9b398",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "9564c71745ff06ef64bbc826239ce07dcd5b3ff5b38ca1f7034c335a0b95a3c6",
+      "exit": 0
+    },
+    {
+      "name": "independent-control-distinct-ordered-stale",
+      "source_sha256": "4bc6bfd3dcb26aba433003ff20e4cbf417aa3ed6b80a03d8f9bf2f7cbdc9b398",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "854df6af91d5ee50815f3e7eca34495616bad71d423132e6260dc3ada0ba6665",
+      "exit": 0
+    },
+    {
+      "name": "independent-control-occupied-same-item-swap",
+      "source_sha256": "4bc6bfd3dcb26aba433003ff20e4cbf417aa3ed6b80a03d8f9bf2f7cbdc9b398",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "3b7e6a285880fb7a728026d3d9e7263cb67e20beefa4de593b8dfcaac36c4336",
+      "exit": 0
+    },
+    {
+      "name": "independent-control-same-count-foreign-change",
+      "source_sha256": "4bc6bfd3dcb26aba433003ff20e4cbf417aa3ed6b80a03d8f9bf2f7cbdc9b398",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "a878538964675a9de1c918ab3487c642367a0a6dde8d4fe3cf0b3988e2669668",
+      "exit": 0
+    },
+    {
+      "name": "independent-control-reachable-add",
+      "source_sha256": "4bc6bfd3dcb26aba433003ff20e4cbf417aa3ed6b80a03d8f9bf2f7cbdc9b398",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "5b70dac3913404301b4d8aea10560abacd344dcb162fe4341858aea16153e9cc",
+      "exit": 0
+    },
+    {
+      "name": "independent-control-reachable-clear",
+      "source_sha256": "4bc6bfd3dcb26aba433003ff20e4cbf417aa3ed6b80a03d8f9bf2f7cbdc9b398",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "f0daa89668afe76f6904a1f2f34570ff3e59013dbb63fa7d638d5151c9b3277d",
+      "exit": 0
+    },
+    {
+      "name": "independent-read-entry-type",
+      "source_sha256": "5c6c3ab28b79ec23e6ec4cb17eda30e6ab1ce7a7ce1fc7e4958be52d0c9112d6",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "6ed336959851e68d47ef34d8aebb55b58458372a01d135b8ba60332a8b629004",
+      "exit": 1
+    },
+    {
+      "name": "independent-read-ownitem-type",
+      "source_sha256": "8ceb503db7eb1f4c10703de9d9b099dc42c2fc3389a249abde0fb405b123f898",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "f275c049802f2e28adf3a32375d630c15a3dc455742b3878afe64b6e6affc597",
+      "exit": 1
+    },
+    {
+      "name": "independent-read-roottype",
+      "source_sha256": "49e0e089a62a33c7e4d41eaf76032bd175a875333896d6fe872c5bc939db95c4",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "6ad86d08551f49f80ac67746b64f860d183c5d7934aac72be5e8e335c2072e56",
+      "exit": 1
+    },
+    {
+      "name": "independent-read-same-refeq",
+      "source_sha256": "eeb6a22fe07bb438e86e3a4ad7fa8f69271a530a59b719a1dceb769e7e5e0450",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "3b8c845b135b27f48ffd0d47703f789fa9d4f2b9168f3af59a6f2d72df9aab8f",
+      "exit": 1
+    },
+    {
+      "name": "independent-borrow-dead",
+      "source_sha256": "df8178061a154ec633a28b44b574a3f89d93535e565bac41082db397808cdbb1",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "77f03e524ec3ae5308f99ce553c50481e5edaf110886f42acde95b7b9912e460",
+      "exit": 1
+    },
+    {
+      "name": "reachable-add-original-tests",
+      "source_sha256": "739e2be5592584f2d27aeb72f27dab28cf3c104cd104f51e08134b9e9935b656",
+      "harness_sha256": "102d4778adfda964332cb73f9ccd88527d40bd38c5544b6c20dacb1d279db368",
+      "artifact_sha256": "b3b22512d81147824cee312580a172b50cce7c0a2093dcdba59dba5588b9383e",
+      "exit": 0
+    },
+    {
+      "name": "reachable-add-independent-test",
+      "source_sha256": "739e2be5592584f2d27aeb72f27dab28cf3c104cd104f51e08134b9e9935b656",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "167a79bc390c0bdec7b0cec6c4eb79b7c6b51fb8a14c6a2971ae428b0b6d4ac7",
+      "exit": 1
+    },
+    {
+      "name": "lib-reachable-add",
+      "source_sha256": "739e2be5592584f2d27aeb72f27dab28cf3c104cd104f51e08134b9e9935b656",
+      "harness_sha256": null,
+      "artifact_sha256": "4d5e760402d63f3a042eb1893fc927d151303650b6fcd0a6041b07367e75f680"
+    },
+    {
+      "name": "reachable-clear-original-tests",
+      "source_sha256": "f5a57c476f49d3e0481b179608503536606364495a24a8228b248748f15c4aff",
+      "harness_sha256": "102d4778adfda964332cb73f9ccd88527d40bd38c5544b6c20dacb1d279db368",
+      "artifact_sha256": "64ed9fc4a772b1e2cacb464e84305140c01221193b6b6839f432b5ae9fbc9e40",
+      "exit": 0
+    },
+    {
+      "name": "reachable-clear-independent-test",
+      "source_sha256": "f5a57c476f49d3e0481b179608503536606364495a24a8228b248748f15c4aff",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "161bcf6b338b847cb43f5a8a029ea90012d04824e9cb33e94e05f80205ec2dc3",
+      "exit": 1
+    },
+    {
+      "name": "lib-reachable-clear",
+      "source_sha256": "f5a57c476f49d3e0481b179608503536606364495a24a8228b248748f15c4aff",
+      "harness_sha256": null,
+      "artifact_sha256": "e802de7b1a3c1f9951a5448793760ce6eef3a9946108496f3598b20cb8023f5b"
+    },
+    {
+      "name": "original-clear-trigger",
+      "source_sha256": "1f648bc7f51a99f777081f93a32bcc74242d51761433e7f94939b03f4a9233ff",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "1666aa54fa5b12272d3b5c9a2749b786ca68b338b78906a8b7ab0a70c6b76d5f",
+      "exit": 0
+    },
+    {
+      "name": "original-add-trigger",
+      "source_sha256": "8e234269687cd4d1ec3b679898ee6cf25dbaff5eaff5c0bea17efffd38ff64d2",
+      "harness_sha256": "78b961272377086637ded9e502b693abdd0247b34b40d73ee1aec1eefe60ab24",
+      "artifact_sha256": "7b1e6d1a29f94843db03475c705eb2272b2c2c9858a00c3d9749f5e2180efcfc",
+      "exit": 0
+    }
+  ],
+  "installation": {
+    "monitored": 343,
+    "differences": [],
+    "dll_sha256": "351E948AFC75D8B5BFBEF67F2F1FBABB5A8A645AA7A5D51E9E804F7D501DF548",
+    "config_sha256": "3F21FABF4696D7BA4193B130700F3C794BF1C244664DA38E176FB8132A1A4798",
+    "bridge_setting": "EnableMagicPluginTomeBridge = false",
+    "scope": "243 enumerated DLLs +100 configs only; no save or world files"
+  },
+  "evidence_files": {
+    "inputs.json": "25aa2358837cef5a4737303c3b7fdaaf901370c38d0d49163b8b797dcc2a48c1",
+    "mutation-edit-manifest.json": "4e1d48eccbec1fd539fd41a45f5425a8da98c493eee7b35e67d6fe7adb17d70d",
+    "results.json": "5d99e9271e07853b10214747f57878d539b611aa49b0b3c8ad2781f28ab06e7a",
+    "independent-results.json": "243a37c2391a26b1b4770dfca66b98d8e029b467a09d16676b1bfe7fc3e50b65",
+    "installed.json": "df042af447d0b17e4bcc297a5494a0db5d58b21c66f1ea8b12ee9732ae32d758",
+    "audit-results.json": "fc82d208e2627c687db185fed32c6a7bc3d2421e2b41499697c6c2a2d32c6a5b",
+    "identity-audit.json": "e975c0675af8a9e84c1cff4cc7668a6f879778844c1da765d6b92b485f334520",
+    "python-tests.txt": "b8ae4f50dd3f5a8e780eee8eef8903218806ecd07859ad583c9910290bba5e36",
+    "powershell51-exact.txt": "5f8203b130a053dfe3928547432a32c79a595d5e11193ba9f29ca575ca4ad367",
+    "locks.txt": "4959f7c57dafa655a0a77a359c5fe3149e3b7b04bb4e881cbdfcf0a0af0478b4"
+  },
+  "limits": "Offline synthetic/metadata evidence only; no current-source mutation, runtime isolation or ownership certification established"
+}
