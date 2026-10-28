@@ -1,0 +1,2103 @@
+{
+  "schema": 1,
+  "review": "Rotation 1 R1-R3 closure",
+  "recommendation": "ACCEPT WITH DOCUMENTED LIMITATIONS",
+  "criteria_commit": "b301ceebf0a0592d8ea405e77d641f4f1b91124b",
+  "criteria_sha256": "a2397865e2a025587ada8bfcec810687e55f5ee91f9af7f1415031c5241dae9a",
+  "implementation_commit": "d1a1761016a69c84603cea0ada66eb441aa905c7",
+  "frozen_test_classes": {
+    "D": 7,
+    "C": 8
+  },
+  "independent": {
+    "kind": "independent-acceptance-reproduction",
+    "commits": {
+      "original": "633ddb2941942fd0136bc892a37895d358f4fb87",
+      "revision": "d1a1761016a69c84603cea0ada66eb441aa905c7"
+    },
+    "sources": {
+      "Independent-Closure.ps1": "5d986fed89243c27557a68fc28a897e3a36be7826fd8d2c420b752aca023bd35",
+      "run_review.py": "a9bd9de982d232369c861160f2625d9b37efc3482a573798edcde7dfd6355a90"
+    },
+    "runs": [
+      {
+        "host": "ps5",
+        "checkpoint": "original",
+        "commit": "633ddb2941942fd0136bc892a37895d358f4fb87",
+        "command": [
+          "powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "${REPO}\\Reviews\\Codex-2026-10-27-Rotation1\\Closure-2026-10-28\\Independent-Closure.ps1",
+          "-Snapshot",
+          "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\original",
+          "-FixtureRoot",
+          "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\run-42e0181751e14cbabbaa888b77861071\\ps5-original-fixture",
+          "-Results",
+          "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\run-42e0181751e14cbabbaa888b77861071\\ps5-original.json"
+        ],
+        "exit": 7,
+        "elapsed_seconds": 2.309,
+        "log": ".dev-state\\rotation1\\closure-review-20261028\\run-42e0181751e14cbabbaa888b77861071\\ps5-original.txt",
+        "log_sha256": "61a0c1f5aa8cb78470d7fe982e4f50eceb3e753727475e56fb1bfaa784a5d1a2",
+        "cases": [
+          {
+            "status": "FAIL",
+            "assertion": "ASSERT: existing zero-length record must refuse as unreadable/unknown and offer token",
+            "class": "D",
+            "test": "T-R1-a"
+          },
+          {
+            "status": "FAIL",
+            "assertion": "ASSERT: empty-record refusal must offer acknowledgement token",
+            "class": "D",
+            "test": "T-R1-b"
+          },
+          {
+            "status": "FAIL",
+            "assertion": "ASSERT: wrong empty-record token must refuse and offer correct token",
+            "class": "D",
+            "test": "T-R1-c"
+          },
+          {
+            "status": "FAIL",
+            "assertion": "ASSERT: write failure must leave next acquisition blocked with acknowledgement token",
+            "class": "D",
+            "test": "T-R1-d"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R1-e"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R1-f"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R1-g"
+          },
+          {
+            "status": "FAIL",
+            "assertion": "ASSERT: hardlinked output must refuse for multi-link reason without changing external canary",
+            "class": "D",
+            "test": "T-R2-a"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R2-b"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R2-c"
+          },
+          {
+            "status": "FAIL",
+            "assertion": "ASSERT: hardlinked lease must refuse before protected storage changes",
+            "class": "D",
+            "test": "T-R2-d"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R2-e"
+          },
+          {
+            "status": "FAIL",
+            "assertion": "ASSERT: stale installation must refuse as replaced/moved before target or repository state write",
+            "class": "D",
+            "test": "T-R3-a"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R3-b"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R3-c"
+          }
+        ],
+        "version": "5.1.26100.9711",
+        "expected_exit": 7,
+        "matches_expected": true
+      },
+      {
+        "host": "ps5",
+        "checkpoint": "revision",
+        "commit": "d1a1761016a69c84603cea0ada66eb441aa905c7",
+        "command": [
+          "powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "${REPO}\\Reviews\\Codex-2026-10-27-Rotation1\\Closure-2026-10-28\\Independent-Closure.ps1",
+          "-Snapshot",
+          "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision",
+          "-FixtureRoot",
+          "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\run-42e0181751e14cbabbaa888b77861071\\ps5-revision-fixture",
+          "-Results",
+          "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\run-42e0181751e14cbabbaa888b77861071\\ps5-revision.json"
+        ],
+        "exit": 0,
+        "elapsed_seconds": 2.086,
+        "log": ".dev-state\\rotation1\\closure-review-20261028\\run-42e0181751e14cbabbaa888b77861071\\ps5-revision.txt",
+        "log_sha256": "88a5a60fe8f7619ea4afdf279675a0d4e667d7f8d25b0f42f5b8d73467ca022a",
+        "cases": [
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "D",
+            "test": "T-R1-a"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "D",
+            "test": "T-R1-b"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "D",
+            "test": "T-R1-c"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "D",
+            "test": "T-R1-d"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R1-e"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R1-f"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R1-g"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "D",
+            "test": "T-R2-a"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R2-b"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R2-c"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "D",
+            "test": "T-R2-d"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R2-e"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "D",
+            "test": "T-R3-a"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R3-b"
+          },
+          {
+            "status": "PASS",
+            "assertion": null,
+            "class": "C",
+            "test": "T-R3-c"
+          }
+        ],
+        "version": "5.1.26100.9711",
+        "expected_exit": 0,
+        "matches_expected": true
+      },
+      {
+        "host": "ps7",
+        "checkpoint": "original",
+        "commit": "633ddb2941942fd0136bc892a37895d358f4fb87",
+        "command": [
+          "${USERPROFILE}\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "${REPO}\\Reviews\\Codex-2026-10-27-Rotation1\\Closure-2026-10-28\\Independent-Closure.ps1",
+          "-Snapshot",
+          "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\original",
+          "-FixtureRoot",
+          "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\run-42e0181751e14cbabbaa888b77861071\\ps7-original-fixture",
+          "-Results",
+          "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\run-42e0181751e14cbabbaa888b77861071\\ps7-original.json"
+        ],
+        "exit": 7,
+        "elapsed_seconds": 4.105,
+        "log": ".dev-state\\rotation1\\closure-review-20261028\\run-42e0181751e14cbabbaa888b77861071\\ps7-original.txt",
+        "log_sha256": "373b4b8237a37e6351ce2832bd0a51db1651852856b11e8ed81eab4f3bc0053c",
+        "cases": [
+          {
+            "assertion": "ASSERT: existing zero-length record must refuse as unreadable/unknown and offer token",
+            "test": "T-R1-a",
+            "class": "D",
+            "status": "FAIL"
+          },
+          {
+            "assertion": "ASSERT: empty-record refusal must offer acknowledgement token",
+            "test": "T-R1-b",
+            "class": "D",
+            "status": "FAIL"
+          },
+          {
+            "assertion": "ASSERT: wrong empty-record token must refuse and offer correct token",
+            "test": "T-R1-c",
+            "class": "D",
+            "status": "FAIL"
+          },
+          {
+            "assertion": "ASSERT: write failure must leave next acquisition blocked with acknowledgement token",
+            "test": "T-R1-d",
+            "class": "D",
+            "status": "FAIL"
+          },
+          {
+            "assertion": null,
+            "test": "T-R1-e",
+            "class": "C",
+            "status": "PASS"
+          },
+          {
+            "assertion": null,
+            "test": "T-R1-f",
+            "class": "C",
+            "status": "PASS"
+          },
+          {
+            "assertion": null,
+            "test": "T-R1-g",
+            "class": "C",
+            "status": "PASS"
+          },
+          {
+            "assertion": "ASSERT: hardlinked output must refuse for multi-link reason without changing external canary",
+            "test": "T-R2-a",
+            "class": "D",
+            "status": "FAIL"
+          },
+          {
+            "assertion": null,
+            "test": "T-R2-b",
+            "class": "C",
+            "status": "PASS"
+          },
+          {
+            "assertion": null,
+            "test": "T-R2-c",
+            "class": "C",
+            "status": "PASS"
+          },
+          {
+            "assertion": "ASSERT: hardlinked lease must refuse before protected storage changes",
+            "test": "T-R2-d",
+            "class": "D",
+            "status": "FAIL"
+          },
+          {
+            "assertion": null,
+            "test": "T-R2-e",
+            "class": "C",
+            "status": "PASS"
+          },
+          {
+            "assertion": "ASSERT: stale installation must refuse as replaced/moved before target or repository state write",
+            "test": "T-R3-a",
+            "class": "D",
+            "status": "FAIL"
+          },
+          {
+            "assertion": null,
+            "test": "T-R3-b",
+            "class": "C",
+            "status": "PASS"
+          },
+          {
+            "assertion": null,
+            "test": "T-R3-c",
+            "class": "C",
+            "status": "PASS"
+          }
+        ],
+        "version": "7.6.5",
+        "expected_exit": 7,
+        "matches_expected": true
+      },
+      {
+        "host": "ps7",
+        "checkpoint": "revision",
+        "commit": "d1a1761016a69c84603cea0ada66eb441aa905c7",
+        "command": [
+          "${USERPROFILE}\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "${REPO}\\Reviews\\Codex-2026-10-27-Rotation1\\Closure-2026-10-28\\Independent-Closure.ps1",
+          "-Snapshot",
+          "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision",
+          "-FixtureRoot",
+          "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\run-42e0181751e14cbabbaa888b77861071\\ps7-revision-fixture",
+          "-Results",
+          "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\run-42e0181751e14cbabbaa888b77861071\\ps7-revision.json"
+        ],
+        "exit": 0,
+        "elapsed_seconds": 3.039,
+        "log": ".dev-state\\rotation1\\closure-review-20261028\\run-42e0181751e14cbabbaa888b77861071\\ps7-revision.txt",
+        "log_sha256": "3cf8f1d1eafa95bb286c19af1d51b87671a746cfdd58b3eac41347217110b9f9",
+        "cases": [
+          {
+            "test": "T-R1-a",
+            "status": "PASS",
+            "assertion": null,
+            "class": "D"
+          },
+          {
+            "test": "T-R1-b",
+            "status": "PASS",
+            "assertion": null,
+            "class": "D"
+          },
+          {
+            "test": "T-R1-c",
+            "status": "PASS",
+            "assertion": null,
+            "class": "D"
+          },
+          {
+            "test": "T-R1-d",
+            "status": "PASS",
+            "assertion": null,
+            "class": "D"
+          },
+          {
+            "test": "T-R1-e",
+            "status": "PASS",
+            "assertion": null,
+            "class": "C"
+          },
+          {
+            "test": "T-R1-f",
+            "status": "PASS",
+            "assertion": null,
+            "class": "C"
+          },
+          {
+            "test": "T-R1-g",
+            "status": "PASS",
+            "assertion": null,
+            "class": "C"
+          },
+          {
+            "test": "T-R2-a",
+            "status": "PASS",
+            "assertion": null,
+            "class": "D"
+          },
+          {
+            "test": "T-R2-b",
+            "status": "PASS",
+            "assertion": null,
+            "class": "C"
+          },
+          {
+            "test": "T-R2-c",
+            "status": "PASS",
+            "assertion": null,
+            "class": "C"
+          },
+          {
+            "test": "T-R2-d",
+            "status": "PASS",
+            "assertion": null,
+            "class": "D"
+          },
+          {
+            "test": "T-R2-e",
+            "status": "PASS",
+            "assertion": null,
+            "class": "C"
+          },
+          {
+            "test": "T-R3-a",
+            "status": "PASS",
+            "assertion": null,
+            "class": "D"
+          },
+          {
+            "test": "T-R3-b",
+            "status": "PASS",
+            "assertion": null,
+            "class": "C"
+          },
+          {
+            "test": "T-R3-c",
+            "status": "PASS",
+            "assertion": null,
+            "class": "C"
+          }
+        ],
+        "version": "7.6.5",
+        "expected_exit": 0,
+        "matches_expected": true
+      }
+    ]
+  },
+  "author_harness_reproduction": [
+    {
+      "host": "ps5",
+      "checkpoint": "original",
+      "commit": "633ddb2941942fd0136bc892a37895d358f4fb87",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\original\\Scripts\\tests\\Test-Rotation1Closure.ps1",
+        "-Classes",
+        "D,C"
+      ],
+      "exit": 7,
+      "elapsed_seconds": 4.594,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\run-5f1b38b856804f7b8d68ee01ba85d23b\\ps5-original.txt",
+      "log_sha256": "96915266d2b697185be1dd086d5e58bdf01520e97071a47267a2bd04455e8fea",
+      "parsed_cases": [
+        {
+          "test": "T-R1-a",
+          "class": "D",
+          "criteria": "AC-R1-1,AC-R1-4",
+          "status": "FAIL",
+          "name": "pre-existing zero-length record without acknowledgement is refused with a token"
+        },
+        {
+          "test": "T-R1-b",
+          "class": "D",
+          "criteria": "AC-R1-4,AC-R1-5",
+          "status": "FAIL",
+          "name": "correct token acquires exactly once and is recorded"
+        },
+        {
+          "test": "T-R1-c",
+          "class": "D",
+          "criteria": "AC-R1-4",
+          "status": "FAIL",
+          "name": "wrong token is refused"
+        },
+        {
+          "test": "T-R1-d",
+          "class": "D",
+          "criteria": "AC-R1-3",
+          "status": "FAIL",
+          "name": "write failure after any truncation leaves a blocking record and keeps the evidence"
+        },
+        {
+          "test": "T-R1-e",
+          "class": "C",
+          "criteria": "AC-R1-2",
+          "status": "PASS",
+          "name": "first-ever acquisition on a fresh lease root needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-f",
+          "class": "C",
+          "criteria": "AC-R1-1,AC-R1-6",
+          "status": "PASS",
+          "name": "acquire, release, acquire needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-g",
+          "class": "C",
+          "criteria": "AC-R1-6",
+          "status": "PASS",
+          "name": "two acquisitions after an unclean record, both with the correct token: exactly one acquires"
+        },
+        {
+          "test": "T-R2-a",
+          "class": "D",
+          "criteria": "AC-R2-1,AC-R2-4",
+          "status": "FAIL",
+          "name": "hardlinked .dev-state output to an external canary is refused with -Overwrite"
+        },
+        {
+          "test": "T-R2-b",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "ordinary single-link output overwrite with -Overwrite succeeds"
+        },
+        {
+          "test": "T-R2-c",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "junction at the output location remains refused"
+        },
+        {
+          "test": "T-R2-d",
+          "class": "D",
+          "criteria": "AC-R2-3",
+          "status": "FAIL",
+          "name": "lease file hardlinked to protected storage is refused; protected bytes unchanged"
+        },
+        {
+          "test": "T-R2-e",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "output created fresh by the tool succeeds, then overwrites with -Overwrite"
+        },
+        {
+          "test": "T-R3-a",
+          "class": "D",
+          "criteria": "AC-R3-1,AC-R3-2,AC-R3-4",
+          "status": "FAIL",
+          "name": "stale context after rename-away and recreate is refused before any write"
+        },
+        {
+          "test": "T-R3-b",
+          "class": "C",
+          "criteria": "AC-R3-3",
+          "status": "PASS",
+          "name": "fresh context against the recreated installation acquires and deploys"
+        },
+        {
+          "test": "T-R3-c",
+          "class": "C",
+          "criteria": "AC-R3-1",
+          "status": "PASS",
+          "name": "unchanged installation: normal acquire and deploy unchanged"
+        }
+      ]
+    },
+    {
+      "host": "ps5",
+      "checkpoint": "revision",
+      "commit": "d1a1761016a69c84603cea0ada66eb441aa905c7",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Scripts\\tests\\Test-Rotation1Closure.ps1",
+        "-Classes",
+        "D,C,X"
+      ],
+      "exit": 1,
+      "elapsed_seconds": 9.156,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\run-5f1b38b856804f7b8d68ee01ba85d23b\\ps5-revision.txt",
+      "log_sha256": "9e4608d0842c052c2da667c3b97507453d2a9b032e5a095716ce7f970dcf00d8",
+      "parsed_cases": [
+        {
+          "test": "T-R1-a",
+          "class": "D",
+          "criteria": "AC-R1-1,AC-R1-4",
+          "status": "PASS",
+          "name": "pre-existing zero-length record without acknowledgement is refused with a token"
+        },
+        {
+          "test": "T-R1-b",
+          "class": "D",
+          "criteria": "AC-R1-4,AC-R1-5",
+          "status": "PASS",
+          "name": "correct token acquires exactly once and is recorded"
+        },
+        {
+          "test": "T-R1-c",
+          "class": "D",
+          "criteria": "AC-R1-4",
+          "status": "PASS",
+          "name": "wrong token is refused"
+        },
+        {
+          "test": "T-R1-d",
+          "class": "D",
+          "criteria": "AC-R1-3",
+          "status": "PASS",
+          "name": "write failure after any truncation leaves a blocking record and keeps the evidence"
+        },
+        {
+          "test": "T-R1-e",
+          "class": "C",
+          "criteria": "AC-R1-2",
+          "status": "PASS",
+          "name": "first-ever acquisition on a fresh lease root needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-f",
+          "class": "C",
+          "criteria": "AC-R1-1,AC-R1-6",
+          "status": "PASS",
+          "name": "acquire, release, acquire needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-g",
+          "class": "C",
+          "criteria": "AC-R1-6",
+          "status": "PASS",
+          "name": "two acquisitions after an unclean record, both with the correct token: exactly one acquires"
+        },
+        {
+          "test": "T-R2-a",
+          "class": "D",
+          "criteria": "AC-R2-1,AC-R2-4",
+          "status": "PASS",
+          "name": "hardlinked .dev-state output to an external canary is refused with -Overwrite"
+        },
+        {
+          "test": "T-R2-b",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "ordinary single-link output overwrite with -Overwrite succeeds"
+        },
+        {
+          "test": "T-R2-c",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "junction at the output location remains refused"
+        },
+        {
+          "test": "T-R2-d",
+          "class": "D",
+          "criteria": "AC-R2-3",
+          "status": "PASS",
+          "name": "lease file hardlinked to protected storage is refused; protected bytes unchanged"
+        },
+        {
+          "test": "T-R2-e",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "output created fresh by the tool succeeds, then overwrites with -Overwrite"
+        },
+        {
+          "test": "T-R3-a",
+          "class": "D",
+          "criteria": "AC-R3-1,AC-R3-2,AC-R3-4",
+          "status": "PASS",
+          "name": "stale context after rename-away and recreate is refused before any write"
+        },
+        {
+          "test": "T-R3-b",
+          "class": "C",
+          "criteria": "AC-R3-3",
+          "status": "PASS",
+          "name": "fresh context against the recreated installation acquires and deploys"
+        },
+        {
+          "test": "T-R3-c",
+          "class": "C",
+          "criteria": "AC-R3-1",
+          "status": "PASS",
+          "name": "unchanged installation: normal acquire and deploy unchanged"
+        },
+        {
+          "test": "X-R1-1",
+          "class": "X",
+          "criteria": "AC-R1-3",
+          "status": "PASS",
+          "name": "partial record write reads as unreadable-or-empty, never released"
+        },
+        {
+          "test": "X-R1-2",
+          "class": "X",
+          "criteria": "AC-R1-3",
+          "status": "PASS",
+          "name": "trailing-byte policy: a complete frame followed by extra bytes is unreadable"
+        },
+        {
+          "test": "X-R1-3",
+          "class": "X",
+          "criteria": "AC-R1-1",
+          "status": "PASS",
+          "name": "legacy schema-1 records: released accepted, held refused with its LeaseId"
+        },
+        {
+          "test": "X-R1-4",
+          "class": "X",
+          "criteria": "AC-R1-4",
+          "status": "PASS",
+          "name": "no-token, wrong-token and superfluous-token refusals are distinct"
+        },
+        {
+          "test": "X-R1-5",
+          "class": "X",
+          "criteria": "AC-R1-1",
+          "status": "PASS",
+          "name": "Status uses the acquisition parser"
+        },
+        {
+          "test": "X-R1-6",
+          "class": "X",
+          "criteria": "AC-R1-2",
+          "status": "PASS",
+          "name": "error classification: exists then vanished retries exclusive create; sharing violation is busy"
+        },
+        {
+          "test": "X-R2-1",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "Save-DevReport refuses a multi-link report; ordinary report overwrite works"
+        },
+        {
+          "test": "X-R2-2",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "Get-KnowledgeSnapshot refuses a multi-link destination before reading any installation"
+        },
+        {
+          "test": "X-R2-3",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "FAIL",
+          "name": "Test-TomeProvenanceArtifact refuses a multi-link evidence target before loading Cecil"
+        },
+        {
+          "test": "X-R2-4",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "manifest temporary: exclusive create, leftover blocks, own failure cleans up"
+        },
+        {
+          "test": "X-R2-5",
+          "class": "X",
+          "criteria": "AC-R2-1 (scope note)",
+          "status": "PASS",
+          "name": "deployment by Replace detaches an alias instead of writing through it"
+        },
+        {
+          "test": "X-R3-1",
+          "class": "X",
+          "criteria": "AC-R3-2,AC-R3-6",
+          "status": "PASS",
+          "name": "pin blocks rename of the installation during the protected operation (effect asserted)"
+        },
+        {
+          "test": "X-R3-2",
+          "class": "X",
+          "criteria": "AC-R3-1,AC-R3-4",
+          "status": "PASS",
+          "name": "mismatch releases lease and pin as no-op; stale launch refused without starting a process"
+        }
+      ]
+    },
+    {
+      "host": "ps7",
+      "checkpoint": "original",
+      "commit": "633ddb2941942fd0136bc892a37895d358f4fb87",
+      "command": [
+        "${USERPROFILE}\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\original\\Scripts\\tests\\Test-Rotation1Closure.ps1",
+        "-Classes",
+        "D,C"
+      ],
+      "exit": 7,
+      "elapsed_seconds": 5.444,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\run-5f1b38b856804f7b8d68ee01ba85d23b\\ps7-original.txt",
+      "log_sha256": "d52941a7838b92189dcaf39022cc42e423d05ec5d000446da01cdc4c62997544",
+      "parsed_cases": [
+        {
+          "test": "T-R1-a",
+          "class": "D",
+          "criteria": "AC-R1-1,AC-R1-4",
+          "status": "FAIL",
+          "name": "pre-existing zero-length record without acknowledgement is refused with a token"
+        },
+        {
+          "test": "T-R1-b",
+          "class": "D",
+          "criteria": "AC-R1-4,AC-R1-5",
+          "status": "FAIL",
+          "name": "correct token acquires exactly once and is recorded"
+        },
+        {
+          "test": "T-R1-c",
+          "class": "D",
+          "criteria": "AC-R1-4",
+          "status": "FAIL",
+          "name": "wrong token is refused"
+        },
+        {
+          "test": "T-R1-d",
+          "class": "D",
+          "criteria": "AC-R1-3",
+          "status": "FAIL",
+          "name": "write failure after any truncation leaves a blocking record and keeps the evidence"
+        },
+        {
+          "test": "T-R1-e",
+          "class": "C",
+          "criteria": "AC-R1-2",
+          "status": "PASS",
+          "name": "first-ever acquisition on a fresh lease root needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-f",
+          "class": "C",
+          "criteria": "AC-R1-1,AC-R1-6",
+          "status": "PASS",
+          "name": "acquire, release, acquire needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-g",
+          "class": "C",
+          "criteria": "AC-R1-6",
+          "status": "PASS",
+          "name": "two acquisitions after an unclean record, both with the correct token: exactly one acquires"
+        },
+        {
+          "test": "T-R2-a",
+          "class": "D",
+          "criteria": "AC-R2-1,AC-R2-4",
+          "status": "FAIL",
+          "name": "hardlinked .dev-state output to an external canary is refused with -Overwrite"
+        },
+        {
+          "test": "T-R2-b",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "ordinary single-link output overwrite with -Overwrite succeeds"
+        },
+        {
+          "test": "T-R2-c",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "junction at the output location remains refused"
+        },
+        {
+          "test": "T-R2-d",
+          "class": "D",
+          "criteria": "AC-R2-3",
+          "status": "FAIL",
+          "name": "lease file hardlinked to protected storage is refused; protected bytes unchanged"
+        },
+        {
+          "test": "T-R2-e",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "output created fresh by the tool succeeds, then overwrites with -Overwrite"
+        },
+        {
+          "test": "T-R3-a",
+          "class": "D",
+          "criteria": "AC-R3-1,AC-R3-2,AC-R3-4",
+          "status": "FAIL",
+          "name": "stale context after rename-away and recreate is refused before any write"
+        },
+        {
+          "test": "T-R3-b",
+          "class": "C",
+          "criteria": "AC-R3-3",
+          "status": "PASS",
+          "name": "fresh context against the recreated installation acquires and deploys"
+        },
+        {
+          "test": "T-R3-c",
+          "class": "C",
+          "criteria": "AC-R3-1",
+          "status": "PASS",
+          "name": "unchanged installation: normal acquire and deploy unchanged"
+        }
+      ]
+    },
+    {
+      "host": "ps7",
+      "checkpoint": "revision",
+      "commit": "d1a1761016a69c84603cea0ada66eb441aa905c7",
+      "command": [
+        "${USERPROFILE}\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Scripts\\tests\\Test-Rotation1Closure.ps1",
+        "-Classes",
+        "D,C,X"
+      ],
+      "exit": 1,
+      "elapsed_seconds": 10.598,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\run-5f1b38b856804f7b8d68ee01ba85d23b\\ps7-revision.txt",
+      "log_sha256": "f00b74b10ef0c57fa1c4a195298bb514c5be85539ceab8111409ff351cd0f6d7",
+      "parsed_cases": [
+        {
+          "test": "T-R1-a",
+          "class": "D",
+          "criteria": "AC-R1-1,AC-R1-4",
+          "status": "PASS",
+          "name": "pre-existing zero-length record without acknowledgement is refused with a token"
+        },
+        {
+          "test": "T-R1-b",
+          "class": "D",
+          "criteria": "AC-R1-4,AC-R1-5",
+          "status": "PASS",
+          "name": "correct token acquires exactly once and is recorded"
+        },
+        {
+          "test": "T-R1-c",
+          "class": "D",
+          "criteria": "AC-R1-4",
+          "status": "PASS",
+          "name": "wrong token is refused"
+        },
+        {
+          "test": "T-R1-d",
+          "class": "D",
+          "criteria": "AC-R1-3",
+          "status": "PASS",
+          "name": "write failure after any truncation leaves a blocking record and keeps the evidence"
+        },
+        {
+          "test": "T-R1-e",
+          "class": "C",
+          "criteria": "AC-R1-2",
+          "status": "PASS",
+          "name": "first-ever acquisition on a fresh lease root needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-f",
+          "class": "C",
+          "criteria": "AC-R1-1,AC-R1-6",
+          "status": "PASS",
+          "name": "acquire, release, acquire needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-g",
+          "class": "C",
+          "criteria": "AC-R1-6",
+          "status": "PASS",
+          "name": "two acquisitions after an unclean record, both with the correct token: exactly one acquires"
+        },
+        {
+          "test": "T-R2-a",
+          "class": "D",
+          "criteria": "AC-R2-1,AC-R2-4",
+          "status": "PASS",
+          "name": "hardlinked .dev-state output to an external canary is refused with -Overwrite"
+        },
+        {
+          "test": "T-R2-b",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "ordinary single-link output overwrite with -Overwrite succeeds"
+        },
+        {
+          "test": "T-R2-c",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "junction at the output location remains refused"
+        },
+        {
+          "test": "T-R2-d",
+          "class": "D",
+          "criteria": "AC-R2-3",
+          "status": "PASS",
+          "name": "lease file hardlinked to protected storage is refused; protected bytes unchanged"
+        },
+        {
+          "test": "T-R2-e",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "output created fresh by the tool succeeds, then overwrites with -Overwrite"
+        },
+        {
+          "test": "T-R3-a",
+          "class": "D",
+          "criteria": "AC-R3-1,AC-R3-2,AC-R3-4",
+          "status": "PASS",
+          "name": "stale context after rename-away and recreate is refused before any write"
+        },
+        {
+          "test": "T-R3-b",
+          "class": "C",
+          "criteria": "AC-R3-3",
+          "status": "PASS",
+          "name": "fresh context against the recreated installation acquires and deploys"
+        },
+        {
+          "test": "T-R3-c",
+          "class": "C",
+          "criteria": "AC-R3-1",
+          "status": "PASS",
+          "name": "unchanged installation: normal acquire and deploy unchanged"
+        },
+        {
+          "test": "X-R1-1",
+          "class": "X",
+          "criteria": "AC-R1-3",
+          "status": "PASS",
+          "name": "partial record write reads as unreadable-or-empty, never released"
+        },
+        {
+          "test": "X-R1-2",
+          "class": "X",
+          "criteria": "AC-R1-3",
+          "status": "PASS",
+          "name": "trailing-byte policy: a complete frame followed by extra bytes is unreadable"
+        },
+        {
+          "test": "X-R1-3",
+          "class": "X",
+          "criteria": "AC-R1-1",
+          "status": "PASS",
+          "name": "legacy schema-1 records: released accepted, held refused with its LeaseId"
+        },
+        {
+          "test": "X-R1-4",
+          "class": "X",
+          "criteria": "AC-R1-4",
+          "status": "PASS",
+          "name": "no-token, wrong-token and superfluous-token refusals are distinct"
+        },
+        {
+          "test": "X-R1-5",
+          "class": "X",
+          "criteria": "AC-R1-1",
+          "status": "PASS",
+          "name": "Status uses the acquisition parser"
+        },
+        {
+          "test": "X-R1-6",
+          "class": "X",
+          "criteria": "AC-R1-2",
+          "status": "PASS",
+          "name": "error classification: exists then vanished retries exclusive create; sharing violation is busy"
+        },
+        {
+          "test": "X-R2-1",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "Save-DevReport refuses a multi-link report; ordinary report overwrite works"
+        },
+        {
+          "test": "X-R2-2",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "Get-KnowledgeSnapshot refuses a multi-link destination before reading any installation"
+        },
+        {
+          "test": "X-R2-3",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "FAIL",
+          "name": "Test-TomeProvenanceArtifact refuses a multi-link evidence target before loading Cecil"
+        },
+        {
+          "test": "X-R2-4",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "manifest temporary: exclusive create, leftover blocks, own failure cleans up"
+        },
+        {
+          "test": "X-R2-5",
+          "class": "X",
+          "criteria": "AC-R2-1 (scope note)",
+          "status": "PASS",
+          "name": "deployment by Replace detaches an alias instead of writing through it"
+        },
+        {
+          "test": "X-R3-1",
+          "class": "X",
+          "criteria": "AC-R3-2,AC-R3-6",
+          "status": "PASS",
+          "name": "pin blocks rename of the installation during the protected operation (effect asserted)"
+        },
+        {
+          "test": "X-R3-2",
+          "class": "X",
+          "criteria": "AC-R3-1,AC-R3-4",
+          "status": "PASS",
+          "name": "mismatch releases lease and pin as no-op; stale launch refused without starting a process"
+        }
+      ]
+    },
+    {
+      "host": "ps5",
+      "checkpoint": "original",
+      "commit": "633ddb2941942fd0136bc892a37895d358f4fb87",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\original\\Scripts\\tests\\Test-Rotation1Closure.ps1",
+        "-Classes",
+        "D,C"
+      ],
+      "exit": 7,
+      "elapsed_seconds": 4.442,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\run-266bfdb6d66c4cc78fbfa272c42b0ac5\\ps5-original.txt",
+      "log_sha256": "bbf4bcf05d30d87272d7bdf18ba693f069dde9388bc56d4de348bbb4c5aebd42",
+      "parsed_cases": [
+        {
+          "test": "T-R1-a",
+          "class": "D",
+          "criteria": "AC-R1-1,AC-R1-4",
+          "status": "FAIL",
+          "name": "pre-existing zero-length record without acknowledgement is refused with a token"
+        },
+        {
+          "test": "T-R1-b",
+          "class": "D",
+          "criteria": "AC-R1-4,AC-R1-5",
+          "status": "FAIL",
+          "name": "correct token acquires exactly once and is recorded"
+        },
+        {
+          "test": "T-R1-c",
+          "class": "D",
+          "criteria": "AC-R1-4",
+          "status": "FAIL",
+          "name": "wrong token is refused"
+        },
+        {
+          "test": "T-R1-d",
+          "class": "D",
+          "criteria": "AC-R1-3",
+          "status": "FAIL",
+          "name": "write failure after any truncation leaves a blocking record and keeps the evidence"
+        },
+        {
+          "test": "T-R1-e",
+          "class": "C",
+          "criteria": "AC-R1-2",
+          "status": "PASS",
+          "name": "first-ever acquisition on a fresh lease root needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-f",
+          "class": "C",
+          "criteria": "AC-R1-1,AC-R1-6",
+          "status": "PASS",
+          "name": "acquire, release, acquire needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-g",
+          "class": "C",
+          "criteria": "AC-R1-6",
+          "status": "PASS",
+          "name": "two acquisitions after an unclean record, both with the correct token: exactly one acquires"
+        },
+        {
+          "test": "T-R2-a",
+          "class": "D",
+          "criteria": "AC-R2-1,AC-R2-4",
+          "status": "FAIL",
+          "name": "hardlinked .dev-state output to an external canary is refused with -Overwrite"
+        },
+        {
+          "test": "T-R2-b",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "ordinary single-link output overwrite with -Overwrite succeeds"
+        },
+        {
+          "test": "T-R2-c",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "junction at the output location remains refused"
+        },
+        {
+          "test": "T-R2-d",
+          "class": "D",
+          "criteria": "AC-R2-3",
+          "status": "FAIL",
+          "name": "lease file hardlinked to protected storage is refused; protected bytes unchanged"
+        },
+        {
+          "test": "T-R2-e",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "output created fresh by the tool succeeds, then overwrites with -Overwrite"
+        },
+        {
+          "test": "T-R3-a",
+          "class": "D",
+          "criteria": "AC-R3-1,AC-R3-2,AC-R3-4",
+          "status": "FAIL",
+          "name": "stale context after rename-away and recreate is refused before any write"
+        },
+        {
+          "test": "T-R3-b",
+          "class": "C",
+          "criteria": "AC-R3-3",
+          "status": "PASS",
+          "name": "fresh context against the recreated installation acquires and deploys"
+        },
+        {
+          "test": "T-R3-c",
+          "class": "C",
+          "criteria": "AC-R3-1",
+          "status": "PASS",
+          "name": "unchanged installation: normal acquire and deploy unchanged"
+        }
+      ]
+    },
+    {
+      "host": "ps5",
+      "checkpoint": "revision",
+      "commit": "d1a1761016a69c84603cea0ada66eb441aa905c7",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Scripts\\tests\\Test-Rotation1Closure.ps1",
+        "-Classes",
+        "D,C,X"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 9.176,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\run-266bfdb6d66c4cc78fbfa272c42b0ac5\\ps5-revision.txt",
+      "log_sha256": "e3ca3bbc7722d60902abf2a1136978f7bba9bc6573fef144f27bc0a8bd6aa339",
+      "parsed_cases": [
+        {
+          "test": "T-R1-a",
+          "class": "D",
+          "criteria": "AC-R1-1,AC-R1-4",
+          "status": "PASS",
+          "name": "pre-existing zero-length record without acknowledgement is refused with a token"
+        },
+        {
+          "test": "T-R1-b",
+          "class": "D",
+          "criteria": "AC-R1-4,AC-R1-5",
+          "status": "PASS",
+          "name": "correct token acquires exactly once and is recorded"
+        },
+        {
+          "test": "T-R1-c",
+          "class": "D",
+          "criteria": "AC-R1-4",
+          "status": "PASS",
+          "name": "wrong token is refused"
+        },
+        {
+          "test": "T-R1-d",
+          "class": "D",
+          "criteria": "AC-R1-3",
+          "status": "PASS",
+          "name": "write failure after any truncation leaves a blocking record and keeps the evidence"
+        },
+        {
+          "test": "T-R1-e",
+          "class": "C",
+          "criteria": "AC-R1-2",
+          "status": "PASS",
+          "name": "first-ever acquisition on a fresh lease root needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-f",
+          "class": "C",
+          "criteria": "AC-R1-1,AC-R1-6",
+          "status": "PASS",
+          "name": "acquire, release, acquire needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-g",
+          "class": "C",
+          "criteria": "AC-R1-6",
+          "status": "PASS",
+          "name": "two acquisitions after an unclean record, both with the correct token: exactly one acquires"
+        },
+        {
+          "test": "T-R2-a",
+          "class": "D",
+          "criteria": "AC-R2-1,AC-R2-4",
+          "status": "PASS",
+          "name": "hardlinked .dev-state output to an external canary is refused with -Overwrite"
+        },
+        {
+          "test": "T-R2-b",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "ordinary single-link output overwrite with -Overwrite succeeds"
+        },
+        {
+          "test": "T-R2-c",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "junction at the output location remains refused"
+        },
+        {
+          "test": "T-R2-d",
+          "class": "D",
+          "criteria": "AC-R2-3",
+          "status": "PASS",
+          "name": "lease file hardlinked to protected storage is refused; protected bytes unchanged"
+        },
+        {
+          "test": "T-R2-e",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "output created fresh by the tool succeeds, then overwrites with -Overwrite"
+        },
+        {
+          "test": "T-R3-a",
+          "class": "D",
+          "criteria": "AC-R3-1,AC-R3-2,AC-R3-4",
+          "status": "PASS",
+          "name": "stale context after rename-away and recreate is refused before any write"
+        },
+        {
+          "test": "T-R3-b",
+          "class": "C",
+          "criteria": "AC-R3-3",
+          "status": "PASS",
+          "name": "fresh context against the recreated installation acquires and deploys"
+        },
+        {
+          "test": "T-R3-c",
+          "class": "C",
+          "criteria": "AC-R3-1",
+          "status": "PASS",
+          "name": "unchanged installation: normal acquire and deploy unchanged"
+        },
+        {
+          "test": "X-R1-1",
+          "class": "X",
+          "criteria": "AC-R1-3",
+          "status": "PASS",
+          "name": "partial record write reads as unreadable-or-empty, never released"
+        },
+        {
+          "test": "X-R1-2",
+          "class": "X",
+          "criteria": "AC-R1-3",
+          "status": "PASS",
+          "name": "trailing-byte policy: a complete frame followed by extra bytes is unreadable"
+        },
+        {
+          "test": "X-R1-3",
+          "class": "X",
+          "criteria": "AC-R1-1",
+          "status": "PASS",
+          "name": "legacy schema-1 records: released accepted, held refused with its LeaseId"
+        },
+        {
+          "test": "X-R1-4",
+          "class": "X",
+          "criteria": "AC-R1-4",
+          "status": "PASS",
+          "name": "no-token, wrong-token and superfluous-token refusals are distinct"
+        },
+        {
+          "test": "X-R1-5",
+          "class": "X",
+          "criteria": "AC-R1-1",
+          "status": "PASS",
+          "name": "Status uses the acquisition parser"
+        },
+        {
+          "test": "X-R1-6",
+          "class": "X",
+          "criteria": "AC-R1-2",
+          "status": "PASS",
+          "name": "error classification: exists then vanished retries exclusive create; sharing violation is busy"
+        },
+        {
+          "test": "X-R2-1",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "Save-DevReport refuses a multi-link report; ordinary report overwrite works"
+        },
+        {
+          "test": "X-R2-2",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "Get-KnowledgeSnapshot refuses a multi-link destination before reading any installation"
+        },
+        {
+          "test": "X-R2-3",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "Test-TomeProvenanceArtifact refuses a multi-link evidence target before loading Cecil"
+        },
+        {
+          "test": "X-R2-4",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "manifest temporary: exclusive create, leftover blocks, own failure cleans up"
+        },
+        {
+          "test": "X-R2-5",
+          "class": "X",
+          "criteria": "AC-R2-1 (scope note)",
+          "status": "PASS",
+          "name": "deployment by Replace detaches an alias instead of writing through it"
+        },
+        {
+          "test": "X-R3-1",
+          "class": "X",
+          "criteria": "AC-R3-2,AC-R3-6",
+          "status": "PASS",
+          "name": "pin blocks rename of the installation during the protected operation (effect asserted)"
+        },
+        {
+          "test": "X-R3-2",
+          "class": "X",
+          "criteria": "AC-R3-1,AC-R3-4",
+          "status": "PASS",
+          "name": "mismatch releases lease and pin as no-op; stale launch refused without starting a process"
+        }
+      ]
+    },
+    {
+      "host": "ps7",
+      "checkpoint": "original",
+      "commit": "633ddb2941942fd0136bc892a37895d358f4fb87",
+      "command": [
+        "${USERPROFILE}\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\original\\Scripts\\tests\\Test-Rotation1Closure.ps1",
+        "-Classes",
+        "D,C"
+      ],
+      "exit": 7,
+      "elapsed_seconds": 5.053,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\run-266bfdb6d66c4cc78fbfa272c42b0ac5\\ps7-original.txt",
+      "log_sha256": "7d223cd42aeae15bde992be87c57874eaebfb51e3a966252ff5f49bc3a69fe69",
+      "parsed_cases": [
+        {
+          "test": "T-R1-a",
+          "class": "D",
+          "criteria": "AC-R1-1,AC-R1-4",
+          "status": "FAIL",
+          "name": "pre-existing zero-length record without acknowledgement is refused with a token"
+        },
+        {
+          "test": "T-R1-b",
+          "class": "D",
+          "criteria": "AC-R1-4,AC-R1-5",
+          "status": "FAIL",
+          "name": "correct token acquires exactly once and is recorded"
+        },
+        {
+          "test": "T-R1-c",
+          "class": "D",
+          "criteria": "AC-R1-4",
+          "status": "FAIL",
+          "name": "wrong token is refused"
+        },
+        {
+          "test": "T-R1-d",
+          "class": "D",
+          "criteria": "AC-R1-3",
+          "status": "FAIL",
+          "name": "write failure after any truncation leaves a blocking record and keeps the evidence"
+        },
+        {
+          "test": "T-R1-e",
+          "class": "C",
+          "criteria": "AC-R1-2",
+          "status": "PASS",
+          "name": "first-ever acquisition on a fresh lease root needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-f",
+          "class": "C",
+          "criteria": "AC-R1-1,AC-R1-6",
+          "status": "PASS",
+          "name": "acquire, release, acquire needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-g",
+          "class": "C",
+          "criteria": "AC-R1-6",
+          "status": "PASS",
+          "name": "two acquisitions after an unclean record, both with the correct token: exactly one acquires"
+        },
+        {
+          "test": "T-R2-a",
+          "class": "D",
+          "criteria": "AC-R2-1,AC-R2-4",
+          "status": "FAIL",
+          "name": "hardlinked .dev-state output to an external canary is refused with -Overwrite"
+        },
+        {
+          "test": "T-R2-b",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "ordinary single-link output overwrite with -Overwrite succeeds"
+        },
+        {
+          "test": "T-R2-c",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "junction at the output location remains refused"
+        },
+        {
+          "test": "T-R2-d",
+          "class": "D",
+          "criteria": "AC-R2-3",
+          "status": "FAIL",
+          "name": "lease file hardlinked to protected storage is refused; protected bytes unchanged"
+        },
+        {
+          "test": "T-R2-e",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "output created fresh by the tool succeeds, then overwrites with -Overwrite"
+        },
+        {
+          "test": "T-R3-a",
+          "class": "D",
+          "criteria": "AC-R3-1,AC-R3-2,AC-R3-4",
+          "status": "FAIL",
+          "name": "stale context after rename-away and recreate is refused before any write"
+        },
+        {
+          "test": "T-R3-b",
+          "class": "C",
+          "criteria": "AC-R3-3",
+          "status": "PASS",
+          "name": "fresh context against the recreated installation acquires and deploys"
+        },
+        {
+          "test": "T-R3-c",
+          "class": "C",
+          "criteria": "AC-R3-1",
+          "status": "PASS",
+          "name": "unchanged installation: normal acquire and deploy unchanged"
+        }
+      ]
+    },
+    {
+      "host": "ps7",
+      "checkpoint": "revision",
+      "commit": "d1a1761016a69c84603cea0ada66eb441aa905c7",
+      "command": [
+        "${USERPROFILE}\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Scripts\\tests\\Test-Rotation1Closure.ps1",
+        "-Classes",
+        "D,C,X"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 9.91,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\run-266bfdb6d66c4cc78fbfa272c42b0ac5\\ps7-revision.txt",
+      "log_sha256": "28aa6ef76fd69c78e116c320b6aa37d44f3ee9dce71467b7f8eee62ac140d252",
+      "parsed_cases": [
+        {
+          "test": "T-R1-a",
+          "class": "D",
+          "criteria": "AC-R1-1,AC-R1-4",
+          "status": "PASS",
+          "name": "pre-existing zero-length record without acknowledgement is refused with a token"
+        },
+        {
+          "test": "T-R1-b",
+          "class": "D",
+          "criteria": "AC-R1-4,AC-R1-5",
+          "status": "PASS",
+          "name": "correct token acquires exactly once and is recorded"
+        },
+        {
+          "test": "T-R1-c",
+          "class": "D",
+          "criteria": "AC-R1-4",
+          "status": "PASS",
+          "name": "wrong token is refused"
+        },
+        {
+          "test": "T-R1-d",
+          "class": "D",
+          "criteria": "AC-R1-3",
+          "status": "PASS",
+          "name": "write failure after any truncation leaves a blocking record and keeps the evidence"
+        },
+        {
+          "test": "T-R1-e",
+          "class": "C",
+          "criteria": "AC-R1-2",
+          "status": "PASS",
+          "name": "first-ever acquisition on a fresh lease root needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-f",
+          "class": "C",
+          "criteria": "AC-R1-1,AC-R1-6",
+          "status": "PASS",
+          "name": "acquire, release, acquire needs no acknowledgement"
+        },
+        {
+          "test": "T-R1-g",
+          "class": "C",
+          "criteria": "AC-R1-6",
+          "status": "PASS",
+          "name": "two acquisitions after an unclean record, both with the correct token: exactly one acquires"
+        },
+        {
+          "test": "T-R2-a",
+          "class": "D",
+          "criteria": "AC-R2-1,AC-R2-4",
+          "status": "PASS",
+          "name": "hardlinked .dev-state output to an external canary is refused with -Overwrite"
+        },
+        {
+          "test": "T-R2-b",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "ordinary single-link output overwrite with -Overwrite succeeds"
+        },
+        {
+          "test": "T-R2-c",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "junction at the output location remains refused"
+        },
+        {
+          "test": "T-R2-d",
+          "class": "D",
+          "criteria": "AC-R2-3",
+          "status": "PASS",
+          "name": "lease file hardlinked to protected storage is refused; protected bytes unchanged"
+        },
+        {
+          "test": "T-R2-e",
+          "class": "C",
+          "criteria": "AC-R2-2",
+          "status": "PASS",
+          "name": "output created fresh by the tool succeeds, then overwrites with -Overwrite"
+        },
+        {
+          "test": "T-R3-a",
+          "class": "D",
+          "criteria": "AC-R3-1,AC-R3-2,AC-R3-4",
+          "status": "PASS",
+          "name": "stale context after rename-away and recreate is refused before any write"
+        },
+        {
+          "test": "T-R3-b",
+          "class": "C",
+          "criteria": "AC-R3-3",
+          "status": "PASS",
+          "name": "fresh context against the recreated installation acquires and deploys"
+        },
+        {
+          "test": "T-R3-c",
+          "class": "C",
+          "criteria": "AC-R3-1",
+          "status": "PASS",
+          "name": "unchanged installation: normal acquire and deploy unchanged"
+        },
+        {
+          "test": "X-R1-1",
+          "class": "X",
+          "criteria": "AC-R1-3",
+          "status": "PASS",
+          "name": "partial record write reads as unreadable-or-empty, never released"
+        },
+        {
+          "test": "X-R1-2",
+          "class": "X",
+          "criteria": "AC-R1-3",
+          "status": "PASS",
+          "name": "trailing-byte policy: a complete frame followed by extra bytes is unreadable"
+        },
+        {
+          "test": "X-R1-3",
+          "class": "X",
+          "criteria": "AC-R1-1",
+          "status": "PASS",
+          "name": "legacy schema-1 records: released accepted, held refused with its LeaseId"
+        },
+        {
+          "test": "X-R1-4",
+          "class": "X",
+          "criteria": "AC-R1-4",
+          "status": "PASS",
+          "name": "no-token, wrong-token and superfluous-token refusals are distinct"
+        },
+        {
+          "test": "X-R1-5",
+          "class": "X",
+          "criteria": "AC-R1-1",
+          "status": "PASS",
+          "name": "Status uses the acquisition parser"
+        },
+        {
+          "test": "X-R1-6",
+          "class": "X",
+          "criteria": "AC-R1-2",
+          "status": "PASS",
+          "name": "error classification: exists then vanished retries exclusive create; sharing violation is busy"
+        },
+        {
+          "test": "X-R2-1",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "Save-DevReport refuses a multi-link report; ordinary report overwrite works"
+        },
+        {
+          "test": "X-R2-2",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "Get-KnowledgeSnapshot refuses a multi-link destination before reading any installation"
+        },
+        {
+          "test": "X-R2-3",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "Test-TomeProvenanceArtifact refuses a multi-link evidence target before loading Cecil"
+        },
+        {
+          "test": "X-R2-4",
+          "class": "X",
+          "criteria": "AC-R2-1",
+          "status": "PASS",
+          "name": "manifest temporary: exclusive create, leftover blocks, own failure cleans up"
+        },
+        {
+          "test": "X-R2-5",
+          "class": "X",
+          "criteria": "AC-R2-1 (scope note)",
+          "status": "PASS",
+          "name": "deployment by Replace detaches an alias instead of writing through it"
+        },
+        {
+          "test": "X-R3-1",
+          "class": "X",
+          "criteria": "AC-R3-2,AC-R3-6",
+          "status": "PASS",
+          "name": "pin blocks rename of the installation during the protected operation (effect asserted)"
+        },
+        {
+          "test": "X-R3-2",
+          "class": "X",
+          "criteria": "AC-R3-1,AC-R3-4",
+          "status": "PASS",
+          "name": "mismatch releases lease and pin as no-op; stale launch refused without starting a process"
+        }
+      ]
+    }
+  ],
+  "regression_checks": [
+    {
+      "check": "additional-ps5",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\Reviews\\Codex-2026-10-27-Rotation1\\Closure-2026-10-28\\Additional-Review.ps1",
+        "-Snapshot",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision",
+        "-Root",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\checks-eab29810948a454bb340932699990961\\additional-ps5"
+      ],
+      "exit": 0,
+      "seconds": 1.307,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-eab29810948a454bb340932699990961\\additional-ps5.txt",
+      "sha256": "db3c7ae0e8940f858391f6fde088bdda2bba79e1b2d4b52aa0b6d5261161934f"
+    },
+    {
+      "check": "additional-ps7",
+      "command": [
+        "${USERPROFILE}/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\Reviews\\Codex-2026-10-27-Rotation1\\Closure-2026-10-28\\Additional-Review.ps1",
+        "-Snapshot",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision",
+        "-Root",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\checks-eab29810948a454bb340932699990961\\additional-ps7"
+      ],
+      "exit": 0,
+      "seconds": 1.511,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-eab29810948a454bb340932699990961\\additional-ps7.txt",
+      "sha256": "568dca55700d6ea5d449794cd1e8a78fd4558b3a349a0f5d5e3efd472c074cb8"
+    },
+    {
+      "check": "workflow-ps5",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Scripts\\tests\\Test-DevWorkflow.ps1"
+      ],
+      "exit": 0,
+      "seconds": 17.483,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-eab29810948a454bb340932699990961\\workflow-ps5.txt",
+      "sha256": "eecc9d19ce4ce14c0320255e9c04de3567736d8213418ed5e12cfe530836e4b4"
+    },
+    {
+      "check": "paths-ps5",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Scripts\\tests\\Test-WorkspacePaths.ps1"
+      ],
+      "exit": 0,
+      "seconds": 5.022,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-eab29810948a454bb340932699990961\\paths-ps5.txt",
+      "sha256": "33f09c6bdd8a6555e83f3890b1b267cabc88874e63523d2c1790036089cc86db"
+    },
+    {
+      "check": "python-revision",
+      "command": [
+        "${USERPROFILE}\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "Scripts/tests",
+        "-v"
+      ],
+      "exit": 0,
+      "seconds": 0.324,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-eab29810948a454bb340932699990961\\python-revision.txt",
+      "sha256": "ce61827694ed6a24b1fd439f058ea2ec741a935f0423ffcd13c9be8c6c2c20d0"
+    },
+    {
+      "check": "release-build",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Scripts\\Build.ps1",
+        "-Configuration",
+        "Release"
+      ],
+      "exit": 1,
+      "seconds": 5.465,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-eab29810948a454bb340932699990961\\release-build.txt",
+      "sha256": "d6976fc4f27243420495bc5165c83f354c9c1c3c879cf8dcbb3e77e12b8d3cb9"
+    },
+    {
+      "check": "strict-knowledge-own",
+      "command": [
+        "${USERPROFILE}\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-B",
+        "Scripts/knowledge.py",
+        "validate",
+        "--strict"
+      ],
+      "exit": 0,
+      "seconds": 0.126,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-eab29810948a454bb340932699990961\\strict-knowledge-own.txt",
+      "sha256": "210af8f7590b7819e8ba85486791d78ba465f62e22e0e5260b9fc74f66ba072e"
+    },
+    {
+      "check": "git-whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "seconds": 0.029,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-eab29810948a454bb340932699990961\\git-whitespace.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "release-build",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Scripts\\Build.ps1",
+        "-Configuration",
+        "Release"
+      ],
+      "exit": 0,
+      "seconds": 1.718,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-76e0262830414c3fb05b6ed2f4e6d05d\\release-build.txt",
+      "sha256": "bced83c11a07c47347f69870ca1b7da539566fbf40c47aab5479dd9aab535803"
+    },
+    {
+      "check": "Test-TomeDiagnostic",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Scripts\\tests\\Test-TomeDiagnostic.ps1",
+        "-Dll",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Source\\PoVPlus\\bin\\Release\\net48\\PoVPlus.dll"
+      ],
+      "exit": 0,
+      "seconds": 0.27,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-76e0262830414c3fb05b6ed2f4e6d05d\\Test-TomeDiagnostic.txt",
+      "sha256": "432c853d25bf145e8936a603ca32a0044b6270ecd0e0635c61e78ba906d2609a"
+    },
+    {
+      "check": "Test-TomeLifecycleArtifact",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Scripts\\tests\\Test-TomeLifecycleArtifact.ps1",
+        "-Dll",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Source\\PoVPlus\\bin\\Release\\net48\\PoVPlus.dll"
+      ],
+      "exit": 0,
+      "seconds": 0.43,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-76e0262830414c3fb05b6ed2f4e6d05d\\Test-TomeLifecycleArtifact.txt",
+      "sha256": "9ea5af4f80e561fb93907c5977406de77ecdadf7fd418825980825707fed5dde"
+    },
+    {
+      "check": "Test-TomeProvenanceArtifact",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Scripts\\tests\\Test-TomeProvenanceArtifact.ps1",
+        "-Dll",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Source\\PoVPlus\\bin\\Release\\net48\\PoVPlus.dll"
+      ],
+      "exit": 0,
+      "seconds": 0.221,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-76e0262830414c3fb05b6ed2f4e6d05d\\Test-TomeProvenanceArtifact.txt",
+      "sha256": "7788650b53e49de1fc7f38ffe2659e67331f3bd4e8a6717398bb7d147ca00aac"
+    },
+    {
+      "check": "Test-TomeBridgeArtifact",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-File",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Scripts\\tests\\Test-TomeBridgeArtifact.ps1",
+        "-Dll",
+        "${REPO}\\.dev-state\\rotation1\\closure-review-20261028\\revision\\Source\\PoVPlus\\bin\\Release\\net48\\PoVPlus.dll"
+      ],
+      "exit": 0,
+      "seconds": 0.287,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-76e0262830414c3fb05b6ed2f4e6d05d\\Test-TomeBridgeArtifact.txt",
+      "sha256": "d11cfeae6c3c51d92cdcdf7456c979a9c1708aeba6b4ebfff2a9bd6bf0937ac7"
+    },
+    {
+      "check": "strict-knowledge-own",
+      "command": [
+        "${USERPROFILE}\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-B",
+        "Scripts/knowledge.py",
+        "validate",
+        "--strict"
+      ],
+      "exit": 0,
+      "seconds": 0.085,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-76e0262830414c3fb05b6ed2f4e6d05d\\strict-knowledge-own.txt",
+      "sha256": "210af8f7590b7819e8ba85486791d78ba465f62e22e0e5260b9fc74f66ba072e"
+    },
+    {
+      "check": "git-whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "seconds": 0.023,
+      "log": ".dev-state\\rotation1\\closure-review-20261028\\checks-76e0262830414c3fb05b6ed2f4e6d05d\\git-whitespace.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "current_review_sources": {
+    "Additional-Review.ps1": "b19268d4e1b4ad5f1a25bb8e2c53c0747e78344b36745d41519d3a3ef524efbd",
+    "Independent-Closure.ps1": "5d986fed89243c27557a68fc28a897e3a36be7826fd8d2c420b752aca023bd35",
+    "run_checks.py": "ea4e4bf0edc5e134d6716544393965578d1eaa62cdcebbebdb06bd25dc10fd25",
+    "run_review.py": "be618b9a37412fa23afa25c13a460ed5b8bae7d7e46dd3603f15914c2361690e",
+    "verify_review.py": "25243312422502e66a8b80df0c943c3d3c70267548c6157f367e523943058ec2"
+  },
+  "limits": [
+    "No runtime isolation or Tome lifecycle certification",
+    "Hardlink checks remain check-then-use",
+    "Directory pin ends at lease release; child files are not pinned",
+    "Six fixed-path Tome build harnesses remain outside scoped writer coverage"
+  ]
+}
