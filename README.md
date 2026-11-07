@@ -156,3 +156,9 @@ single equipment system. Effects, regeneration, persistence and multiplayer beha
 runtime-verified. Unequip books before removing/disabling it; hot toggles are unsupported.
 See [the implementation/design record](Knowledge/Compatibility/COMP-002-Tome-bridge-design.md).
 Offline checks include `Scripts/tests/Test-TomeBridge.ps1` and `Test-TomeBridgeArtifact.ps1`.
+
+## Hexium modpack
+
+[Download PoVPlus 1.0.1](Packages/Hexium/PoVPlus-1.0.1-Hexium.zip) for submission to Hexium. The ZIP contains 87 dependencies and 151 gameplay and mod configuration files. The pack-specific PlanBuild fork and HearthBelow bridge are documented in the package README and distributed separately.
+
+The ZIP structure and integrity were verified. A clean Gale install and Hexium upload are pending.
