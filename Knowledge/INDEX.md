@@ -33,6 +33,7 @@ Open Knowledge/ as an Obsidian vault, or navigate/search in an editor. No Obsidi
 | Startup and missing messages | [[DIAG-001-Logging]], [[INV-001-Startup-message]], [[EXP-001-Logging-override]] |
 | Warnings and patch triage | [[COMP-001-Warnings]], [[INV-002-Compatibility-triage]] |
 | Magic books, Tome acceptance and equipment ownership | [[INV-003-Magic-book-tome-compatibility]] |
+| PoV implicits, affixes, defence type and item level on mod weapons and armour | [[INV-005-pov-equipment-modifiers-on-mod-items]] |
 | Proposed supervised Tome equipment lifecycle test | [[EXP-004-Tome-equipment-lifecycle-plan]], [[DEV-006-Tome-C1-preflight]] |
 | Repaired offline diagnostics and experimental single-owner bridge | [[DEV-005-Tome-diagnostics]], [[COMP-002-Tome-bridge-design]] |
 | Evidence and external research | [[EVID-001-Local-observations]], [[REF-001-External-docs]] |
